@@ -1,0 +1,33 @@
+.footer
+{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid #e0e0e0;
+}
+.footer_container
+{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    padding: 0 40px;
+}
+.content_container
+{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+.content_container a
+{
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #717171;
+    text-decoration: none;
+    transition: color 200ms ease;
+}
+.content_container a:hover {
+  color: #222222;           
+}

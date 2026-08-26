@@ -2,3 +2,13 @@
 {
     margin: 0;
 }
+#root,.app_wrapper
+{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.main_content
+{
+    flex: 1;
+}
