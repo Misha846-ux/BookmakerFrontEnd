@@ -12,6 +12,7 @@ interface LoginModalProps {
 function LoginModal({ isOpen, onClose, onSwitchToRegister, onContinue,}: LoginModalProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   if (!isOpen) {
     return null
@@ -42,7 +43,16 @@ function LoginModal({ isOpen, onClose, onSwitchToRegister, onContinue,}: LoginMo
 
           <div className="auth-field">
             <label htmlFor="password">Password</label>
-            <input id="password" name="password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" placeholder="Password"/>
+            <div className="auth-password-input-wrapper">
+              <input className="auth-password-input" id="password" name="password" type={showPassword ? 'text' : 'password'} value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" placeholder="Password"/>
+              <button className="auth-password-toggle" type="button" onClick={() => setShowPassword((isVisible) => !isVisible)} aria-label={showPassword ? 'Hide password' : 'Show password'} aria-pressed={showPassword}>
+                <svg className="auth-password-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 12C4.8 8.4 7.8 6.5 12 6.5S19.2 8.4 21 12c-1.8 3.6-4.8 5.5-9 5.5S4.8 15.6 3 12Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.8" />
+                  {!showPassword && <path d="M4 4L20 20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />}
+                </svg>
+              </button>
+            </div>
           </div>
 
           <button className="auth-continue" type="submit" disabled={!isFormComplete}> Continue </button>
