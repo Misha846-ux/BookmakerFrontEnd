@@ -1,0 +1,87 @@
+.Place_body{
+    margin-top: 2%;
+    min-height: 640px;
+    height: 70vh;
+    width: 98.7%;
+    display: grid; 
+    column-gap: 5%;
+    margin-left: 1%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.Place_card{
+    height: 95%;
+    width:91%;
+}
+.Place_img{
+    height: 60%;
+    width:100%;
+    border-radius: 13px;
+}
+.Place_top{
+    min-width: 280px;
+    height: 6%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Nunito Sans';
+    font-style:"SemiBold";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+    margin: 0; 
+}
+.Place__hotel_name{
+    height: 100%;
+    width:50%;
+    margin-right: 1%;
+}
+.Place__city_name{
+    min-width: 70px;
+    height: 100%;
+    width:25%;
+    display: flex;
+    justify-content: center;
+}
+.Place__country_name{
+    min-width: 70px;
+    height: 100%;
+    width:25%;
+    display: flex;
+    justify-content: center;
+}
+.Place_content{
+    height: 30%;
+    width:100%;
+}
+.Place_stars{
+    height: 30%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    color: #581ADB;
+    font-size: 18px;
+}
+.Place_city_center{
+    height: 22%;
+    width:100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'Nunito Sans';
+    font-style:"normal";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+    margin: 0; 
+}
+.Place_price{
+    height: 35%;
+    width:100%;
+    font-weight: 900;
+    font-size: 18px;
+    overflow: hidden;
+    font-family: 'Nunito Sans';
+    display: flex;
+    align-items: center;
+}

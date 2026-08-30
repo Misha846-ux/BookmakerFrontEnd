@@ -1,0 +1,91 @@
+.Reviews_body{
+    min-height: 350px;
+    min-width: 1640px;
+    height: 20vh;
+    width: 99.7%;
+    margin-bottom: 2%;
+}
+.Reviews_top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    height: 15%;
+    width: 100%;
+    font-family: 'Nunito Sans';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 21px;
+    color: #717171;
+    margin: 0; 
+}
+.Reviews_content{
+    min-height: 200px;
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3.7%;
+}
+.Review_card{
+    border-radius: 13px;
+    border: 1px solid #94D0B4;
+    height: 100%;
+    width: 30%;
+}
+.Review_card_top{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.Review_img{
+    height: 70%;
+    width: 15%;
+    border-radius: 50%;
+    margin-left: 5%;
+}
+.Review_user_and_hotel_names{
+    height: 70%;
+    width: 40%;
+    margin-left: 5%;
+}
+.Review_user_name{
+    font-family: 'Nunito Sans';
+    font-style:normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #222222;
+    margin: 0;
+    overflow: hidden;
+}
+.Review_hotel_name{
+    font-family: 'Nunito Sans';
+    font-style:normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #717171;
+    margin-top: 8%;
+    overflow: hidden;
+}
+.Review_time{
+    height: 70%;
+    width: 35%;
+    margin-left: 15%;
+    font-family: 'Nunito Sans';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #717171;
+}
+.Review_text{
+    height: 70%;
+    width: 95%;
+    margin-left: 5%;
+    font-family: 'Nunito Sans';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #222222;
+    overflow-y: auto;
+}

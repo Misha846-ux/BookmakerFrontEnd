@@ -1,0 +1,11 @@
+.Header_body{
+    min-height: 70px;
+    height: 8vh;
+    width: 99.7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Header_box{
+    margin-left: 2%; 
+}
