@@ -1,0 +1,27 @@
+.RegisterAccountButton_body{
+    min-height: 90px;
+    min-width: 800px;
+    height: 10vh;
+    width: 99.7%;
+    margin-bottom: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.RegisterAccountButton_img{
+    height: 30%;
+    width: 2%;
+}
+.RegisterAccountButton_btn{
+    height: 70%;
+    width: 20%;
+    border-radius: 60px;
+    background-color: #581ADB;
+    font-family: 'Nunito Sans';
+    font-style:normal;
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}

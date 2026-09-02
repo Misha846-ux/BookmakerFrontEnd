@@ -1,0 +1,418 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "review": "Очень понравился отель! Номер был чистым и уютным, персонал вежливый и всегда готов помочь.",
+      "createdAt": "2026-08-20T14:30:00.000Z",
+      "user": 1,
+      "hotel": 1,
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "review": "Хорошее расположение, рядом море и много ресторанов. Номер был немного маленьким, но в целом всё отлично.",
+      "createdAt": "2026-08-21T10:15:00.000Z",
+      "user": 2,
+      "hotel": 2,
+      "rating": 4
+    },
+    {
+      "id": 3,
+      "review": "Отличный завтрак и очень красивый вид из окна. Обязательно вернусь сюда ещё раз!",
+      "createdAt": "2026-08-22T08:45:00.000Z",
+      "user": 3,
+      "hotel": 3,
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "review": "Отель хороший, но обслуживание могло бы быть немного быстрее.",
+      "createdAt": "2026-08-23T16:20:00.000Z",
+      "user": 4,
+      "hotel": 1,
+      "rating": 4
+    },
+    {
+      "id": 5,
+      "review": "Красивое место, удобная кровать и приятная атмосфера. Всё понравилось.",
+      "createdAt": "2026-08-24T12:00:00.000Z",
+      "user": 5,
+      "hotel": 2,
+      "rating": 5
+    }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "name": "Anna Smith",
+      "password": "password123",
+      "email": "anna.smith@example.com",
+      "phoneNumber": "+359888111222",
+      "birthday": "2002-04-15T00:00:00.000Z",
+      "photo": "https://i.pravatar.cc/150?img=1",
+      "country": 1,
+      "ampthill": "Sofia",
+      "preferedCurrency": 1,
+      "authCode": "AUTH001",
+      "paymethod": 1
+    },
+    {
+      "id": 2,
+      "name": "Michael Johnson",
+      "password": "password456",
+      "email": "michael.johnson@example.com",
+      "phoneNumber": "+359888222333",
+      "birthday": "1999-09-21T00:00:00.000Z",
+      "photo": "https://i.pravatar.cc/150?img=12",
+      "country": 2,
+      "ampthill": "Varna",
+      "preferedCurrency": 1,
+      "authCode": "AUTH002",
+      "paymethod": 2
+    },
+    {
+      "id": 3,
+      "name": "Sofia Williams",
+      "password": "password789",
+      "email": "sofia.williams@example.com",
+      "phoneNumber": "+359888333444",
+      "birthday": "2001-02-10T00:00:00.000Z",
+      "photo": "https://i.pravatar.cc/150?img=5",
+      "country": 3,
+      "ampthill": "Burgas",
+      "preferedCurrency": 2,
+      "authCode": "AUTH003",
+      "paymethod": 1
+    },
+    {
+      "id": 4,
+      "name": "Daniel Brown",
+      "password": "password321",
+      "email": "daniel.brown@example.com",
+      "phoneNumber": "+359888444555",
+      "birthday": "1998-11-03T00:00:00.000Z",
+      "photo": "https://i.pravatar.cc/150?img=8",
+      "country": 1,
+      "ampthill": "Plovdiv",
+      "preferedCurrency": 1,
+      "authCode": "AUTH004",
+      "paymethod": 3
+    },
+    {
+      "id": 5,
+      "name": "Emily Davis",
+      "password": "password654",
+      "email": "emily.davis@example.com",
+      "phoneNumber": "+359888555666",
+      "birthday": "2003-06-27T00:00:00.000Z",
+      "photo": "https://i.pravatar.cc/150?img=9",
+      "country": 4,
+      "ampthill": "Sofia",
+      "preferedCurrency": 2,
+      "authCode": "AUTH005",
+      "paymethod": 2
+    }
+  ],
+
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Grand Marina Hotel",
+      "address": "12 Sea Garden Street",
+      "phonenumber": "+359521234567",
+      "email": "info@grandmarina.example.com",
+      "stars": 5,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945", "https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+      "description": "Роскошный отель рядом с морем с современными номерами, рестораном и бассейном."
+    },
+    {
+      "id": 2,
+      "name": "Blue Wave Resort",
+      "address": "25 Beach Road",
+      "phonenumber": "+359521112233",
+      "email": "info@bluewave.example.com",
+      "stars": 4,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"],
+      "description": "Уютный курортный отель с красивым видом на море и удобным выходом к пляжу."
+    },
+    {
+      "id": 3,
+      "name": "Royal Palace Hotel",
+      "address": "8 Central Boulevard",
+      "phonenumber": "+359521445566",
+      "email": "info@royalpalace.example.com",
+      "stars": 5,
+      "city": 2,
+      "photo": ["https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"],
+      "description": "Современный пятизвёздочный отель в центре города с рестораном и просторными номерами."
+    },
+    {
+      "id": 4,
+      "name": "Grand Marina Hotel",
+      "address": "12 Sea Garden Street",
+      "phonenumber": "+359521234567",
+      "email": "info@grandmarina.example.com",
+      "stars": 5,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945", "https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+      "description": "Роскошный отель рядом с морем с современными номерами, рестораном и бассейном."
+    },
+    {
+      "id": 5,
+      "name": "Grand Marina Hotel",
+      "address": "12 Sea Garden Street",
+      "phonenumber": "+359521234567",
+      "email": "info@grandmarina.example.com",
+      "stars": 5,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945", "https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+      "description": "Роскошный отель рядом с морем с современными номерами, рестораном и бассейном."
+    },
+    {
+      "id": 6,
+      "name": "Grand Marina Hotel",
+      "address": "12 Sea Garden Street",
+      "phonenumber": "+359521234567",
+      "email": "info@grandmarina.example.com",
+      "stars": 5,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945", "https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+      "description": "Роскошный отель рядом с морем с современными номерами, рестораном и бассейном."
+    },
+    {
+      "id": 7,
+      "name": "Grand Marina Hotel",
+      "address": "12 Sea Garden Street",
+      "phonenumber": "+359521234567",
+      "email": "info@grandmarina.example.com",
+      "stars": 4,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945", "https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+      "description": "Роскошный отель рядом с морем с современными номерами, рестораном и бассейном."
+    },
+    {
+      "id": 8,
+      "name": "Grand Marina Hotel",
+      "address": "12 Sea Garden Street",
+      "phonenumber": "+359521234567",
+      "email": "info@grandmarina.example.com",
+      "stars": 5,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945", "https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+      "description": "Роскошный отель рядом с морем с современными номерами, рестораном и бассейном."
+    },
+    {
+      "id": 9,
+      "name": "Grand Marina Hotel",
+      "address": "12 Sea Garden Street",
+      "phonenumber": "+359521234567",
+      "email": "info@grandmarina.example.com",
+      "stars": 5,
+      "city": 1,
+      "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945", "https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+      "description": "Роскошный отель рядом с морем с современными номерами, рестораном и бассейном."
+    }
+  ],
+
+  "cities": [
+    {
+        "id": 1,
+        "name": "Paris",
+        "country": 1
+    },
+    {
+        "id": 2,
+        "name": "London",
+        "country": 2
+    },
+    {
+        "id": 3,
+        "name": "Rome",
+        "country": 3
+    },
+    {
+        "id": 4,
+        "name": "Barcelona",
+        "country": 4
+    },
+    {
+        "id": 5,
+        "name": "Berlin",
+        "country": 5
+    },
+    {
+        "id": 6,
+        "name": "Amsterdam",
+        "country": 6
+    },
+    {
+        "id": 7,
+        "name": "Prague",
+        "country": 7
+    },
+    {
+        "id": 8,
+        "name": "Vienna",
+        "country": 8
+    }
+],
+"countries": [
+    {
+        "id": 1,
+        "name": "France"
+    },
+    {
+        "id": 2,
+        "name": "United Kingdom"
+    },
+    {
+        "id": 3,
+        "name": "Italy"
+    },
+    {
+        "id": 4,
+        "name": "Spain"
+    },
+    {
+        "id": 5,
+        "name": "Germany"
+    },
+    {
+        "id": 6,
+        "name": "Netherlands"
+    },
+    {
+        "id": 7,
+        "name": "Czech Republic"
+    },
+    {
+        "id": 8,
+        "name": "Austria"
+    }
+],
+"rooms": [
+    {
+        "id": 1,
+        "roomnumber": "101",
+        "description": "Comfortable double room with city view",
+        "photo": ["https://images.unsplash.com/photo-1566073771259-6a8506099945","https://images.unsplash.com/photo-1566073771259-6a8506099945","https://images.unsplash.com/photo-1566073771259-6a8506099945"],
+        "hotel": 1,
+        "wifi": true,
+        "privatepool": false,
+        "bath": true,
+        "price": 120,
+        "beds": 2
+    },
+    {
+        "id": 2,
+        "roomnumber": "102",
+        "description": "Large room with two beds",
+        "photo": ["/images/rooms/room102.jpg"],
+        "hotel": 1,
+        "wifi": true,
+        "privatepool": false,
+        "bath": true,
+        "price": 150,
+        "beds": 2
+    },
+    {
+        "id": 3,
+        "roomnumber": "201",
+        "description": "Luxury room with private pool",
+        "photo": ["/images/rooms/room201.jpg"],
+        "hotel": 2,
+        "wifi": true,
+        "privatepool": true,
+        "bath": true,
+        "price": 250,
+        "beds": 2
+    },
+    {
+        "id": 4,
+        "roomnumber": "202",
+        "description": "Cozy single room",
+        "photo": ["/images/rooms/room202.jpg"],
+        "hotel": 2,
+        "wifi": true,
+        "privatepool": false,
+        "bath": true,
+        "price": 100,
+        "beds": 1
+    },
+    {
+        "id": 5,
+        "roomnumber": "301",
+        "description": "Modern family room",
+        "photo": ["/images/rooms/room301.jpg"],
+        "hotel": 3,
+        "wifi": true,
+        "privatepool": false,
+        "bath": true,
+        "price": 180,
+        "beds": 3
+    },
+    {
+        "id": 6,
+        "roomnumber": "302",
+        "description": "Luxury room with a beautiful view",
+        "photo": ["/images/rooms/room302.jpg"],
+        "hotel": 6,
+        "wifi": true,
+        "privatepool": true,
+        "bath": true,
+        "price": 100,
+        "beds": 2
+    },
+    {
+        "id": 7,
+        "roomnumber": "401",
+        "description": "Small comfortable room",
+        "photo": ["/images/rooms/room401.jpg"],
+        "hotel": 7,
+        "wifi": true,
+        "privatepool": false,
+        "bath": true,
+        "price": 90,
+        "beds": 1
+    },
+    {
+        "id": 8,
+        "roomnumber": "402",
+        "description": "Spacious room for a family",
+        "photo": ["/images/rooms/room402.jpg"],
+        "hotel": 8,
+        "wifi": true,
+        "privatepool": false,
+        "bath": true,
+        "price": 170,
+        "beds": 3
+    },
+    {
+        "id": 9,
+        "roomnumber": "501",
+        "description": "Premium room in the city center",
+        "photo": ["/images/rooms/room501.jpg"],
+        "hotel": 8,
+        "wifi": true,
+        "privatepool": false,
+        "bath": true,
+        "price": 200,
+        "beds": 2
+    },
+    {
+        "id": 10,
+        "roomnumber": "502",
+        "description": "Luxury suite",
+        "photo": ["/images/rooms/room502.jpg"],
+        "hotel": 8,
+        "wifi": true,
+        "privatepool": true,
+        "bath": true,
+        "price": 100,
+        "beds": 2
+    }
+]
+}

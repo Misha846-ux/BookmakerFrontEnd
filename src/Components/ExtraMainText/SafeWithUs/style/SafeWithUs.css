@@ -1,0 +1,38 @@
+.SafeWithUs_body{
+    min-height: 250px;
+    min-width: 800px;
+    height: 15vh;
+    width: 99.7%;
+    margin-bottom: 3%;
+}
+.SafeWithUs_top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    height: 15%;
+    width: 100%;
+    font-family: 'Nunito Sans';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 21px;
+    color: #717171;
+    margin: 0;
+}
+.SafeWithUs_content{
+    min-height: 200px;
+    height: 85%;
+    width: 100%;
+    display: flex;
+}
+.SafeWithUs_box{
+    min-height: 200px;
+    height: 100%;
+    width: 19%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13%;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+}
