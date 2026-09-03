@@ -1,5 +1,6 @@
 import type { Hotel } from "../../Models/Hotel_Model";
 import "../Places/style/Places.css";
+import {useNavigate} from "react-router-dom";
 
 type PlaceCardProps = {
     hotel: Hotel;
@@ -8,8 +9,13 @@ type PlaceCardProps = {
     minPrice: number | null;
 };
 const Place_Card = ({hotel, cityName, countryName, minPrice}: PlaceCardProps)=> {
+    const navigate = useNavigate();
+
+    const handleClick = () =>{
+        navigate(`/hotel/${hotel.id}`);
+    };
     return(
-        <form className="Place_card">
+        <div className="Place_card" onClick={handleClick}>
                     <img className="Place_img" src={hotel.photo[0]}/>
                     <div className="Place_top">
                         <div className="Place__hotel_name">{hotel.name} </div>
@@ -23,7 +29,7 @@ const Place_Card = ({hotel, cityName, countryName, minPrice}: PlaceCardProps)=> 
                         <div className="Place_city_center">the city center: 116 m</div>
                         <div className="Place_price"> {minPrice !== null ? `$ ${minPrice}` : "No rooms"}</div>
                     </div>
-                </form>
+                </div>
     );
 };
 

@@ -18,8 +18,10 @@ const Reviews = ({reviews, users, hotels}: ReviewProps) =>{
                     const user = users.find((user) => user.id === review.user); 
                     const hotel = hotels.find((hotel) => hotel.id === review.hotel); 
                     return ( 
-                        <Review_Card key={review.id} review={review} userPhoto={user?.photo} 
-                        userName={user?.name} hotelName={hotel?.name} ></Review_Card>
+                        <div className="Review_card_container">
+                            <Review_Card key={review.id} review={review} userPhoto={user?.photo} 
+                            userName={user?.name} hotelName={hotel?.name} ></Review_Card>
+                        </div>
                      ); })}
             </div>
         </div>
