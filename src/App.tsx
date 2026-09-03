@@ -24,6 +24,7 @@ function App() {
       <main className='main_content'>
         <Hero/>
         <MainPage/>
+
       </main>
       <Footer/>
     </div>
