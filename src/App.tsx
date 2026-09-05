@@ -9,7 +9,6 @@ import AllDoneModal from './Components/Auth/AllDoneModal'
 import Footer from './Components/Footer/Footer'
 import MainPage from './Components/MainPage/MainPage'
 import Hotel_Page from './Components/Hotel_Page/Hotel_Page'
-import Hero from './Components/Hero/Hero'
 import "./Main.css"
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
       <InformationModal isOpen={openModal === 'information'} onClose={() => setOpenModal(null)} onContinue={() => setOpenModal('all-done')}/>
       <AllDoneModal isOpen={openModal === 'all-done'} onClose={() => setOpenModal(null)} onCheckProfile={() => {}} onContinueBooking={() => {}}/>
       <main className='main_content'>
-        <Hero/>
         <Routes>
           <Route path="/" element={<MainPage/>}></Route>
           <Route path="/hotel/:hotel_id" element={<Hotel_Page/>}></Route>
