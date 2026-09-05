@@ -1,0 +1,220 @@
+.Hotel_Page_body{
+    width: 99.7%;
+    min-height: 700px;
+    min-width: 1640px;
+}
+.Room_Book{
+    height: 70vh;
+    width: 99%;
+    display: flex;
+    margin-left: 1%;
+}
+.Room_photos{
+    height: 100%;
+    width: 65%;
+}
+.Room_main_photo{
+    position: relative;
+    height: 70%;
+    width: 100%;
+}
+.Room_main_photo img { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 13px;
+    object-fit: cover; 
+}
+.Room_previous_photo_btn{
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    width: 45px; height: 45px; 
+    border: none; 
+    border-radius: 50%; 
+    font-size: 25px; 
+    cursor: pointer; 
+    z-index: 2;
+    left: 1%;
+    background: #717171;
+}
+.Room_previous_photo_btn:hover{
+padding: 0.5%;
+}
+.Room_next_photo_btn{
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    width: 45px; height: 45px; 
+    border: none; 
+    border-radius: 50%; 
+    font-size: 25px; 
+    cursor: pointer; 
+    z-index: 2;
+    right: 1%;
+    background: #717171;
+}
+.Room_next_photo_btn:hover{
+ padding: 0.5%;
+}
+.Room_bottom_photos{
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    margin-top: 1%;
+}
+.Room_bottom_photos img { 
+    width: 100%; 
+    height: 75%; 
+    object-fit: cover; 
+    cursor: pointer; 
+    border-radius: 13px; 
+} 
+.Room_bottom_photos img:hover { 
+    opacity: 0.75; 
+}
+.Room_details{
+    height: 100%;
+    width: 35%;
+}
+.Room_info{
+    height: 60%;
+    width: 100%;
+}
+.Room_top{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 2%;
+}
+.Room_price_and_address{
+    height: 100%;
+    width: 50%;
+}
+.Room_price{
+    height: 40%;
+    width: 100%;
+    display: flex;
+}
+.Room_price_value{
+    font-size: 32px;
+    font-family: 'Nunito Sans';
+    font-weight: 700;
+    color:#581ADB;
+    margin-top: -2%;
+    margin-left: 4%;
+}
+.Room_price_text{
+    font-size: 32px;
+    font-family: 'Nunito Sans';
+    font-weight: 700;
+    color:#717171;
+    margin-left: 5%;
+    margin-top: -2%;
+}
+.Room_address{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.Room_address_img{
+    height: 60%;
+    width: 8%;
+    margin-left: 5%;
+}
+.Room_address_text{
+    font-size: 18px;
+    font-family: 'Nunito Sans';
+    font-weight: 400;
+    color:#717171;
+    margin-left: 5%;
+    margin-right: 2%;
+    overflow: hidden;
+}
+.Room_address_city{
+    font-size: 18px;
+    font-family: 'Nunito Sans';
+    font-weight: 400;
+    color:#717171;
+    margin-left: 2%;
+    overflow: hidden;
+}
+.Room_book_btn_box{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Room_book_btn{
+    height: 70%;
+    width: 70%;
+    border-radius: 100px;
+    font-size: 30px;
+    font-family: 'Nunito Sans';
+    font-weight: 700;
+    color: #FFFFFF;
+    background: #581ADB;
+}
+.Room_book_btn:hover{
+    background: #3A0CA3;
+}
+.Room_content{
+    height: 74%;
+    width: 100%;
+}
+.Room_description{
+    height: 80%;
+    width: 95%;
+    font-size: 16px;
+    font-family: 'Nunito Sans';
+    font-weight: 400;
+    color:#717171;
+    margin-left: 3%;
+    overflow: hidden;
+}
+.Room_description_photos{
+    height: 18%;
+    width: 95%;
+    margin-left: 4%;
+    display: flex;
+}
+.Room_description_photos img { 
+    width: 20%; 
+    height: 100%; 
+    object-fit: contain; 
+     margin-right: 4%;
+}
+.Room_line{
+    height: 0.3%;
+    width: 92%;
+    background-color: #DDDDDD;
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-bottom: 1%;
+}
+.Hotel_reviews{
+    height: 37%;
+    width: 95%;
+    margin-left: 4%;
+}
+.Room_review{
+    height: 100%;
+    width: 98%;
+}
+.Next_review_btn{
+    position: absolute;
+    top: 65%; 
+    transform: translateY(-50%); 
+    width: 25px; height: 40px; 
+    border: none; 
+    border-radius: 50%; 
+    font-size: 25px; 
+    cursor: pointer; 
+    z-index: 2;
+    right: 1.2%;
+    background:  none;
+}
+.Next_review_btn:hover{
+   border: 1px solid #717171;
+}

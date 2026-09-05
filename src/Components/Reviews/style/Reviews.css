@@ -31,6 +31,10 @@
     border-radius: 13px;
     border: 1px solid #94D0B4;
     height: 100%;
+    width: 100%;
+}
+.Review_card_container{
+    height: 100%;
     width: 30%;
 }
 .Review_card_top{
