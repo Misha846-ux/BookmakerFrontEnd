@@ -1,9 +1,13 @@
 .Hotel_Page_body{
-    height: 70vh;
     width: 99.7%;
-    display: flex;
     min-height: 700px;
     min-width: 1640px;
+}
+.Room_Book{
+    height: 70vh;
+    width: 99%;
+    display: flex;
+    margin-left: 1%;
 }
 .Room_photos{
     height: 100%;
@@ -202,13 +206,13 @@ padding: 0.5%;
     position: absolute;
     top: 65%; 
     transform: translateY(-50%); 
-    width: 45px; height: 45px; 
+    width: 25px; height: 40px; 
     border: none; 
     border-radius: 50%; 
     font-size: 25px; 
     cursor: pointer; 
     z-index: 2;
-    right: 1%;
+    right: 1.2%;
     background:  none;
 }
 .Next_review_btn:hover{

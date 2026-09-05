@@ -1,0 +1,176 @@
+.Room_Scroll_Box_body{
+    height: 100vh;
+    width: 98%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+}
+.Room_Scroll_Box_top{
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     font-size: 27px;
+    font-family: 'Nunito Sans';
+    font-weight: 400;
+    color:#717171;
+}
+.Room_Scroll_Box_context{
+    height: 95%;
+    width: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.Room_Scroll_Box_Card{
+    height: 23%;
+    width: 100%;
+    display: flex;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    margin-top: 1%;
+}
+.Room_Scroll_Box_img{
+    height: 100%;
+    width: 23%;
+    border-radius: 13px;
+}
+.Room_Scroll_Box_info{
+    height: 100%;
+    width: 60%;
+    margin-left: 1%;
+}
+.Room_Scroll_Box_description{
+    height: 15%;
+    width: 100%;
+    overflow: hidden;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+     margin-top: 1%;
+}
+.Room_Scroll_Box_bed{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #717171;
+    margin-top: 1%;
+}
+.Room_Scroll_Box_bed_text{
+    height: 100%;
+    width: 80%;
+    overflow: hidden;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #717171;
+    margin-left: 10%;
+}
+.Room_Scroll_Box_bool_info{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 4%;
+}
+.Room_Scroll_Box_bool_wifi{
+    height: 100%;
+    width: 14%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #717171;
+}
+.Room_Scroll_Box_bool_wifi img{
+    margin-right: 10%;
+}
+.Room_Scroll_Box_bool_bath{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #717171;
+}
+.Room_Scroll_Box_bool_bath img{
+    margin-right: 10%;
+}
+.Room_Scroll_Box_bool_pool{
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #717171;
+}
+.Room_Scroll_Box_bool_pool img{
+    margin-right: 10%;
+}
+.Room_Scroll_Box_cancellation{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #581ADB;
+    margin-top: 1%;
+}
+.Room_Scroll_Box_price_and_btns{
+    height: 100%;
+    width: 17%;
+}
+.Room_Scroll_Box_price{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #581ADB;
+    margin-top: 10%;
+}
+.Room_Scroll_Box_choose_btn{
+    height: 20%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #581ADB;
+    border-radius: 100px;
+     margin-top: 5%;
+     margin-left: 25%;
+}
+.Room_Scroll_Box_info_btn{
+    height: 20%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #581ADB;
+    background-color: #FFFFFF;
+    border: 1px solid #581ADB;
+    border-radius: 100px;
+      margin-top: 5%;
+     margin-left: 25%;
+}
