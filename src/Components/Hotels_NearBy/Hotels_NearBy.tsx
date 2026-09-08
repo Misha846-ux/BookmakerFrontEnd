@@ -1,22 +1,16 @@
-import "../Places/style/Places.css";
-import type { Hotel } from "../../Models/Hotel_Model";
-import type { City } from "../../Models/City_Model";
-import type { Country } from "../../Models/Country_Model";
-import type { Room } from "../../Models/Room_Model";
 import { useState } from "react";
-import Place_Card from "./Place_Card";
+import "../Hotels_NearBy/style/Hotels_NearBy.css";
+import Place_Card from "../Places/Place_Card";
+import type { PlaceProps } from "../Places/Places";
 
- export type PlaceProps = {
-    hotels: Hotel[];
-    cities: City[];
-    countries: Country[];
-    rooms: Room[];
-};
-const Places = ({hotels, cities, countries, rooms}: PlaceProps) =>{
+const Hotels_NearBy =({hotels, cities, countries, rooms}: PlaceProps) =>{
     const [selectedHotelId, setSelectedHotelId] = useState<number | null>(null);
-return(
-    <div className="Place_body">
-        {hotels.slice(0,8).map((hotel)=>{
+    return(
+        <div className="Hotels_NearBy_body">
+            <div className="Hotels_NearBy_top">Hotels NearBy</div>
+            <div className="Hotels_NearBy_context">
+            {hotels.filter((hotel) => hotel.id !== selectedHotelId)
+            .map((hotel)=>{
             const city = cities.find((city)=>city.id === hotel.city);
             const country = countries.find((country) => country.id === city?.country);
             const hotelRooms = rooms.filter((room)=>room.hotel === hotel.id);
@@ -26,8 +20,11 @@ return(
                 cityName={city?.name} countryName={country?.name} 
                 minPrice={minPrice} onSelect={()=> setSelectedHotelId(hotel.id)}></Place_Card>
             );
-        })}
-    </div>
-);
-}
-export default Places;
+            })
+            }
+            </div>
+        </div>
+    );
+};
+
+export default Hotels_NearBy;

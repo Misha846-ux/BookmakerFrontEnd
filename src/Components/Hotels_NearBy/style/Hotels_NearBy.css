@@ -1,0 +1,25 @@
+.Hotels_NearBy_body{
+    width: 98%;
+    height: 40vh;
+    margin-left: 1%;
+}
+.Hotels_NearBy_top{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 21px;
+    color: #717171;
+    
+}
+.Hotels_NearBy_context{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
