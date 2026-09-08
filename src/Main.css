@@ -1,6 +1,17 @@
 *
 {
     margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
 }
 #root,.app_wrapper
 {
