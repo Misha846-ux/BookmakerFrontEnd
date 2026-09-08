@@ -1,0 +1,38 @@
+.hotel-scroll-box {
+	box-sizing: border-box;
+	width: 100%;
+	height: clamp(760px, 88vh, 1120px);
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	gap: clamp(10px, 1.2vw, 16px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 4px;
+}
+
+
+.hotel-card-wrapper {
+	box-sizing: border-box;
+	width: 100%;
+	aspect-ratio: 3.5 / 1;
+	min-height: 145px;
+	max-height: 260px;
+	flex: 0 0 auto;
+}
+
+.hotel-card-wrapper > .hotel-card {
+	flex: 0 0 auto;
+}
+
+@media (max-width: 760px) {
+	.hotel-scroll-box {
+		gap: 12px;
+		padding: 2px;
+	}
+
+	.hotel-card-wrapper {
+		aspect-ratio: 3.3 / 1;
+		min-height: 135px;
+	}
+}

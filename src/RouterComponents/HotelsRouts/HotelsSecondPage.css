@@ -1,0 +1,44 @@
+.hotels-second-page {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 980px;
+    padding: 32px 4% 48px;
+    background: #ffffff;
+}
+
+.hotels-second-page__content {
+    box-sizing: border-box;
+    width: min(1280px, 100%);
+    min-height: 900px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    align-items: start;
+    gap: 28px;
+    margin: 0 auto;
+}
+
+.hotels-second-page__content > .hotel-scroll-box {
+    height: clamp(820px, 92vh, 1280px);
+}
+
+@media (max-width: 900px) {
+    .hotels-second-page {
+        padding: 20px 3% 32px;
+    }
+
+    .hotels-second-page__content {
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 700px) {
+    .hotels-second-page__content {
+        grid-template-columns: 1fr;
+    }
+
+    .hotels-second-page__content > .hotel-scroll-box {
+        height: clamp(760px, 86vh, 1160px);
+        max-height: none;
+    }
+}
