@@ -22,12 +22,19 @@ export type CityDTO = {
     country: number;
 };
 
+export type CreateCityDTO = Omit<
+    CityDTO,
+    "id" | "center_latitude" | "center_longitude"
+>;
+
 export type PaymentMethodDTO = {
     id: number;
     cardType: number;
     cardNumber: string;
     date: string;
 };
+
+export type CreatePaymentMethodDTO = Omit<PaymentMethodDTO, "id">;
 
 export type ReservationDTO = {
     id: number;
@@ -58,6 +65,17 @@ export type HotelDTO = {
     city: number;
 };
 
+export type CreateHotelDTO = {
+    name: string;
+    description: string | null;
+    address: string;
+    phone: string;
+    email: string;
+    stars: number;
+    photo: string | null;
+    city: number;
+};
+
 export type RoomDTO = {
     id: number;
     roomNumber: string;
@@ -70,6 +88,8 @@ export type RoomDTO = {
     photo: string | null;
     hotel: number;
 };
+
+export type CreateRoomDTO = Omit<RoomDTO, "id">;
 
 export type UserDTO = {
     id: number;
@@ -99,6 +119,20 @@ export type PaginatedRoomsResponse = {
     total_pages: number;
     results: RoomDTO[];
 };
+
+export type GetHotelsDTO = {
+    city?: number;
+    minPrice?: number;
+    rating?: number;
+    stars?: number;
+};
+
+export type PaginationDTO = {
+    el: number;
+    page: number;
+};
+
+export type GetHotelRoomsDTO = AdvancedSearchDTO & PaginationDTO;
 
 export type PhotosResponse = {
     photos: Array<{ photo: string }>;
