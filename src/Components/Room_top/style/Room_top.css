@@ -1,0 +1,163 @@
+.Room_top_body{
+    height: 15vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 130px;
+}
+.Room_top_btn{
+    height: 30%;
+    width: 3%;
+    margin-left: 1%;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid #DDDDDD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Room_top_btn:hover{
+    height: 20%;
+    width: 2%;
+}
+.Room_top_left_part{
+    height: 100%;
+    width: 30%;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Room_top_left_part_box{
+    height: 60%;
+    width: 25%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.Room_top_left_part_box_top{
+    margin-top: 5%;
+    height: 30%;
+    width: 50%;
+    object-fit: contain;
+}
+.Room_top_left_part_box_center{
+    height: 20%;
+    width: 100%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #581ADB;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Room_top_left_part_box_bottom{
+    height: 30%;
+    width: 30%;
+    object-fit: contain;
+}
+.Room_top_central_part{
+    height: 100%;
+    width: 20%;
+    margin-left: 5%;
+}
+.Room_top_central_part_stars{
+    height: 30%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #581ADB;
+    font-size: 18px;
+}
+.Room_top_central_part_name{
+    height: 30%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #581ADB;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 36px;
+    overflow: hidden;
+}
+.Room_top_central_part_phone{
+    height: 30%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #717171;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+}
+.Room_top_right_part{
+    height: 100%;
+    width: 15%;
+    margin-left: 20%;
+    display: flex;
+    align-items: center;
+}
+.Room_top_right_part_raiting{
+    height: 35%;
+    width: 20%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #581ADB;
+    border: 1px solid #581ADB;
+    border-radius: 60px;
+    margin-right: 3%;
+}
+.Room_top_right_part_reviews_top{
+    height: 35%;
+    width: 30%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #717171;
+    margin-right: 10%;
+}
+.Room_top_right_part_reviews_count{
+    height: 35%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #717171;
+}
+.Room_top_right_part_check{
+    height: 35%;
+    width: 25%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #581ADB;
+    border: 1px solid #581ADB;
+}
+.Room_top_right_part_check img {
+    height: 35%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

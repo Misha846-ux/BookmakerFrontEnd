@@ -2,6 +2,7 @@
     width: 98%;
     height: 40vh;
     margin-left: 1%;
+    min-height: 350px;
 }
 .Hotels_NearBy_top{
     width: 100%;

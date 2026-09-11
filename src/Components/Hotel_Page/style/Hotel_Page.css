@@ -1,6 +1,5 @@
 .Hotel_Page_body{
     width: 99.7%;
-    min-height: 700px;
     min-width: 1640px;
 }
 .Room_Book{
@@ -8,6 +7,7 @@
     width: 99%;
     display: flex;
     margin-left: 1%;
+    min-height: 600px;
 }
 .Room_photos{
     height: 100%;
