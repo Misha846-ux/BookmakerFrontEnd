@@ -1,0 +1,96 @@
+
+.Comments_body_grid {
+  height: auto;
+  min-height: auto;
+  padding: 1%;
+}
+
+.Comments_content_grid {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: auto;
+  gap: 24px 3.7%;
+}
+
+.Comments_content_grid .Review_card_container {
+  width: 30.8%;
+  height: auto;
+  min-height: 220px;
+}
+.Comments_content_grid .Review_card {
+  height: auto;
+  min-height: 220px;
+  padding: 18px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.Comments_content_grid .Review_card_top {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.Comments_content_grid .Review_img {
+  height: 42px;
+  width: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  margin-left: 0;
+  object-fit: cover;
+}
+
+.Comments_content_grid .Review_user_and_hotel_names {
+  height: auto;
+  width: auto;
+  flex: 1;
+  margin-left: 12px;
+}
+
+.Comments_content_grid .Review_hotel_name {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.Comments_content_grid .Review_time {
+  height: auto;
+  width: auto;
+  margin-left: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.Comments_content_grid .Review_text {
+  height: auto;
+  width: 100%;
+  margin-left: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow: visible;
+}
+
+.Comments_more_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+  border-top: 1px solid #EAEAEA;
+  padding-top: 15px;
+}
+
+.Comments_more_btn {
+  background: none;
+  border: none;
+  color: #8A3FFC;
+  font-size: 14px;
+  font-family: 'Nunito Sans', sans-serif;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}

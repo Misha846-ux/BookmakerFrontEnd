@@ -24,7 +24,7 @@ const MainPage = ()=>{
             <Reviews reviews={reviews} users={users} hotels={hotels}></Reviews>
             <SafeWithUs></SafeWithUs>
             <BeOurRegular></BeOurRegular>
-            <RegisterAccountButton></RegisterAccountButton>
+            <RegisterAccountButton></RegisterAccountButton>       
         </div>
     )
 }
