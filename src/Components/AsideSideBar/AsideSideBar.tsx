@@ -1,5 +1,10 @@
 import "./AsideSideBar.css"
-import { useState } from "react";
+import type { AdvancedSearchDTO } from "../../Models/dto";
+
+type AsideSideBarProps = {
+    filters: AdvancedSearchDTO;
+    onFilterChange: (filters: AdvancedSearchDTO) => void;
+};
 
 const StarIcon = () => (
   <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,11 +28,11 @@ const STARS_OPTIONS = [
   { stars: 1, count: 112 },
 ];
 
-const AsideSideBar = () =>{
-    const [minPrice,setMinPrice] = useState<number>(76);
-    const [rating,setRating] = useState<number| null>(null);
-    const [stars,setStars] = useState<number| null>(null);
-    const [hasWifi,setHasWifi] = useState<boolean>(false);
+const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
+    const minPrice = filters.nightPrice ?? 76;
+    const rating = filters.rate ?? null;
+    const stars = filters.stars ?? null;
+    const hasWifi = filters.wifi ?? false;
     return(
         <aside className="sidebar">
             <div className="sidebar_section">
@@ -41,7 +46,7 @@ const AsideSideBar = () =>{
                     min="76" 
                     max="230" 
                     value={minPrice} 
-                    onChange={(e)=> setMinPrice(Number(e.target.value))} 
+                    onChange={(e)=> onFilterChange({ ...filters, nightPrice: Number(e.target.value) })} 
                     className="range_input"/>
             </div>
             <div className="sidebar_section">
@@ -54,7 +59,7 @@ const AsideSideBar = () =>{
                         name="rating"
                         value={item.value}
                         checked={rating === item.value}
-                        onChange={() => setRating(item.value)}
+                        onChange={() => onFilterChange({ ...filters, rate: item.value })}
                     />
                     <span>{item.label}</span>
                     </div>
@@ -72,7 +77,7 @@ const AsideSideBar = () =>{
                         name="stars"
                         value={item.stars}
                         checked={stars === item.stars}
-                        onChange={() => setStars(item.stars)}
+                        onChange={() => onFilterChange({ ...filters, stars: item.stars })}
                     />
                     <span className="stars">{Array.from({ length: item.stars }).map((_, index) => (
                   <StarIcon key={index} />
@@ -89,7 +94,7 @@ const AsideSideBar = () =>{
                     <input
                     type="checkbox"
                     checked={hasWifi}
-                    onChange={(e) => setHasWifi(e.target.checked)}
+                    onChange={(e) => onFilterChange({ ...filters, wifi: e.target.checked })}
                     />
                     <span>Wi-Fi</span>
                 </div>
