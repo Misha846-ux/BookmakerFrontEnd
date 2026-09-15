@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import type { HotelDTO, PhotosResponse } from "../../../Models/dto";
+import type { HotelDTO } from "../../../Models/dto";
 import {
 	getHotelNearestAirport,
 	getHotelNearestTrainStation,
 	getHotelPhotos,
+	getHotelReviews,
 	getHotelRooms,
 } from "../../../Endpoints/HotelEndpoints";
 import "./HotelCard.css";
@@ -13,10 +14,65 @@ type HotelCardProps = {
 };
 
 const HotelCard = ({hotel}: HotelCardProps) => {
-	const [image, setImage] = useState<File>();
+	const [image, setImage] = useState<string>();
 	const [airportDistance, setAirportDistance] = useState<string>();
 	const [railwayDistance, setRailwayDistance] = useState<string>();
 	const [priceFrom, setPriceFrom] = useState<number>();
+	const [rating, setRating] = useState<number>();
+	const [reviewCount, setReviewCount] = useState(0);
+
+	useEffect(() => {
+		let active = true;
+		setImage(undefined);
+		setAirportDistance(undefined);
+		setRailwayDistance(undefined);
+		setPriceFrom(undefined);
+		setRating(undefined);
+		setReviewCount(0);
+
+		getHotelPhotos(hotel.id)
+			.then((data) => {
+				if (active) setImage(data.photos[0]?.photo);
+			})
+			.catch(() => undefined);
+
+		getHotelNearestAirport(hotel.id)
+			.then((data) => {
+				if (active) setAirportDistance(String(data.distance));
+			})
+			.catch(() => undefined);
+
+		getHotelNearestTrainStation(hotel.id)
+			.then((data) => {
+				if (active) setRailwayDistance(String(data.distance));
+			})
+			.catch(() => undefined);
+
+		getHotelReviews(hotel.id)
+			.then((data) => {
+				if (!active) return;
+				setReviewCount(data.count);
+				if (data.count > 0) {
+					const average = data.results.reduce(
+						(total, review) => total + review.rating,
+						0,
+					) / data.count;
+					setRating(Number(average.toFixed(1)));
+				}
+			})
+			.catch(() => undefined);
+
+		getHotelRooms(hotel.id, { el: 1, page: 1 })
+			.then((data) => {
+				if (!active || data.results.length === 0) return;
+				setPriceFrom(Number(data.results[0].price));
+			})
+			.catch(() => undefined);
+
+		return () => {
+			active = false;
+		};
+	}, [hotel.id]);
 
 	return (
 		<article className="hotel-card">
@@ -26,6 +82,8 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 						className="hotel-card__image"
 						src={image}
 						alt={hotel.name}
+						loading="lazy"
+						decoding="async"
 						onError={(event) => { event.currentTarget.style.display = "none"; }}
 					/>
 				)}
@@ -40,10 +98,10 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 						</div>
 					</div>
 					<div className="hotel-card__rating">
-						<span className="hotel-card__rating-value">-</span>
+						<span className="hotel-card__rating-value">{rating ?? "-"}</span>
 						<span className="hotel-card__reviews">
 							reviews<br />
-							0
+							{reviewCount}
 						</span>
 					</div>
 				</div>

@@ -3,6 +3,7 @@ import type {
 	CreateHotelDTO,
 	GetHotelRoomsDTO,
 	GetHotelsDTO,
+	HotelReviewsResponse,
 	HotelDTO,
 	NearestPlaceResponse,
 	PaginatedHotelsResponse,
@@ -95,6 +96,15 @@ export async function getHotelNearestAirport(
 	return apiRequest<NearestPlaceResponse>(
 		`/hotels/${hotelId}/NearestAirport/`,
 		{ method: "PUT" },
+	);
+}
+
+export async function getHotelReviews(
+	hotelId: number,
+): Promise<HotelReviewsResponse> {
+	return apiRequest<HotelReviewsResponse>(
+		`/hotels/${hotelId}/reviews/`,
+		{ method: "GET" },
 	);
 }
 

@@ -145,7 +145,7 @@ export type PaginationDTO = {
 export type GetHotelRoomsDTO = AdvancedSearchDTO & PaginationDTO;
 
 export type PhotosResponse = {
-    photos: Array<{ photo: File }>;
+    photos: Array<{ photo: string }>;
 };
 
 export type PhotoUploadResponse = {
@@ -156,8 +156,22 @@ export type PhotoUploadResponse = {
 export type NearestPlaceResponse = {
     hotel_id: number;
     type: string;
-    address: string;
+    address: string | null;
     distance: number;
+};
+
+export type ReviewDTO = {
+    id: number;
+    review: string;
+    createdAt: string;
+    user: number;
+    hotel: number;
+    rating: number;
+};
+
+export type HotelReviewsResponse = {
+    count: number;
+    results: ReviewDTO[];
 };
 
 export type UserProfileResponse = {
