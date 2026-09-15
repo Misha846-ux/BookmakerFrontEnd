@@ -145,7 +145,7 @@ export type PaginationDTO = {
 export type GetHotelRoomsDTO = AdvancedSearchDTO & PaginationDTO;
 
 export type PhotosResponse = {
-    photos: Array<{ photo: string }>;
+    photos: Array<{ photo: File }>;
 };
 
 export type PhotoUploadResponse = {

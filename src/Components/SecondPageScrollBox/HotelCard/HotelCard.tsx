@@ -1,32 +1,22 @@
-import type { Hotel } from "../../../Models/Hotel_Model";
+import { useEffect, useState } from "react";
+import type { HotelDTO, PhotosResponse } from "../../../Models/dto";
+import {
+	getHotelNearestAirport,
+	getHotelNearestTrainStation,
+	getHotelPhotos,
+	getHotelRooms,
+} from "../../../Endpoints/HotelEndpoints";
 import "./HotelCard.css";
 
-type HotelCardHotel = Hotel & {
-	rating?: number;
-	reviews?: number;
-	amenities?: string[];
-	airportDistance?: string;
-	railwayDistance?: string;
-	priceFrom?: number;
-	currency?: string;
-};
-
 type HotelCardProps = {
-	hotel: HotelCardHotel;
-};
-
-const getImageUrl = (photo: string | undefined) => {
-	if (!photo) return undefined;
-	if (/^(https?:|data:|blob:)/i.test(photo)) return photo;
-
-	const apiUrl = String(import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
-	return `${apiUrl}/${photo.replace(/^\/+/, "")}`;
+	hotel: HotelDTO;
 };
 
 const HotelCard = ({hotel}: HotelCardProps) => {
-	const rating = hotel.rating ?? 0;
-	const amenities = hotel.amenities ?? ["popular", "city centre", "comfortable"];
-	const image = getImageUrl(hotel.photo[0]);
+	const [image, setImage] = useState<File>();
+	const [airportDistance, setAirportDistance] = useState<string>();
+	const [railwayDistance, setRailwayDistance] = useState<string>();
+	const [priceFrom, setPriceFrom] = useState<number>();
 
 	return (
 		<article className="hotel-card">
@@ -50,16 +40,16 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 						</div>
 					</div>
 					<div className="hotel-card__rating">
-						<span className="hotel-card__rating-value">{rating || "-"}</span>
+						<span className="hotel-card__rating-value">-</span>
 						<span className="hotel-card__reviews">
 							reviews<br />
-							{hotel.reviews ?? 0}
+							0
 						</span>
 					</div>
 				</div>
 
 				<div className="hotel-card__amenities">
-					{amenities.map((amenity) => (
+					{["popular", "city centre", "comfortable"].map((amenity) => (
 						<span className="hotel-card__amenity" key={amenity}>
 							<span className="hotel-card__amenity-icon" aria-hidden="true">◇</span>
 							{amenity}
@@ -68,8 +58,8 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 				</div>
 
 				<div className="hotel-card__distances">
-					<span>airport {hotel.airportDistance ?? "-"}</span>
-					<span>railway station {hotel.railwayDistance ?? "-"}</span>
+					<span>airport {airportDistance ?? "-"}</span>
+					<span>railway station {railwayDistance ?? "-"}</span>
 				</div>
 
 				<div className="hotel-card__map-link">see on the map <span aria-hidden="true">→</span></div>
@@ -79,7 +69,7 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 
 			<div className="hotel-card__price">
 				<span>prices from</span>
-				<strong>{hotel.priceFrom !== undefined ? `${hotel.priceFrom}${hotel.currency ?? "$"}` : "-"}</strong>
+				<strong>{priceFrom !== undefined ? `${priceFrom}$` : "-"}</strong>
 				<button className="hotel-card__choose" type="button">CHOOSE</button>
 			</div>
 		</article>
