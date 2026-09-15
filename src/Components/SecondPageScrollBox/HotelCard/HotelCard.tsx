@@ -15,15 +15,30 @@ type HotelCardProps = {
 	hotel: HotelCardHotel;
 };
 
+const getImageUrl = (photo: string | undefined) => {
+	if (!photo) return undefined;
+	if (/^(https?:|data:|blob:)/i.test(photo)) return photo;
+
+	const apiUrl = String(import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+	return `${apiUrl}/${photo.replace(/^\/+/, "")}`;
+};
+
 const HotelCard = ({hotel}: HotelCardProps) => {
 	const rating = hotel.rating ?? 0;
 	const amenities = hotel.amenities ?? ["popular", "city centre", "comfortable"];
-	const image = hotel.photo[0];
+	const image = getImageUrl(hotel.photo[0]);
 
 	return (
 		<article className="hotel-card">
 			<div className="hotel-card__image-wrapper">
-				{image && <img className="hotel-card__image" src={image} alt={hotel.name} />}
+				{image && (
+					<img
+						className="hotel-card__image"
+						src={image}
+						alt={hotel.name}
+						onError={(event) => { event.currentTarget.style.display = "none"; }}
+					/>
+				)}
 			</div>
 
 			<div className="hotel-card__content">

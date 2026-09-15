@@ -94,7 +94,15 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
                     <input
                     type="checkbox"
                     checked={hasWifi}
-                    onChange={(e) => onFilterChange({ ...filters, wifi: e.target.checked })}
+                    onChange={(e) => {
+                        const nextFilters = { ...filters };
+                        if (e.target.checked) {
+                            nextFilters.wifi = true;
+                        } else {
+                            delete nextFilters.wifi;
+                        }
+                        onFilterChange(nextFilters);
+                    }}
                     />
                     <span>Wi-Fi</span>
                 </div>

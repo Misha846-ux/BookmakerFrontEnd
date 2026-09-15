@@ -11,6 +11,13 @@
 	padding: 4px;
 }
 
+.hotel-scroll-box__status {
+	margin: 24px auto;
+	color: #717171;
+	font-family: 'Nunito Sans', sans-serif;
+	font-size: 15px;
+}
+
 
 .hotel-card-wrapper {
 	box-sizing: border-box;
