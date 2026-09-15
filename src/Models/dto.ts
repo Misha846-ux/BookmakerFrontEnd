@@ -51,6 +51,8 @@ export type ReservationDTO = {
     payMethod: number | null;
 };
 
+export type CreateReservationDTO = Omit<ReservationDTO, "id">;
+
 export type HotelDTO = {
     id: number;
     name: string;
@@ -118,6 +120,14 @@ export type PaginatedRoomsResponse = {
     el: number;
     total_pages: number;
     results: RoomDTO[];
+};
+
+export type PaginatedPaymentMethodsResponse = {
+    count: number;
+    page: number;
+    el: number;
+    total_pages: number;
+    results: PaymentMethodDTO[];
 };
 
 export type GetHotelsDTO = {
