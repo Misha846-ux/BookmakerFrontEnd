@@ -438,5 +438,49 @@
         "price": 100,
         "beds": 2
     }
+],
+"resevations": [
+  {
+    "id": 1,
+    "checkIn": "2026-09-15",
+    "checkOut": "2026-09-20",
+    "room": 1,
+    "user": 1,
+    "name": "Ivan",
+    "surname": "Petrov",
+    "email": "ivan.petrov@example.com",
+    "password": "password123",
+    "cityguide": true,
+    "country": 1,
+    "paymethod": 1
+  },
+  {
+    "id": 2,
+    "checkIn": "2026-10-03",
+    "checkOut": "2026-10-07",
+    "room": 2,
+    "user": 2,
+    "name": "Anna",
+    "surname": "Ivanova",
+    "email": "anna.ivanova@example.com",
+    "password": "password456",
+    "cityguide": false,
+    "country": 2,
+    "paymethod": 2
+  },
+  {
+    "id": 3,
+    "checkIn": "2026-11-12",
+    "checkOut": "2026-11-18",
+    "room": 3,
+    "user": 3,
+    "name": "Alex",
+    "surname": "Smirnov",
+    "email": "alex.smirnov@example.com",
+    "password": "password789",
+    "cityguide": true,
+    "country": 3,
+    "paymethod": 1
+  }
 ]
 }
