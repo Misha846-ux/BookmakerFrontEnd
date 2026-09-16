@@ -5,6 +5,8 @@ import type {
 	GetHotelsDTO,
 	HotelReviewsResponse,
 	HotelDTO,
+	HotelCardDataDTO,
+	FilterCountsDTO,
 	NearestPlaceResponse,
 	PaginatedHotelsResponse,
 	PaginatedRoomsResponse,
@@ -37,8 +39,8 @@ export async function getHotels(
 export async function advancedSearchHotels(
 	filters: AdvancedSearchDTO,
 	pagination: PaginationDTO,
-): Promise<HotelDTO[]> {
-	return apiRequest<HotelDTO[]>(
+): Promise<PaginatedHotelsResponse> {
+	return apiRequest<PaginatedHotelsResponse>(
 		`/hotels/advancedFilter/${paginationQuery(pagination)}`,
 		{
 			method: "PUT",
@@ -115,5 +117,33 @@ export async function getHotelCityCenter(
 		{ method: "PUT" },
 	);
 }
+
+export async function getHotelCardData(
+	hotelId: number,
+): Promise<HotelCardDataDTO> {
+	return apiRequest<HotelCardDataDTO>(
+		`/hotels/${hotelId}/card-data/`,
+		{ method: "PUT" },
+	);
+}
+
+export async function getHotelCardDataBatch(
+	hotelIds: number[],
+): Promise<Record<number, HotelCardDataDTO>> {
+	return apiRequest<Record<number, HotelCardDataDTO>>(
+		"/hotels/card-data-batch/",
+		{
+			method: "POST",
+			...jsonBody({ hotel_ids: hotelIds }),
+		},
+	);
+}
+
+export async function getFilterCounts(): Promise<FilterCountsDTO> {
+	return apiRequest<FilterCountsDTO>("/hotels/filter-counts/", {
+		method: "GET",
+	});
+}
+
 
 

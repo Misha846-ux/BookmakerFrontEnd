@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import "./AsideSideBar.css"
 import type { AdvancedSearchDTO } from "../../Models/dto";
+import { getFilterCounts } from "../../Endpoints/HotelEndpoints";
 
 type AsideSideBarProps = {
     filters: AdvancedSearchDTO;
@@ -14,25 +16,35 @@ const StarIcon = () => (
     />
   </svg>
 );
-const RATING_OPTIONS = [
-  { label: '9+', value: 9, count: 99 },
-  { label: '8+', value: 8, count: 124 },
-  { label: '7+', value: 7, count: 198 },
-  { label: '6+', value: 6, count: 345 },
-];
-const STARS_OPTIONS = [
-  { stars: 5, count: 135 },
-  { stars: 4, count: 37 },
-  { stars: 3, count: 45 },
-  { stars: 2, count: 89 },
-  { stars: 1, count: 112 },
-];
 
 const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
     const minPrice = filters.nightPrice ?? 76;
     const rating = filters.rate ?? null;
     const stars = filters.stars ?? null;
     const hasWifi = filters.wifi ?? false;
+
+    const [counts, setCounts] = useState<{ rating: Record<string, number>; stars: Record<string, number>; wifi: number }>({ rating: {}, stars: {}, wifi: 0 });
+
+    useEffect(() => {
+        getFilterCounts()
+            .then(setCounts)
+            .catch(() => undefined);
+    }, []);
+
+    const ratingOptions = [
+        { label: '9+', value: 9 },
+        { label: '8+', value: 8 },
+        { label: '7+', value: 7 },
+        { label: '6+', value: 6 },
+    ];
+    const starsOptions = [
+        { stars: 5 },
+        { stars: 4 },
+        { stars: 3 },
+        { stars: 2 },
+        { stars: 1 },
+    ];
+
     return(
         <aside className="sidebar">
             <div className="sidebar_section">
@@ -51,7 +63,7 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
             </div>
             <div className="sidebar_section">
                 <h4 className="sidebar_title">Rating</h4>
-                {RATING_OPTIONS.map((item) => (
+                {ratingOptions.map((item) => (
                 <label key={item.label} className="radio_row">
                     <div className="label_group">
                     <input
@@ -63,13 +75,13 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
                     />
                     <span>{item.label}</span>
                     </div>
-                    <span className="count">{item.count}</span>
+                    <span className="count">{counts.rating[item.value] ?? 0}</span>
                 </label>
                 ))}
             </div>
             <div className="sidebar_section">
                 <h4 className="sidebar_title">Stars</h4>
-                {STARS_OPTIONS.map((item) => (
+                {starsOptions.map((item) => (
                 <label key={item.stars} className="radio_row">
                     <div className="label_group">
                     <input
@@ -83,7 +95,7 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
                   <StarIcon key={index} />
                 ))}</span>
                     </div>
-                    <span className="count">{item.count}</span>
+                    <span className="count">{counts.stars[item.stars] ?? 0}</span>
                 </label>
                 ))}
             </div>
@@ -106,7 +118,7 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
                     />
                     <span>Wi-Fi</span>
                 </div>
-                <span className="count">1135</span>
+                <span className="count">{counts.wifi}</span>
                 </label>
             </div>
 

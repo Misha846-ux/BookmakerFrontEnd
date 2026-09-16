@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import type { AdvancedSearchDTO, HotelDTO } from "../../../Models/dto";
-import { advancedSearchHotels } from "../../../Endpoints/HotelEndpoints";
+import type { AdvancedSearchDTO, HotelDTO, HotelCardDataDTO } from "../../../Models/dto";
+import { advancedSearchHotels, getHotelCardDataBatch } from "../../../Endpoints/HotelEndpoints";
 import HotelCard from "../HotelCard/HotelCard";
 import "./ScrollBox.css";
 
@@ -10,6 +10,7 @@ type ScrollBoxProps = {
 
 const ScrollBox = ({ filters }: ScrollBoxProps) => {
 	const [hotels, setHotels] = useState<HotelDTO[]>([]);
+	const [cardData, setCardData] = useState<Record<number, HotelCardDataDTO>>({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [hasError, setHasError] = useState(false);
 
@@ -17,14 +18,25 @@ const ScrollBox = ({ filters }: ScrollBoxProps) => {
 		let aborted = false;
 		setIsLoading(true);
 		setHasError(false);
+		setCardData({});
 
 		const loadHotels = async () => {
 			try {
-				const result = await advancedSearchHotels(filters, { el: 30, page: 1 });
+				const response = await advancedSearchHotels(filters, { el: 30, page: 1 });
 				if (aborted) return;
 
-				setHotels(result);
+				setHotels(response.results);
 				setIsLoading(false);
+
+				if (response.results.length > 0) {
+					const ids = response.results.map((h) => h.id);
+					try {
+						const batch = await getHotelCardDataBatch(ids);
+						if (!aborted) setCardData(batch);
+					} catch {
+						// card data failed, cards will show loading fallback
+					}
+				}
 			} catch {
 				if (!aborted) {
 					setIsLoading(false);
@@ -45,7 +57,7 @@ const ScrollBox = ({ filters }: ScrollBoxProps) => {
 			)}
 			{hotels.map((hotel) => (
 				<div className="hotel-card-wrapper" key={hotel.id}>
-					<HotelCard hotel={hotel} />
+					<HotelCard data={cardData[hotel.id] ?? null} />
 				</div>
 			))}
 		</section>
