@@ -1,86 +1,36 @@
-import { useEffect, useState } from "react";
-import type { HotelDTO } from "../../../Models/dto";
-import {
-	getHotelNearestAirport,
-	getHotelNearestTrainStation,
-	getHotelPhotos,
-	getHotelReviews,
-	getHotelRooms,
-} from "../../../Endpoints/HotelEndpoints";
+import type { HotelCardDataDTO } from "../../../Models/dto";
 import "./HotelCard.css";
 
 type HotelCardProps = {
-	hotel: HotelDTO;
+	data: HotelCardDataDTO | null;
 };
 
-const HotelCard = ({hotel}: HotelCardProps) => {
-	const [image, setImage] = useState<string>();
-	const [airportDistance, setAirportDistance] = useState<string>();
-	const [railwayDistance, setRailwayDistance] = useState<string>();
-	const [priceFrom, setPriceFrom] = useState<number>();
-	const [rating, setRating] = useState<number>();
-	const [reviewCount, setReviewCount] = useState(0);
+const HotelCard = ({ data }: HotelCardProps) => {
+	if (!data) {
+		return <article className="hotel-card hotel-card--loading"><p>Loading...</p></article>;
+	}
 
-	useEffect(() => {
-		let active = true;
-		setImage(undefined);
-		setAirportDistance(undefined);
-		setRailwayDistance(undefined);
-		setPriceFrom(undefined);
-		setRating(undefined);
-		setReviewCount(0);
+	const { hotel, photos, nearest_airport_distance, nearest_train_distance, review_count, average_rating, cheapest_room_price, cheapest_room_beds, cheapest_room_wifi } = data;
+	const imageUrl = photos[0]?.photo;
 
-		getHotelPhotos(hotel.id)
-			.then((data) => {
-				if (active) setImage(data.photos[0]?.photo);
-			})
-			.catch(() => undefined);
+	const formatDistance = (meters: number | null) => {
+		if (meters === null) return "-";
+		return meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${meters} m`;
+	};
 
-		getHotelNearestAirport(hotel.id)
-			.then((data) => {
-				if (active) setAirportDistance(String(data.distance));
-			})
-			.catch(() => undefined);
-
-		getHotelNearestTrainStation(hotel.id)
-			.then((data) => {
-				if (active) setRailwayDistance(String(data.distance));
-			})
-			.catch(() => undefined);
-
-		getHotelReviews(hotel.id)
-			.then((data) => {
-				if (!active) return;
-				setReviewCount(data.count);
-				if (data.count > 0) {
-					const average = data.results.reduce(
-						(total, review) => total + review.rating,
-						0,
-					) / data.count;
-					setRating(Number(average.toFixed(1)));
-				}
-			})
-			.catch(() => undefined);
-
-		getHotelRooms(hotel.id, { el: 1, page: 1 })
-			.then((data) => {
-				if (!active || data.results.length === 0) return;
-				setPriceFrom(Number(data.results[0].price));
-			})
-			.catch(() => undefined);
-
-		return () => {
-			active = false;
-		};
-	}, [hotel.id]);
+	const amenities: string[] = [];
+	if (hotel.stars >= 4) amenities.push("popular");
+	amenities.push("city centre");
+	if (cheapest_room_wifi) amenities.push("Wi-Fi");
+	if (cheapest_room_beds && cheapest_room_beds >= 2) amenities.push("comfortable");
 
 	return (
 		<article className="hotel-card">
 			<div className="hotel-card__image-wrapper">
-				{image && (
+				{imageUrl && (
 					<img
 						className="hotel-card__image"
-						src={image}
+						src={imageUrl}
 						alt={hotel.name}
 						loading="lazy"
 						decoding="async"
@@ -98,16 +48,16 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 						</div>
 					</div>
 					<div className="hotel-card__rating">
-						<span className="hotel-card__rating-value">{rating ?? "-"}</span>
+						<span className="hotel-card__rating-value">{average_rating ?? "-"}</span>
 						<span className="hotel-card__reviews">
 							reviews<br />
-							{reviewCount}
+							{review_count}
 						</span>
 					</div>
 				</div>
 
 				<div className="hotel-card__amenities">
-					{["popular", "city centre", "comfortable"].map((amenity) => (
+					{amenities.map((amenity) => (
 						<span className="hotel-card__amenity" key={amenity}>
 							<span className="hotel-card__amenity-icon" aria-hidden="true">◇</span>
 							{amenity}
@@ -116,8 +66,8 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 				</div>
 
 				<div className="hotel-card__distances">
-					<span>airport {airportDistance ?? "-"}</span>
-					<span>railway station {railwayDistance ?? "-"}</span>
+					<span>airport {formatDistance(nearest_airport_distance)}</span>
+					<span>railway station {formatDistance(nearest_train_distance)}</span>
 				</div>
 
 				<div className="hotel-card__map-link">see on the map <span aria-hidden="true">→</span></div>
@@ -127,7 +77,7 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 
 			<div className="hotel-card__price">
 				<span>prices from</span>
-				<strong>{priceFrom !== undefined ? `${priceFrom}$` : "-"}</strong>
+				<strong>{cheapest_room_price !== null ? `${cheapest_room_price}$` : "-"}</strong>
 				<button className="hotel-card__choose" type="button">CHOOSE</button>
 			</div>
 		</article>
