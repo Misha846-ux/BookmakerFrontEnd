@@ -36,18 +36,6 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 			})
 			.catch(() => undefined);
 
-		getHotelNearestAirport(hotel.id)
-			.then((data) => {
-				if (active) setAirportDistance(String(data.distance));
-			})
-			.catch(() => undefined);
-
-		getHotelNearestTrainStation(hotel.id)
-			.then((data) => {
-				if (active) setRailwayDistance(String(data.distance));
-			})
-			.catch(() => undefined);
-
 		getHotelReviews(hotel.id)
 			.then((data) => {
 				if (!active) return;
@@ -66,6 +54,17 @@ const HotelCard = ({hotel}: HotelCardProps) => {
 			.then((data) => {
 				if (!active || data.results.length === 0) return;
 				setPriceFrom(Number(data.results[0].price));
+			})
+			.catch(() => undefined);
+		getHotelNearestAirport(hotel.id)
+			.then((data) => {
+				if (active) setAirportDistance(String(data.distance));
+			})
+			.catch(() => undefined);
+
+		getHotelNearestTrainStation(hotel.id)
+			.then((data) => {
+				if (active) setRailwayDistance(String(data.distance));
 			})
 			.catch(() => undefined);
 
