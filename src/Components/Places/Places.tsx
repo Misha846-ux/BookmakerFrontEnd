@@ -3,7 +3,6 @@ import type { Hotel } from "../../Models/Hotel_Model";
 import type { City } from "../../Models/City_Model";
 import type { Country } from "../../Models/Country_Model";
 import type { Room } from "../../Models/Room_Model";
-import { useState } from "react";
 import Place_Card from "./Place_Card";
 
  export type PlaceProps = {
@@ -13,7 +12,6 @@ import Place_Card from "./Place_Card";
     rooms: Room[];
 };
 const Places = ({hotels, cities, countries, rooms}: PlaceProps) =>{
-    const [selectedHotelId, setSelectedHotelId] = useState<number | null>(null);
 return(
     <div className="Place_body">
         {hotels.slice(0,8).map((hotel)=>{
@@ -24,7 +22,7 @@ return(
             return(
                 <Place_Card key={hotel.id} hotel={hotel} 
                 cityName={city?.name} countryName={country?.name} 
-                minPrice={minPrice} onSelect={()=> setSelectedHotelId(hotel.id)}></Place_Card>
+                minPrice={minPrice}></Place_Card>
             );
         })}
     </div>

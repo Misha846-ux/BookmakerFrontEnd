@@ -1,78 +1,48 @@
-import {useParams} from "react-router-dom";
 import {useState} from "react";
-import data from "../Temporary_json_files/data.json";
-import type {Room} from "../../Models/Room_Model";
-import type {Hotel} from "../../Models/Hotel_Model";
-import type {City} from "../../Models/City_Model";
-import type { User } from "../../Models/User_Model";
-import type { Review } from "../../Models/Reviews_Model";
+import type { CityDTO, HotelDTO, RoomDTO } from "../../Models/dto";
 import btn_photo_1 from "../../Components/Room_Book/photo/btn_photo_1.png"
 import btn_photo_2 from "../../Components/Room_Book/photo/btn_photo_2.png"
 import photo_map from "../../Components/Room_Book/photo/photo_map.png"
-import photo_next_btn from "../../Components/Room_Book/photo/photo_next_btn.png"
 import photo_description_1 from "../../Components/Room_Book/photo/photo_description_1.png"
 import photo_description_2 from "../../Components/Room_Book/photo/photo_description_2.png"
 import photo_description_3 from "../../Components/Room_Book/photo/photo_description_3.png"
-import Review_Card from "../Reviews/Review_Card";
 import "../Hotel_Page/style//Hotel_Page.css"
-const Room_Book = () => {
-    const {hotel_id} = useParams();
+type RoomBookProps = {
+    hotel: HotelDTO;
+    city: CityDTO;
+    room: RoomDTO;
+    roomPhotos: string[];
+};
 
-    const hotel = data.hotels.find(hotel => hotel.id === Number(hotel_id));
-
+const Room_Book = ({hotel, city, room, roomPhotos}: RoomBookProps) => {
     const [currentPhoto, setCurrentPhoto] = useState(0);
 
-    const [currentReview, setCurrentReview] = useState(0);
-    
-    if(!hotel){
-        return <div>Hotel not found</div>;
-    };
-
-    const hotelRooms = data.rooms.filter(room => room.hotel === hotel.id);
-
-    const hotelReviews = data.reviews.filter(review => review.hotel === hotel.id);
-
-    const room: Room | undefined = hotelRooms[0];
-
-    const city: City | undefined = data.cities.find(city => city.id === hotel.city);
-
-    if (!room) { 
-        return <div>No rooms found</div>; 
-    };
+    const photos = roomPhotos.length > 0 ? roomPhotos : ["/room-placeholder.jpg"];
 
     const nextPhoto = () => {
-        setCurrentPhoto(prev => prev === room.photo.length - 1 ? 0 : prev + 1);
+        setCurrentPhoto(prev => prev === photos.length - 1 ? 0 : prev + 1);
     };
 
     const previousPhoto = () => {
-        setCurrentPhoto(prev => prev === 0 ? room.photo.length - 1 : prev - 1);
+        setCurrentPhoto(prev => prev === 0 ? photos.length - 1 : prev - 1);
     };
 
-    const nextReview = () => {
-            setCurrentReview(prev => prev === hotelReviews.length - 1 ? 0 : prev + 1);
-    };
-
-    const bottomPhotos = [1,2,3].map(offset => room.photo[
-        (currentPhoto + offset) % room.photo.length
+    const bottomPhotos = [1,2,3].map(offset => photos[
+        (currentPhoto + offset) % photos.length
     ]);
-
-    const review: Review | undefined = hotelReviews[currentReview];
-
-    const reviewUser: User | undefined = review ? data.users.find(
-        user => user.id ===review.user) : undefined;
     return(
         <div className="Room_Book">
         <div className="Room_photos">
                 <div className="Room_main_photo">
                     <button className="Room_previous_photo_btn" onClick={previousPhoto}><img src={btn_photo_1}/></button>
-                    <img src={room.photo[currentPhoto]}></img>
+                    <img src={photos[currentPhoto]} alt={room.description ?? "Room"}></img>
                     <button className="Room_next_photo_btn" onClick={nextPhoto}><img src={btn_photo_2}/></button>
                 </div>
                 <div className="Room_bottom_photos">
                     {bottomPhotos.map((photo, index) => (
                         <img key={index} src={photo} onClick={ () =>
                             setCurrentPhoto((currentPhoto + index + 1) % 
-                        room.photo.length)
+                        photos.length)
                         }/>
                     ))}
                 </div>
@@ -104,18 +74,6 @@ const Room_Book = () => {
                                 <img src={photo_description_3}></img>
                             </div>
                         </div>
-                    </div>
-                    <div className="Room_line"></div>
-                    <div className="Hotel_reviews"> 
-                        {review && ( 
-                            <div className="Room_review"> 
-                            <Review_Card review={review} userPhoto={reviewUser?.photo}
-                             userName={reviewUser?.name} hotelName={hotel.name} />
-                            <button className="Next_review_btn" onClick={nextReview} >
-                                <img src={photo_next_btn}/>
-                                </button> 
-                            </div> 
-                            )} 
                     </div>
             </div>
             </div>

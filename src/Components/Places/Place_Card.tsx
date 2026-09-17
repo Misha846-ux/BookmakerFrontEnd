@@ -7,13 +7,13 @@ type PlaceCardProps = {
     cityName?: string; 
     countryName?: string; 
     minPrice: number | null;
-    onSelect: () => void;
+    onSelect?: () => void;
 };
 const Place_Card = ({hotel, cityName, countryName, minPrice, onSelect}: PlaceCardProps)=> {
     const navigate = useNavigate();
 
     const handleClick = () =>{
-        onSelect();
+        onSelect?.();
         navigate(`/hotel/${hotel.id}`);
     };
     return(

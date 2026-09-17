@@ -1,9 +1,10 @@
 import "../Room_Scroll_Box/style/Room_Scroll_Box.css"
-import type { Room } from "../../Models/Room_Model";
+import type { RoomDTO } from "../../Models/dto";
+import { useNavigate } from "react-router-dom";
 
 
 type RoomCardProps = {
-    room: Room;
+    room: RoomDTO;
     roomPhoto: string;
     roomDescription: string;
     bedPhoto: string;
@@ -19,9 +20,14 @@ type RoomCardProps = {
 const Room_Scroll_Box_Card = ({room,roomPhoto,roomDescription,bedPhoto,roomBeds,
     roomWifi,roomWifiPhoto,roomBath,roomBathPhoto,roomPrivatePool,
     roomPrivatePoolPhoto,roomPrice}: RoomCardProps) => {
+    const navigate = useNavigate();
+
+    const handleRoomClick = () => {
+        navigate(`/hotel/${room.hotel}/room/${room.id}`);
+    };
     
     return(
-        <div className="Room_Scroll_Box_Card">
+        <div className="Room_Scroll_Box_Card" onClick={handleRoomClick} role="button" tabIndex={0}>
                 <img src={roomPhoto} className="Room_Scroll_Box_img"/>
                 <div className="Room_Scroll_Box_info">
                     <div className="Room_Scroll_Box_description">{roomDescription}</div>
