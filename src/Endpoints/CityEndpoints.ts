@@ -1,5 +1,9 @@
-import type { CityDTO, CreateCityDTO } from "../Models/dto";
+import type { CityDTO, CreateCityDTO, CountryDTO } from "../Models/dto";
 import { apiRequest, jsonBody } from "./apiRequest";
+
+export async function getCountries(): Promise<CountryDTO[]> {
+    return apiRequest<CountryDTO[]>("/countries/");
+}
 
 export async function getCities(): Promise<CityDTO[]> {
     return apiRequest<CityDTO[]>("/cities/", { method: "PUT" });

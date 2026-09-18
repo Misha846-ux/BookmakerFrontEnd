@@ -1,5 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { FormEvent } from 'react'
+import { useAuth } from '../../Context/AuthContext'
+import { getCountries } from '../../Endpoints/CityEndpoints'
+import { getCities } from '../../Endpoints/CityEndpoints'
+import type { CountryDTO, CityDTO } from '../../Models/dto'
 import './Auth.css'
 
 interface InformationModalProps {
@@ -8,30 +12,50 @@ interface InformationModalProps {
   onContinue: () => void
 }
 
-const citiesByCountry: Record<string, string[]> = {
-  Poland: ['Warsaw', 'Wroclaw', 'Krakow', 'Gdansk', 'Poznan', 'Lodz'],
-  Ukraine: ['Kyiv', 'Lviv', 'Odesa', 'Kharkiv', 'Dnipro', 'Poltava'],
-  Germany: ['Berlin', 'Munich', 'Hamburg', 'Cologne', 'Frankfurt', 'Dresden'],
-  France: ['Paris', 'Lyon', 'Marseille', 'Nice', 'Toulouse', 'Bordeaux'],
-}
-
 function InformationModal({ isOpen, onClose, onContinue }: InformationModalProps) {
-  const [country, setCountry] = useState('')
-  const [city, setCity] = useState('')
-  const [travelReason, setTravelReason] = useState('')
-  const [pet, setPet] = useState('')
-  const availableCities = citiesByCountry[country] ?? []
+  const [countries, setCountries] = useState<CountryDTO[]>([])
+  const [cities, setCities] = useState<CityDTO[]>([])
+  const [selectedCountryId, setSelectedCountryId] = useState<number | ''>('')
+  const [selectedCityId, setSelectedCityId] = useState<number | ''>('')
+  const [phone, setPhone] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
+  const { updateUserProfile } = useAuth()
+
+  useEffect(() => {
+    if (!isOpen) return
+    getCountries().then(setCountries).catch(() => {})
+    getCities().then(setCities).catch(() => {})
+  }, [isOpen])
+
+  const filteredCities = selectedCountryId
+    ? cities.filter((c) => c.country === selectedCountryId)
+    : []
 
   if (!isOpen) {
     return null
   }
 
-  const isFormComplete = Boolean(country && city && travelReason && pet)
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (isFormComplete) {
+    setError('')
+    setIsSubmitting(true)
+    try {
+      const profile: Record<string, unknown> = {}
+      if (selectedCityId) profile.city = selectedCityId
+      if (phone.trim()) profile.phone = phone.trim()
+      if (Object.keys(profile).length > 0) {
+        await updateUserProfile(profile)
+      }
       onContinue()
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to save')
+      setIsSubmitting(false)
     }
+  }
+
+  const handleLater = () => {
+    onContinue()
   }
 
   return (
@@ -47,54 +71,46 @@ function InformationModal({ isOpen, onClose, onContinue }: InformationModalProps
           choose options for you :)
         </p>
 
+        {error && <p className="auth-description" style={{ color: '#e53e3e', textAlign: 'center' }}>{error}</p>}
+
         <form className="auth-form auth-form--information" onSubmit={handleSubmit}>
           <div className="auth-field">
-            <label htmlFor="country">Country</label>
-            <select className={country ? 'auth-select--selected' : ''} id="country" name="country" value={country} onChange={(event) => { setCountry(event.target.value); setCity('') }}>
+            <label htmlFor="info-country">Country</label>
+            <select className={selectedCountryId ? 'auth-select--selected' : ''} id="info-country" name="country" value={selectedCountryId} onChange={(event) => {
+              const val = event.target.value
+              setSelectedCountryId(val ? Number(val) : '')
+              setSelectedCityId('')
+            }}>
               <option value="">Country</option>
-              <option value="Poland">Poland</option>
-              <option value="Ukraine">Ukraine</option>
-              <option value="Germany">Germany</option>
-              <option value="France">France</option>
-            </select>
-          </div>
-
-          <div className="auth-field">
-            <label htmlFor="city">City</label>
-            <select className={city ? 'auth-select--selected' : ''} id="city" name="city" value={city} onChange={(event) => setCity(event.target.value)} disabled={!country}>
-              <option value="">City</option>
-              {availableCities.map((availableCity) => (
-                <option key={availableCity} value={availableCity}>{availableCity}</option>
+              {countries.map((c) => (
+                <option key={c.id} value={c.id}>{c.name}</option>
               ))}
             </select>
           </div>
 
           <div className="auth-field">
-            <label htmlFor="travel-reason">Why do you travel?</label>
-            <select className={travelReason ? 'auth-select--selected' : ''} id="travel-reason" name="travelReason" value={travelReason} onChange={(event) => setTravelReason(event.target.value)}>
-              <option value="">Why do you travel?</option>
-              <option value="Leisure">Leisure</option>
-              <option value="Business">Business</option>
-              <option value="Visiting friends">Visiting friends</option>
-              <option value="Other">Other</option>
+            <label htmlFor="info-city">City</label>
+            <select className={selectedCityId ? 'auth-select--selected' : ''} id="info-city" name="city" value={selectedCityId} onChange={(event) => {
+              const val = event.target.value
+              setSelectedCityId(val ? Number(val) : '')
+            }} disabled={!selectedCountryId}>
+              <option value="">City</option>
+              {filteredCities.map((c) => (
+                <option key={c.id} value={c.id}>{c.name}</option>
+              ))}
             </select>
           </div>
 
-          <fieldset className="auth-radio-group">
-            <legend>Travelling with a pet?</legend>
-            <label>
-              <input type="radio" name="pet" value="yes" checked={pet === 'yes'} onChange={(event) => setPet(event.target.value)} />
-              Yes
-            </label>
-            <label>
-              <input type="radio" name="pet" value="no" checked={pet === 'no'} onChange={(event) => setPet(event.target.value)} />
-              No
-            </label>
-          </fieldset>
+          <div className="auth-field">
+            <label htmlFor="info-phone">Phone number</label>
+            <input className={phone ? 'auth-select--selected' : ''} id="info-phone" name="phone" type="tel" value={phone} onChange={(event) => setPhone(event.target.value)} placeholder="Phone number"/>
+          </div>
 
           <div className="auth-actions">
-            <button className="auth-continue" type="submit" disabled={!isFormComplete}>Continue</button>
-            <button className="auth-secondary" type="button" onClick={onContinue}>Later</button>
+            <button className="auth-continue" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Please wait...' : 'Continue'}
+            </button>
+            <button className="auth-secondary" type="button" onClick={handleLater}>Later</button>
           </div>
         </form>
       </section>
