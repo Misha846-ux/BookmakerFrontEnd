@@ -595,5 +595,19 @@
     "country": 3,
     "paymethod": 1
   }
+],
+"payment_methods":[
+{
+  "id": 1,
+  "cardType": 1,
+  "cardNumber": 4124974945549848,
+  "date": "11-01"
+}
+],
+"debitCards": [
+  {
+    "id": 1,
+    "type": "credit card"
+  }
 ]
 }

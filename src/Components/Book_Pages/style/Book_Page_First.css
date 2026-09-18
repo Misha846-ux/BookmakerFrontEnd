@@ -1,0 +1,149 @@
+.First_Page_body{
+    height: 80%;
+    width: 100%;
+}
+.First_Page_content{
+    height: 70%;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    margin-top: 1%;
+}
+.First_Page_top{
+    height: 10%;
+    width: 99%;
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+}
+.First_Page_top_text{
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    font-size: 24px;
+    color: #581ADB;
+    margin-right: 40%;
+}
+.First_Page_inputs{
+    height: 90%;
+    width: 98%;
+    margin-left: 1%;
+}
+.First_Page_inputs_first_line{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+.First_Page_inputs_second_line{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+}
+.First_Page_inputs_third_line{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+}
+.First_Page_inputs_forth_line{
+   height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.First_Page_input{
+    height: 70%;
+    width: 45%;
+    border: 1px solid #DDDDDD;
+    border-radius: 64px;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    color: #717171;
+    padding-left: 3%;
+}
+.First_Page_input_text{
+    height: 70%;
+    width: 30%;
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    font-size: 16px;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+}
+.First_Page_booleans{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.First_Page_checkbox_text{
+    height: 70%;
+    width: 45%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.First_Page_checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 50%;
+    width: 6%;
+    margin-right: 30%;
+    border: 2px solid #581ADB;
+    border-radius: 64px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+.First_Page_checkbox:checked::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: #581ADB;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.First_Page_continue_btn_box{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.First_Page_continue_btn{
+    height: 50%;
+    width: 50%;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #581ADB;
+    border-radius: 60px;
+}
+.First_Page_checkbox_label{
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    color: #581ADB;
+
+}

@@ -204,8 +204,7 @@ padding: 0.5%;
 }
 .Next_review_btn{
     position: absolute;
-    top: 65%; 
-    transform: translateY(-50%); 
+    top: 115%; 
     width: 25px; height: 40px; 
     border: none; 
     border-radius: 50%; 

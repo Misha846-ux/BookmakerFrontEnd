@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import data from "../Temporary_json_files/data.json";
 import type {Room} from "../../Models/Room_Model";
@@ -14,8 +14,10 @@ import photo_description_1 from "../../Components/Room_Book/photo/photo_descript
 import photo_description_2 from "../../Components/Room_Book/photo/photo_description_2.png"
 import photo_description_3 from "../../Components/Room_Book/photo/photo_description_3.png"
 import Review_Card from "../Reviews/Review_Card";
-import "../Hotel_Page/style//Hotel_Page.css"
+import "../HotelsThirdPage/style//HotelsThirdPage.css"
 const Room_Book = () => {
+    const navigate = useNavigate();
+
     const {hotel_id} = useParams();
 
     const hotel = data.hotels.find(hotel => hotel.id === Number(hotel_id));
@@ -60,6 +62,10 @@ const Room_Book = () => {
 
     const reviewUser: User | undefined = review ? data.users.find(
         user => user.id ===review.user) : undefined;
+
+    const handleOnClick = () =>{
+        navigate(`/hotel/${hotel.id}/room/${room.id}/first`)
+    }
     return(
         <div className="Room_Book">
         <div className="Room_photos">
@@ -93,7 +99,7 @@ const Room_Book = () => {
                                  </div>
                             </div>
                             <div className="Room_book_btn_box">
-                                <button className="Room_book_btn">Book</button>
+                                <button className="Room_book_btn" onClick={handleOnClick}>Book</button>
                             </div>
                         </div>
                         <div className="Room_content">

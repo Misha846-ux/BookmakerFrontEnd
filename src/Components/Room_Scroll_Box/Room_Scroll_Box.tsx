@@ -29,11 +29,13 @@ return(
         <div className="Room_Scroll_Box_top">Book</div>
         <div className="Room_Scroll_Box_context">
             {otherRooms.map(room=>(
+                <div className="Room_Scroll_Box_context_card">
             <Room_Scroll_Box_Card key={room.id} room={room} roomPhoto={room.photo[0]} 
             roomDescription ={room.description} bedPhoto ={bed_photo} roomBeds = {room.beds}
     roomWifi = {room.wifi} roomWifiPhoto ={wifi_photo} roomBath ={room.bath}
     roomBathPhoto = {bath_photo} roomPrivatePool = {room.privatepool}
     roomPrivatePoolPhoto = {pool_photo} roomPrice = {room.price}/>
+    </div>
             ))}
         </div>
     </div>

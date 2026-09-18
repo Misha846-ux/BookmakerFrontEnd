@@ -1,0 +1,78 @@
+.Book_Page_body{
+    height: 100vh;
+    width: 100%;
+    min-height: 600px;
+    min-width: 1650px;
+    display: flex;
+}
+.Book_Page_info{
+    height: 40%;
+    width: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 12%;
+    margin-right: 2%;
+}
+.Book_Page_info_box{
+    height: 30%;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.Book_Page_info_box_top{
+    margin-top: 5%;
+    height: 30%;
+    width: 50%;
+    object-fit: contain;
+}
+.Book_Page_info_box_center{
+    height: 20%;
+    width: 100%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #581ADB;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Book_Page_info_box_bottom{
+    height: 30%;
+    width: 30%;
+    object-fit: contain;
+}
+.Book_Page_content{
+    height: 100%;
+    width: 60%;
+}
+.Book_Page_room{
+    height: 20%;
+    width: 100%;
+    margin-top: -1%;
+}
+.Book_Page_btn_box{
+    height: 5%;
+    width: 3%;
+    border: 1px solid #DDDDDD;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+}
+.Book_Page_btn{
+    height: 100%;
+    width: 100%;
+    border-radius: 60px;
+    background-color: white;
+    border: 1px solid white;
+}
+.Book_Page_btn:hover{
+   background-color: #DDDDDD;
+}
