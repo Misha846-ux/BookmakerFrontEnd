@@ -22,7 +22,8 @@ const Room_Scroll_Box = ({rooms, roomPhotos, primaryRoomId}: RoomScrollBoxProps)
             <div className="Room_Scroll_Box_top">Book</div>
             <div className="Room_Scroll_Box_context">
                 {otherRooms.map((room) => (
-                    <Room_Scroll_Box_Card
+                        <div className="Room_Scroll_Box_context_card">
+            <Room_Scroll_Box_Card
                         key={room.id}
                         room={room}
                         roomPhoto={roomPhotos[room.id]?.[0] ?? "/room-placeholder.jpg"}
@@ -37,7 +38,8 @@ const Room_Scroll_Box = ({rooms, roomPhotos, primaryRoomId}: RoomScrollBoxProps)
                         roomPrivatePoolPhoto={pool_photo}
                         roomPrice={Number(room.price)}
                     />
-                ))}
+        </div>
+            ))}
             </div>
         </div>
     );

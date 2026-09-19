@@ -23,8 +23,12 @@
     overflow-y: auto;
     scrollbar-width: none;
 }
-.Room_Scroll_Box_Card{
+.Room_Scroll_Box_context_card{
     height: 23%;
+    width: 100%;
+}
+.Room_Scroll_Box_Card{
+    height: 100%;
     width: 100%;
     display: flex;
     border: 1px solid #DDDDDD;

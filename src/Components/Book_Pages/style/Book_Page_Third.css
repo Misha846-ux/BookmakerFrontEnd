@@ -1,0 +1,185 @@
+.Third_Page_body{
+    height: 80%;
+    width: 100%;
+}
+.Third_Page_prev_btn{
+    height: 5%;
+    width: 3%;
+    min-height: 45px;
+    min-width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #DDDDDD;
+    background-color: white;
+    border-radius: 64px;
+    position: absolute;
+    left: 3%;
+    top: 46%;
+}
+.Third_Page_prev_btn:hover{
+    background-color: #DDDDDD;
+}
+.Third_Page_content{
+    height: 60%;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    margin-top: 1%;
+}
+.Third_Page_top{
+    height: 10%;
+    width: 99%;
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+}
+.Third_Page_top_text{
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    font-size: 24px;
+    color: #581ADB;
+    margin-right: 40%;
+}
+.Third_Page_inputs{
+    height: 90%;
+    width: 98%;
+    margin-left: 1%;
+}
+.Third_Page_inputs_line{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+.Third_Page_input{
+    height: 70%;
+    width: 49%;
+    border: 1px solid #DDDDDD;
+    border-radius: 64px;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    color: #717171;
+    padding-left: 3%;
+}
+.Third_Page_input_date{
+    height: 70%;
+    width: 20%;
+    border: 1px solid #DDDDDD;
+    border-radius: 64px;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    color: #717171;
+    padding-left: 3%;
+}
+.Third_Page_input_text{
+    height: 70%;
+    width: 40%;
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    font-size: 16px;
+    color: #717171;
+    display: flex;
+    align-items: center;
+}
+.Third_Page_no_card_box{
+    height: 70%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+.No_card{
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    font-size: 16px;
+    color: #581ADB;
+    text-decoration: none;
+}
+.No_card:hover{
+    color: #717171;
+}
+.Third_Page_booleans{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Third_Page_checkbox_text{
+    height: 80%;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-top: 2%;
+}
+.Third_Page_checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 50%;
+    width: 3%;
+    margin-right: 30%;
+    border: 2px solid #581ADB;
+    border-radius: 64px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+.Third_Page_checkbox:checked::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: #581ADB;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.Third_Page_btn_box{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Third_Page_continue_btn{
+    height: 50%;
+    width: 50%;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #581ADB;
+    border-radius: 60px;
+}
+.Third_Page_check_btn{
+   height: 50%;
+    width: 50%;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    color: #581ADB;
+    background-color: #FFFFFF;
+    border: 1px solid #581ADB;
+    border-radius: 60px;
+}
+.Third_Page_checkbox_label{
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    color: #581ADB;
+
+}
