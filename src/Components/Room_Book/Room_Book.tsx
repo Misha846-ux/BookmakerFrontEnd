@@ -1,4 +1,4 @@
-import {useParams, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import type { CityDTO, HotelDTO, RoomDTO } from "../../Models/dto";
 import btn_photo_1 from "../../Components/Room_Book/photo/btn_photo_1.png"
@@ -7,7 +7,6 @@ import photo_map from "../../Components/Room_Book/photo/photo_map.png"
 import photo_description_1 from "../../Components/Room_Book/photo/photo_description_1.png"
 import photo_description_2 from "../../Components/Room_Book/photo/photo_description_2.png"
 import photo_description_3 from "../../Components/Room_Book/photo/photo_description_3.png"
-import Review_Card from "../Reviews/Review_Card";
 import "../HotelsThirdPage/style//HotelsThirdPage.css"
 type RoomBookProps = {
     hotel: HotelDTO;
@@ -18,6 +17,7 @@ type RoomBookProps = {
 
 const Room_Book = ({hotel, city, room, roomPhotos}: RoomBookProps) => {
     const [currentPhoto, setCurrentPhoto] = useState(0);
+    const navigate = useNavigate();
 
     const photos = roomPhotos.length > 0 ? roomPhotos : ["/room-placeholder.jpg"];
 
@@ -32,11 +32,6 @@ const Room_Book = ({hotel, city, room, roomPhotos}: RoomBookProps) => {
     const bottomPhotos = [1,2,3].map(offset => photos[
         (currentPhoto + offset) % photos.length
     ]);
-
-    const review: Review | undefined = hotelReviews[currentReview];
-
-    const reviewUser: User | undefined = review ? data.users.find(
-        user => user.id ===review.user) : undefined;
 
     const handleOnClick = () =>{
         navigate(`/hotel/${hotel.id}/room/${room.id}/first`)

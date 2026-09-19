@@ -9,7 +9,7 @@ import Room_top from "../../Components/Room_top/Room_top";
 import Room_Book from "../../Components/Room_Book/Room_Book";
 import Room_Scroll_Box from "../../Components/Room_Scroll_Box/Room_Scroll_Box";
 import CommentsGrid from "../../Components/CommentsGrid/CommentsGrid";
-import "../../Components/Hotel_Page/style/Hotel_Page.css";
+import "../../Components/HotelsThirdPage/style/HotelsThirdPage.css";
 
 type RoomPageData = {
 	hotelData: HotelCardDataDTO;

@@ -2,10 +2,7 @@ import "../Book_Pages/style/Book_Pages.css";
 import "../Room_Scroll_Box/style/Room_Scroll_Box.css";
 import { Outlet } from "react-router-dom";
 import {useParams, useNavigate } from "react-router-dom";
-import type {Hotel} from "../../Models/Hotel_Model";
 import type {City} from "../../Models/City_Model";
-import type { User } from "../../Models/User_Model";
-import type { Review } from "../../Models/Reviews_Model";
 import type { Room } from "../../Models/Room_Model";
 import type { Reservation } from "../../Models/Reservation_Model";
 import data from "../Temporary_json_files/data.json";
@@ -18,7 +15,6 @@ import bed_photo from "./photo/bed_photo.png"
 import wifi_photo from "./photo/wifi_photo.png"
 import bath_photo from "./photo/bath_photo.png"
 import pool_photo from "./photo/pool_photo.png"
-import Room_Scroll_Box_Card from "../Room_Scroll_Box/Room_Scroll_Box_Card";
 const Book_Pages = () => {
     const navigate = useNavigate();
     const {hotel_id} = useParams();

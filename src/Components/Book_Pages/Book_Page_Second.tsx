@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import type { Room } from "../../Models/Room_Model";
 import type { Country } from "../../Models/Country_Model";
 import data from "../Temporary_json_files/data.json"
-import type { Reservation } from "../../Models/Reservation_Model";
 import type { City } from "../../Models/City_Model";
 import prev_btn_photo from "./photo/prev_btn_photo.png";
 const Book_Page_Second = () => {
@@ -27,7 +26,6 @@ const Book_Page_Second = () => {
     };
     const city: City | undefined = data.cities.find(city => city.id === hotel.city);
 
-    const reservation: Reservation | undefined = data.resevations.find(reservation => reservation.room === room.id);
     const chooseCountry: Country | undefined = data.countries.find(country => city?.country === country.id);
 
     const [country, setCountry] = useState("");

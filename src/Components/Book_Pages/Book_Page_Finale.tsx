@@ -1,6 +1,5 @@
 import "./style/Book_Page_Finale.css";
 import { useParams, useNavigate} from "react-router-dom";
-import React, { useState } from "react";
 import type { Room } from "../../Models/Room_Model";
 import type { User } from "../../Models/User_Model";
 import data from "../Temporary_json_files/data.json"
