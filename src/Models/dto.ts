@@ -51,6 +51,8 @@ export type ReservationDTO = {
     payMethod: number | null;
 };
 
+export type CreateReservationDTO = Omit<ReservationDTO, "id">;
+
 export type HotelDTO = {
     id: number;
     name: string;
@@ -106,9 +108,6 @@ export type UserDTO = {
 
 export type PaginatedHotelsResponse = {
     count: number;
-    page: number;
-    page_size: number;
-    total_pages: number;
     results: HotelDTO[];
 };
 
@@ -118,6 +117,14 @@ export type PaginatedRoomsResponse = {
     el: number;
     total_pages: number;
     results: RoomDTO[];
+};
+
+export type PaginatedPaymentMethodsResponse = {
+    count: number;
+    page: number;
+    el: number;
+    total_pages: number;
+    results: PaymentMethodDTO[];
 };
 
 export type GetHotelsDTO = {
@@ -146,8 +153,42 @@ export type PhotoUploadResponse = {
 export type NearestPlaceResponse = {
     hotel_id: number;
     type: string;
-    address: string;
+    address: string | null;
     distance: number;
+};
+
+export type ReviewDTO = {
+    id: number;
+    review: string;
+    createdAt: string;
+    user: number;
+    hotel: number;
+    rating: number;
+};
+
+export type HotelReviewsResponse = {
+    count: number;
+    results: ReviewDTO[];
+};
+
+export type MainPageReviewDTO = {
+    id: number;
+    review: string;
+    createdAt: string;
+    rating: number;
+    user: {
+        id: number;
+        name: string;
+        photo: string | null;
+    };
+    hotel: {
+        id: number;
+        name: string;
+    };
+};
+
+export type MainPageReviewsResponse = {
+    results: MainPageReviewDTO[];
 };
 
 export type UserProfileResponse = {
@@ -176,6 +217,24 @@ export type AdvancedSearchDTO = {
     rate?: number | null;
     stars?: number | null;
     wifi?: boolean | null;
+};
+
+export type HotelCardDataDTO = {
+    hotel: HotelDTO;
+    photos: Array<{ photo: string }>;
+    nearest_airport_distance: number | null;
+    nearest_train_distance: number | null;
+    review_count: number;
+    average_rating: number | null;
+    cheapest_room_price: string | null;
+    cheapest_room_beds: number | null;
+    cheapest_room_wifi: boolean | null;
+};
+
+export type FilterCountsDTO = {
+    rating: Record<string, number>;
+    stars: Record<string, number>;
+    wifi: number;
 };
 
 export type HotelSearchDTO = {
