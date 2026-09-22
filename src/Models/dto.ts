@@ -171,6 +171,26 @@ export type HotelReviewsResponse = {
     results: ReviewDTO[];
 };
 
+export type MainPageReviewDTO = {
+    id: number;
+    review: string;
+    createdAt: string;
+    rating: number;
+    user: {
+        id: number;
+        name: string;
+        photo: string | null;
+    };
+    hotel: {
+        id: number;
+        name: string;
+    };
+};
+
+export type MainPageReviewsResponse = {
+    results: MainPageReviewDTO[];
+};
+
 export type UserProfileResponse = {
     id: number;
     email: string;

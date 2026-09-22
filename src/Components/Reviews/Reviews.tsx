@@ -1,28 +1,25 @@
 import "../Reviews/style/Reviews.css";
-import type { User } from "../../Models/User_Model";
-import type { Hotel } from "../../Models/Hotel_Model";
-import type { Review } from "../../Models/Reviews_Model";
+import type { MainPageReviewDTO } from "../../Models/dto";
 import Review_Card from "./Review_Card";
 
 type ReviewProps = {
-    reviews: Review[];
-    users: User[];
-    hotels: Hotel[];
+    reviews: MainPageReviewDTO[];
 };
-const Reviews = ({reviews, users, hotels}: ReviewProps) =>{
-    return(
+
+const Reviews = ({ reviews }: ReviewProps) => {
+    return (
         <div className="Reviews_body">
             <div className="Reviews_top">Reviews</div>
+
             <div className="Reviews_content">
-                {reviews.slice(0, 3).map((review) => { 
-                    const user = users.find((user) => user.id === review.user); 
-                    const hotel = hotels.find((hotel) => hotel.id === review.hotel); 
-                    return ( 
-                        <div className="Review_card_container" key={review.id} >
-                            <Review_Card review={review} userPhoto={user?.photo} 
-                            userName={user?.name} hotelName={hotel?.name} ></Review_Card>
-                        </div>
-                     ); })}
+                {reviews.slice(0, 3).map((review) => (
+                    <div
+                        className="Review_card_container"
+                        key={review.id}
+                    >
+                        <Review_Card review={review} />
+                    </div>
+                ))}
             </div>
         </div>
     );
