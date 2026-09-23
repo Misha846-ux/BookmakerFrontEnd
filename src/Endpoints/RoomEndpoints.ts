@@ -2,6 +2,7 @@ import type {
     CreateRoomDTO,
     PhotoUploadResponse,
     PhotosResponse,
+    RoomAvailabilityDTO,
     RoomDTO,
 } from "../Models/dto";
 import { apiRequest, jsonBody } from "./apiRequest";
@@ -29,5 +30,19 @@ export async function uploadRoomPhoto(
 export async function getRoomPhotos(roomId: number): Promise<PhotosResponse> {
     return apiRequest<PhotosResponse>(`/rooms/get/${roomId}/photos/`, {
         method: "PUT",
+    });
+}
+
+export async function getRoomAvailability(
+    roomId: number,
+    checkIn: string,
+    checkOut: string,
+): Promise<RoomAvailabilityDTO> {
+    return apiRequest<RoomAvailabilityDTO>(`/rooms/${roomId}/availability/`, {
+        method: "PUT",
+        ...jsonBody({
+            checkIn: `${checkIn}T00:00:00`,
+            checkOut: `${checkOut}T00:00:00`,
+        }),
     });
 }

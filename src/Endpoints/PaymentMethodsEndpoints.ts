@@ -1,4 +1,4 @@
-import type { CreatePaymentMethodDTO, PaginatedPaymentMethodsResponse, PaginationDTO, PaymentMethodDTO } from "../Models/dto";
+import type { CreatePaymentMethodDTO, DebitCardDTO, PaginatedPaymentMethodsResponse, PaginationDTO, PaymentMethodDTO } from "../Models/dto";
 import { apiRequest, jsonBody, paginationQuery } from "./apiRequest";
 
 export async function getPaymentMethods(
@@ -26,4 +26,14 @@ export async function createPaymentMethod(
         method: "POST",
         ...jsonBody(paymentMethod),
     });
+}
+
+export async function getMyPaymentMethods(): Promise<PaymentMethodDTO[]> {
+    return apiRequest<PaymentMethodDTO[]>("/user/payment-methods/", {
+        method: "GET",
+    });
+}
+
+export async function getDebitCards(): Promise<DebitCardDTO[]> {
+    return apiRequest<DebitCardDTO[]>("/debit-cards/");
 }

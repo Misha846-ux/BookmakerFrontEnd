@@ -147,3 +147,13 @@
     color: #581ADB;
 
 }
+.First_Page_signed_in_text{
+    height: 70%;
+    width: 60%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+    display: flex;
+    align-items: center;
+}

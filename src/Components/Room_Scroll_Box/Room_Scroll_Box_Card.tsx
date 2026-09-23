@@ -1,6 +1,6 @@
 import "../Room_Scroll_Box/style/Room_Scroll_Box.css"
 import type { RoomDTO } from "../../Models/dto";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 
 type RoomCardProps = {
@@ -21,9 +21,13 @@ const Room_Scroll_Box_Card = ({room,roomPhoto,roomDescription,bedPhoto,roomBeds,
     roomWifi,roomWifiPhoto,roomBath,roomBathPhoto,roomPrivatePool,
     roomPrivatePoolPhoto,roomPrice}: RoomCardProps) => {
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     const handleRoomClick = () => {
-        navigate(`/hotel/${room.hotel}/room/${room.id}`);
+        const dates = searchParams.get("checkIn") && searchParams.get("checkOut")
+            ? `?checkIn=${searchParams.get("checkIn")}&checkOut=${searchParams.get("checkOut")}`
+            : "";
+        navigate(`/hotel/${room.hotel}/room/${room.id}${dates}`);
     };
     
     return(

@@ -77,3 +77,20 @@
 {
     background: #4512b3;
 }
+.search_error
+{
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, 40px);
+    z-index: 3;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 4px 14px;
+    font-family: 'Nunito Sans';
+    font-size: 13px;
+    color: #d32f2f;
+    white-space: nowrap;
+}

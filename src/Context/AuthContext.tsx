@@ -63,6 +63,8 @@ async function tryRefreshToken(): Promise<boolean> {
     } catch {
         // ignore
     }
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     return false;
 }
 

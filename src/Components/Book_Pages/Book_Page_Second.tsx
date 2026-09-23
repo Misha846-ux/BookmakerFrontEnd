@@ -1,59 +1,92 @@
 import "./style/Book_Page_Second.css"
-import { useParams, useNavigate} from "react-router-dom";
-import React, { useState } from "react";
-import type { Room } from "../../Models/Room_Model";
-import type { Country } from "../../Models/Country_Model";
-import data from "../Temporary_json_files/data.json"
-import type { City } from "../../Models/City_Model";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { getCountries, getCity } from "../../Endpoints/CityEndpoints";
+import { useBooking } from "../../Context/BookingContext";
+import { useAuth } from "../../Context/AuthContext";
+import type { CountryDTO } from "../../Models/dto";
 import prev_btn_photo from "./photo/prev_btn_photo.png";
+
 const Book_Page_Second = () => {
-   const navigate = useNavigate();
-    
-    const {hotel_id} = useParams();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { hotel_id, room_id } = useParams();
+    const { contact, setContact, setError } = useBooking();
+    const { user, isAuthenticated } = useAuth();
+    const prefillRef = useRef<number | null>(null);
 
-    const hotel = data.hotels.find(hotel => hotel.id === Number(hotel_id));
+    const [countries, setCountries] = useState<CountryDTO[]>([]);
+    const [countryError, setCountryError] = useState("");
+    const [countriesLoadError, setCountriesLoadError] = useState(false);
 
-    if(!hotel){
-        return <div>Hotel not found</div>;
-    };
+    useEffect(() => {
+        setError(null);
+        setCountriesLoadError(false);
+        getCountries()
+            .then((list) => setCountries(list))
+            .catch(() => {
+                setCountries([]);
+                setCountriesLoadError(true);
+            });
+    }, [setError]);
 
-    const hotelRooms = data.rooms.filter(room => room.hotel === hotel.id);
+    useEffect(() => {
+        if (!isAuthenticated || !user) return;
+        if (prefillRef.current === user.id) return;
 
-    const room: Room | undefined = hotelRooms[0];
+        if (user.phone) {
+            setContact({ phoneNumber: user.phone });
+        }
 
-    if (!room) { 
-        return <div>No rooms found</div>; 
-    };
-    const city: City | undefined = data.cities.find(city => city.id === hotel.city);
+        if (!user.city) {
+            prefillRef.current = user.id;
+            return;
+        }
 
-    const chooseCountry: Country | undefined = data.countries.find(country => city?.country === country.id);
+        if (countries.length === 0) return;
 
-    const [country, setCountry] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [callMe, setCallMe] = useState<boolean>(false);
-    const [sendMe, setSendMe] = useState<boolean>(false);
+        let cancelled = false;
+        getCity(user.city)
+            .then((city) => {
+                if (cancelled) return;
+                const matched = countries.find((c) => c.id === city.country);
+                if (matched) {
+                    setContact({ countryName: matched.name, countryId: matched.id });
+                }
+            })
+            .catch(() => undefined)
+            .finally(() => {
+                if (!cancelled) prefillRef.current = user.id;
+            });
+        return () => { cancelled = true; };
+    }, [isAuthenticated, user, countries, setContact]);
 
-    const handleOnClickCallMe = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        setCallMe(e.target.checked);
-    };
+    const country = contact.countryName;
+    const phoneNumber = contact.phoneNumber;
 
-    const handleOnClickSendMe = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        setSendMe(e.target.checked);
-    };
-    const isFiiled = 
-        country.trim() !== "" &&
-        phoneNumber.trim() !== "";
+    const isFiiled = country.trim() !== "" && phoneNumber.trim() !== "";
 
     const handleOnClick = () => {
-        if(!isFiiled) return;
-        navigate(`/hotel/${hotel.id}/room/${room.id}/third`)
+        if (!isFiiled) return;
+        const matched = countries.find(
+            (c) => c.name.toLowerCase() === country.trim().toLowerCase(),
+        );
+        if (!matched) {
+            setCountryError("Please choose a country from the list.");
+            return;
+        }
+        setCountryError("");
+        setContact({ countryId: matched.id });
+        navigate(`/hotel/${hotel_id}/room/${room_id}/third${location.search}`);
     };
-    const handleOnClickback = () => {
-        navigate(`/hotel/${hotel.id}/room/${room.id}/first`)
+
+    const handleOnClickBack = () => {
+        navigate(`/hotel/${hotel_id}/room/${room_id}/first${location.search}`);
     };
-    return(
-         <div className="Second_Page_body">
-            <button className="Second_Page_prev_btn" onClick={handleOnClickback}><img src={prev_btn_photo}/></button>
+
+    return (
+        <div className="Second_Page_body">
+            <button className="Second_Page_prev_btn" onClick={handleOnClickBack}><img src={prev_btn_photo} alt="back" /></button>
             <div className="Second_Page_content">
                 <div className="Second_Page_top">
                     <div className="Second_Page_top_text">2/3</div>
@@ -62,46 +95,56 @@ const Book_Page_Second = () => {
                 <div className="Second_Page_inputs">
                     <div className="Second_Page_inputs_first_line">
                         <input
-                        className="Second_Page_input"
-                        list="countries"
-                        placeholder="Country"
-                        value={country}
-                        onChange={(event) => setCountry(event.target.value)}
-                        required
+                            className="Second_Page_input"
+                            list="countries"
+                            placeholder="Country"
+                            value={country}
+                            onChange={(event) => {
+                                setCountryError("");
+                                setContact({ countryName: event.target.value });
+                            }}
+                            required
                         />
                         <datalist id="countries">
-                        <option defaultValue={chooseCountry?.name}>
-                        {chooseCountry?.name}
-                        </option>
+                            {countries.map((c) => (
+                                <option key={c.id} value={c.name} />
+                            ))}
                         </datalist>
                     </div>
                     <div className="Second_Page_inputs_second_line">
-                         <input className="Second_Page_input" placeholder="Phone number" type="tel" 
-                        name="phonenumber" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} required/>
-                        <div className="Second_Page_input_text">In order for the administration to be able 
+                        <input className="Second_Page_input" placeholder="Phone number" type="tel"
+                            name="phonenumber" value={phoneNumber}
+                            onChange={(event) => setContact({ phoneNumber: event.target.value })} required />
+                        <div className="Second_Page_input_text">In order for the administration to be able
                             to contact you</div>
-                    </div>                   
+                    </div>
+                    {countriesLoadError && (
+                        <div className="Second_Page_error_text">
+                            Failed to load countries. Please try again later.
+                        </div>
+                    )}
+                    {countryError && <div className="Second_Page_error_text">{countryError}</div>}
                 </div>
             </div>
             <div className="Second_Page_booleans">
                 <div className="Second_Page_checkbox_text">
-                    <input className="Second_Page_checkbox" type="checkbox" checked={callMe} 
-                    onChange={handleOnClickCallMe} id="callMe"/>
+                    <input className="Second_Page_checkbox" type="checkbox" checked={contact.confirmByCall}
+                        onChange={(event) => setContact({ confirmByCall: event.target.checked })} id="callMe" />
                     <label htmlFor="callMe">
-                        Call me to confirm  booking!
+                        Call me to confirm booking!
                     </label>
                 </div>
                 <div className="Second_Page_checkbox_text">
-                    <input className="Second_Page_checkbox" type="checkbox" checked={sendMe} 
-                    onChange={handleOnClickSendMe} id="sendMe"/>
+                    <input className="Second_Page_checkbox" type="checkbox" checked={contact.confirmByEmail}
+                        onChange={(event) => setContact({ confirmByEmail: event.target.checked })} id="sendMe" />
                     <label htmlFor="sendMe">
-                        Send me an email to confirm  booking!
+                        Send me an email to confirm booking!
                     </label>
                 </div>
             </div>
             <div className="Second_Page_continue_btn_box">
-                <button className="Second_Page_continue_btn" type="submit" onClick={handleOnClick} 
-                disabled={!isFiiled}>Continue</button>
+                <button className="Second_Page_continue_btn" type="submit" onClick={handleOnClick}
+                    disabled={!isFiiled}>Continue</button>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {useState} from "react";
 import type { CityDTO, HotelDTO, RoomDTO } from "../../Models/dto";
 import btn_photo_1 from "../../Components/Room_Book/photo/btn_photo_1.png"
@@ -18,8 +18,11 @@ type RoomBookProps = {
 const Room_Book = ({hotel, city, room, roomPhotos}: RoomBookProps) => {
     const [currentPhoto, setCurrentPhoto] = useState(0);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const checkIn = searchParams.get("checkIn");
+    const checkOut = searchParams.get("checkOut");
 
-    const photos = roomPhotos.length > 0 ? roomPhotos : ["/room-placeholder.jpg"];
+    const photos = roomPhotos.length > 0 ? roomPhotos : ["/room-placeholder.svg"];
 
     const nextPhoto = () => {
         setCurrentPhoto(prev => prev === photos.length - 1 ? 0 : prev + 1);
@@ -34,7 +37,10 @@ const Room_Book = ({hotel, city, room, roomPhotos}: RoomBookProps) => {
     ]);
 
     const handleOnClick = () =>{
-        navigate(`/hotel/${hotel.id}/room/${room.id}/first`)
+        const dates = checkIn && checkOut
+            ? `?checkIn=${checkIn}&checkOut=${checkOut}`
+            : "";
+        navigate(`/hotel/${hotel.id}/room/${room.id}/first${dates}`)
     }
     return(
         <div className="Room_Book">
