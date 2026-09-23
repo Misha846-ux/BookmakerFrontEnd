@@ -48,6 +48,19 @@ const Book_Page_Second = () => {
 
     const handleOnClick = () => {
         if(!isFiiled) return;
+
+        const oldData = JSON.parse(localStorage.getItem("bookingData") || "{}");
+        
+        const bookingData = {
+        ...oldData,
+        country,
+        phoneNumber,
+        callMe,
+        sendMe,
+        };
+        
+        localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
         navigate(`/hotel/${hotel.id}/room/${room.id}/third`)
     };
     const handleOnClickback = () => {
@@ -63,19 +76,16 @@ const Book_Page_Second = () => {
                 </div>
                 <div className="Second_Page_inputs">
                     <div className="Second_Page_inputs_first_line">
-                        <input
+                       <select
                         className="Second_Page_input"
-                        list="countries"
-                        placeholder="Country"
                         value={country}
-                        onChange={(event) => setCountry(event.target.value)}
-                        required
-                        />
-                        <datalist id="countries">
-                        <option defaultValue={chooseCountry?.name}>
-                        {chooseCountry?.name}
+                        onChange={(event) => setCountry(event.target.value)} required>
+                        <option value="">Country</option>
+
+                        <option value={chooseCountry?.name}>
+                            {chooseCountry?.name}
                         </option>
-                        </datalist>
+                        </select>
                     </div>
                     <div className="Second_Page_inputs_second_line">
                          <input className="Second_Page_input" placeholder="Phone number" type="tel" 

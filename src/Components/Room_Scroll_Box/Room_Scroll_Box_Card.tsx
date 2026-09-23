@@ -15,10 +15,11 @@ type RoomCardProps = {
     roomPrivatePool: boolean;
     roomPrivatePoolPhoto: string;
     roomPrice: number;
+    onChoose: () => void;
 };
 const Room_Scroll_Box_Card = ({room,roomPhoto,roomDescription,bedPhoto,roomBeds,
     roomWifi,roomWifiPhoto,roomBath,roomBathPhoto,roomPrivatePool,
-    roomPrivatePoolPhoto,roomPrice}: RoomCardProps) => {
+    roomPrivatePoolPhoto,roomPrice, onChoose}: RoomCardProps) => {
     
     return(
         <div className="Room_Scroll_Box_Card">
@@ -43,8 +44,8 @@ const Room_Scroll_Box_Card = ({room,roomPhoto,roomDescription,bedPhoto,roomBeds,
                 </div>
                 <div className="Room_Scroll_Box_price_and_btns">
                     <div className="Room_Scroll_Box_price">{roomPrice}$</div>
-                    <button className="Room_Scroll_Box_choose_btn">CHOOSE</button>
-                    <button className="Room_Scroll_Box_info_btn">+INFO</button>
+                    <button className="Room_Scroll_Box_choose_btn" onClick={onChoose}>CHOOSE</button>
+                    <button className="Room_Scroll_Box_info_btn" onClick={onChoose}>+INFO</button>
                 </div>
             </div>
     );

@@ -7,6 +7,7 @@ import type { Reservation } from "../../Models/Reservation_Model";
 import prev_btn_photo from "./photo/prev_btn_photo.png";
 import type { DebitCard } from "../../Models/DebitCard_Model";
 import type { Payment_Method } from "../../Models/Payment_Method_Model";
+import Book_Page_Data from "./Book_Page_Data";
 
 const Book_Page_Third = () => {
    const navigate = useNavigate();
@@ -35,7 +36,6 @@ const Book_Page_Third = () => {
     const [cardNumber, setCardNumber] = useState("");
     const [cardDate, setCardDate] = useState("");
     const [agreement, setAgreement] = useState<boolean>(false);
-
     const handleOnClickAgreement = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setAgreement(e.target.checked);
     };
@@ -45,9 +45,26 @@ const Book_Page_Third = () => {
         cardNumber.trim() !== "" &&
         cardDate.trim() !== "" &&
         agreement !== false;
+        
+    const saveBookingData = () => {
+        const oldData = JSON.parse(localStorage.getItem("bookingData") || "{}");
+        
+        const bookingData = {
+        ...oldData,
+        typeOfDebitCard,
+        cardNumber,
+        cardDate,
+        agreement,
+        };
+        
+        localStorage.setItem("bookingData", JSON.stringify(bookingData));
+    };
+    const [openData, setOpenData] = useState(false);
 
+    saveBookingData();
     const handleOnClick = () => {
         if(!isFiiled) return;
+        saveBookingData();
         navigate(`/hotel/${hotel.id}/room/${room.id}/finale`)
     };
     const handleOnClickback = () => {
@@ -63,19 +80,16 @@ const Book_Page_Third = () => {
                 </div>
                 <div className="Third_Page_inputs">
                     <div className="Third_Page_inputs_line">
-                        <input
+                        <select
                         className="Third_Page_input"
-                        list="debitCards"
-                        placeholder="Type of your debit card"
                         value={typeOfDebitCard}
-                        onChange={(event) => setTypeOfDebitCard(event.target.value)}
-                        required
-                        />
-                        <datalist id="debitCards">
-                        <option defaultValue={chooseCard?.type}>
+                        onChange={(event) => setTypeOfDebitCard(event.target.value)}>
+                        <option value="">Type of your debit card</option>
+
+                        <option value={chooseCard?.type}>
                         {chooseCard?.type}
                         </option>
-                        </datalist>
+                        </select>
                         <div className="Third_Page_no_card_box">
                            <a href="#" className="No_card">No card?</a>
                         </div>
@@ -108,8 +122,16 @@ const Book_Page_Third = () => {
                 disabled={!isFiiled}>COMPLETE THE BOOKING</button>
             </div>
             <div className="Third_Page_btn_box">
-                <button className="Third_Page_check_btn">Check the data before submitting</button>
+                <button className="Third_Page_check_btn" onClick={() => setOpenData(true)}>Check the data before submitting</button>
             </div>
+            {openData &&(
+                <Book_Page_Data 
+                data={JSON.parse(
+                    localStorage.getItem("bookingData") || "{}"
+                )}
+                onClose={() => setOpenData(false)}
+                />
+            )}
         </div>
     );
 };

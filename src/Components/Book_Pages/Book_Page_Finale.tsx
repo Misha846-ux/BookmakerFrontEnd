@@ -40,6 +40,9 @@ const Book_Page_Finale = () => {
     const handleOnClickback = () => {
         navigate(`/hotel/${hotel.id}`)
     };
+    const handleOnClickMain = () => {
+        navigate(`/`)
+    };
     return(
         <div className="Finale_Page_body">
             <div className="Finale_Page_content">
@@ -87,7 +90,7 @@ const Book_Page_Finale = () => {
             </div>
             </div>
             <div className="Finale_Page_route">
-                <label className="Finale_Page_text"> Show the route</label><img  style={{marginLeft: "1%"}} src={route_btn_photo}/>
+                <button className="Finale_Page_text" onClick={handleOnClickMain}> Show the route</button><img  style={{marginLeft: "1%"}} src={route_btn_photo}/>
             </div>
             </div>
             <button onClick={handleOnClickback} className="Finale_Page_btn_box">

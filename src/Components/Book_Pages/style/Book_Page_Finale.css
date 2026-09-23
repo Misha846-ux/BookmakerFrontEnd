@@ -162,6 +162,8 @@
     margin-left: 3%;
 }
 .Finale_Page_text{
+    background-color: white;
+    border: none;
     color: #581ADB;
     font-family: "Nunito Sans";
     font-weight: 400;

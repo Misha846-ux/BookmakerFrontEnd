@@ -15,7 +15,11 @@ import photo_description_2 from "../../Components/Room_Book/photo/photo_descript
 import photo_description_3 from "../../Components/Room_Book/photo/photo_description_3.png"
 import Review_Card from "../Reviews/Review_Card";
 import "../HotelsThirdPage/style//HotelsThirdPage.css"
-const Room_Book = () => {
+type RoomProps = {
+    room: Room;
+};
+
+const Room_Book = ({room}: RoomProps) => {
     const navigate = useNavigate();
 
     const {hotel_id} = useParams();
@@ -30,11 +34,9 @@ const Room_Book = () => {
         return <div>Hotel not found</div>;
     };
 
-    const hotelRooms = data.rooms.filter(room => room.hotel === hotel.id);
+    
 
     const hotelReviews = data.reviews.filter(review => review.hotel === hotel.id);
-
-    const room: Room | undefined = hotelRooms[0];
 
     const city: City | undefined = data.cities.find(city => city.id === hotel.city);
 

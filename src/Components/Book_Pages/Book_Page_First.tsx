@@ -50,11 +50,23 @@ const Book_Page_First = () => {
         surname.trim() !== "" &&
         email.trim() !== "" &&
         confirmEmail.trim() !== "" &&
-        password.trim() !== "" &&
         emailsMatch;
 
     const handleOnClick = () => {
         if(!isFiiled) return;
+        const bookingData = {
+            name,
+            surname,
+            email,
+            confirmEmail,
+            password,
+            cityGuide,
+            changeBooking,
+        }
+        localStorage.setItem(
+            "bookingData",
+            JSON.stringify(bookingData)
+        );
         navigate(`/hotel/${hotel.id}/room/${room.id}/second`)
     };
     return(
@@ -91,7 +103,7 @@ const Book_Page_First = () => {
                     </div>
                     <div className="First_Page_inputs_forth_line">
                         <input className="First_Page_input" placeholder="choose a password for your booking" type="password" 
-                        name="password" value={password} onChange={(event) => setPassword(event.target.value)} required/>
+                        name="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
                         {shortPassword && (
                             <div className="First_Page_input_text">
                                 It’s optional, but it’s safer!
