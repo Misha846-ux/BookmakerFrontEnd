@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState, useEffect, useCallback} from "react";
+import { useSearchParams,useLocation  } from "react-router-dom";
 import type { AdvancedSearchDTO } from "../../Models/dto";
 import AsideSideBar from "../../Components/AsideSideBar/AsideSideBar";
 import ScrollBox from "../../Components/SecondPageScrollBox/ScrollBox/ScrollBox";
@@ -44,6 +44,7 @@ function readFiltersFromSearchParams(params: URLSearchParams): AdvancedSearchDTO
 }
 
 const HotelsSecondPage = () => {
+	const location = useLocation();
 	const [searchParams] = useSearchParams();
 
 	const [filters, setFilters] = useState<AdvancedSearchDTO>(() => {
@@ -51,6 +52,9 @@ const HotelsSecondPage = () => {
 		const fromCookie = readFiltersFromCookie();
 		return { ...fromCookie, ...fromUrl };
 	});
+	useEffect(() => {
+		setFilters(readFiltersFromCookie());
+	}, [location.key]);
 
 	useEffect(() => {
 		const hasValues = Object.keys(filters).length > 0;

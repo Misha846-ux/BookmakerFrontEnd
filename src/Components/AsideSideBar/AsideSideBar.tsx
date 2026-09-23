@@ -18,7 +18,7 @@ const StarIcon = () => (
 );
 
 const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
-    const minPrice = filters.nightPrice ?? 76;
+    const minPrice = filters.nightPrice ?? 0;
     const rating = filters.rate ?? null;
     const stars = filters.stars ?? null;
     const hasWifi = filters.wifi ?? false;
@@ -55,7 +55,7 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
                 </div>
                 <input 
                     type="range" 
-                    min="76" 
+                    min="0"
                     max="230" 
                     value={minPrice} 
                     onChange={(e)=> onFilterChange({ ...filters, nightPrice: Number(e.target.value) })} 
