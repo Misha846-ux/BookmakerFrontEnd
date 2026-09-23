@@ -9,3 +9,14 @@ export async function createReservation(
         ...jsonBody(reservation),
     });
 }
+
+export async function getReservation(
+    reservationId: number,
+    viewToken?: string | null,
+): Promise<ReservationDTO> {
+    const query = viewToken ? `?token=${encodeURIComponent(viewToken)}` : "";
+    return apiRequest<ReservationDTO>(
+        `/reservation/${reservationId}/${query}`,
+        { method: "GET" },
+    );
+}

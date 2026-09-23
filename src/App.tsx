@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthProvider } from "./Context/AuthContext";
+import { BookingProvider } from "./Context/BookingContext";
 import General from "./RouterComponents/General";
 import "./Main.css"
 
@@ -11,7 +12,9 @@ function App() {
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <BrowserRouter>
         <AuthProvider>
-          <General />
+          <BookingProvider>
+            <General />
+          </BookingProvider>
         </AuthProvider>
       </BrowserRouter>
     </GoogleOAuthProvider>

@@ -45,13 +45,28 @@ export type ReservationDTO = {
     email: string;
     phoneNumber: string;
     cityGuide: boolean;
+    allowChangeBooking: boolean;
+    confirmByCall: boolean;
+    confirmByEmail: boolean;
+    totalPrice: string | null;
     room: number;
     user: number | null;
     country: number | null;
     payMethod: number | null;
+    viewToken: string;
 };
 
-export type CreateReservationDTO = Omit<ReservationDTO, "id">;
+export type RoomAvailabilityDTO = {
+    available: boolean;
+    room: RoomDTO;
+};
+
+export type CreateReservationDTO = Omit<
+    ReservationDTO,
+    "id" | "user" | "totalPrice" | "viewToken"
+> & {
+    password?: string;
+};
 
 export type HotelDTO = {
     id: number;

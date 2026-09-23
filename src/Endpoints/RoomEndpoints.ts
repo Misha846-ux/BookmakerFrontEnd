@@ -4,6 +4,7 @@ import type {
     PaginationDTO,
     PhotoUploadResponse,
     PhotosResponse,
+    RoomAvailabilityDTO,
     RoomDTO,
 } from "../Models/dto";
 import { apiRequest, jsonBody, paginationQuery } from "./apiRequest";
@@ -34,13 +35,16 @@ export async function getRoomPhotos(roomId: number): Promise<PhotosResponse> {
     });
 }
 
-export async function getRooms(
-    pagination: PaginationDTO,
-): Promise<PaginatedRoomsResponse> {
-    return apiRequest<PaginatedRoomsResponse>(
-        `/rooms/get/${paginationQuery(pagination)}`,
-        {
-            method: "PUT",
-        },
-    );
+export async function getRoomAvailability(
+    roomId: number,
+    checkIn: string,
+    checkOut: string,
+): Promise<RoomAvailabilityDTO> {
+    return apiRequest<RoomAvailabilityDTO>(`/rooms/${roomId}/availability/`, {
+        method: "PUT",
+        ...jsonBody({
+            checkIn: `${checkIn}T00:00:00`,
+            checkOut: `${checkOut}T00:00:00`,
+        }),
+    });
 }

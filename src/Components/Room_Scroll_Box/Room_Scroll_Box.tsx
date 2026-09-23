@@ -26,7 +26,7 @@ const Room_Scroll_Box = ({rooms, roomPhotos, primaryRoomId}: RoomScrollBoxProps)
             <Room_Scroll_Box_Card
                         key={room.id}
                         room={room}
-                        roomPhoto={roomPhotos[room.id]?.[0] ?? "/room-placeholder.jpg"}
+                        roomPhoto={roomPhotos[room.id]?.[0] ?? "/room-placeholder.svg"}
                         roomDescription={room.description ?? ""}
                         bedPhoto={bed_photo}
                         roomBeds={room.beds}

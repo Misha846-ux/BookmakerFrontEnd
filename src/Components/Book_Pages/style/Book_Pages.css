@@ -76,3 +76,77 @@
 .Book_Page_btn:hover{
    background-color: #DDDDDD;
 }
+.Book_Page_dates_body{
+    height: 100vh;
+    width: 100%;
+    min-height: 600px;
+    min-width: 1650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Book_Page_dates_box{
+    width: 40%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+.Book_Page_dates_title{
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    font-size: 24px;
+    color: #581ADB;
+}
+.Book_Page_dates_inputs{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+.Book_Page_dates_inputs input{
+    border: 1px solid #DDDDDD;
+    border-radius: 64px;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    color: #222222;
+    padding: 8px 14px;
+}
+.Book_Page_dates_btn{
+    width: 50%;
+    height: 42px;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #581ADB;
+    border-radius: 60px;
+    border: none;
+    cursor: pointer;
+}
+.Book_Page_dates_error{
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    color: #c02424;
+}
+.Book_Page_error_text{
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    font-size: 20px;
+    color: #717171;
+    margin-bottom: 20px;
+}
+.Book_Page_error_btn{
+    height: 46px;
+    width: 40%;
+    font-size: 16px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #581ADB;
+    border-radius: 60px;
+    border: none;
+    cursor: pointer;
+}
