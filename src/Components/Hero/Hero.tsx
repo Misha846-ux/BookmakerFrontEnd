@@ -345,7 +345,6 @@ const Hero = () => {
                     </span>
                 </button>
             </div>
-            {error && <div className="search_error">{error}</div>}
         </section>
     );
 };
