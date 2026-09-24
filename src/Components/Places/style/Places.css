@@ -18,37 +18,67 @@
     width:100%;
     border-radius: 13px;
 }
-.Place_top{
-    height: 6%;
-    width:100%;
+
+.Place_top {
+    height: 12%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow: hidden;
+
+    font-family: 'Nunito Sans';
+    margin: 0;
+}
+
+.Place__hotel_name {
+    width: 100%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-weight: 700;
+    font-size: 18px;
+    color: #222222;
+}
+
+.Place__location {
+    width: 100%;
+
     display: flex;
     align-items: center;
+
     overflow: hidden;
-    font-family: 'Nunito Sans';
-    font-style:"SemiBold";
+
+    margin-top: 3px;
+
     font-weight: 400;
     font-size: 16px;
     color: #717171;
-    margin: 0; 
+
+    white-space: nowrap;
 }
-.Place__hotel_name{
-    height: 100%;
-    width:50%;
-    margin-right: 1%;
-    min-width: 0;
+
+.Place__city_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-.Place__city_name{
-    height: 100%;
-    width:25%;
-    display: flex;
-    justify-content: center;
+
+.Place_separator {
+    flex: 0 0 auto;
+    margin: 0 4px;
 }
-.Place__country_name{
-    height: 100%;
-    width:25%;
-    display: flex;
-    justify-content: center;
+
+.Place__country_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
 .Place_content{
     height: 30%;
     width:100%;

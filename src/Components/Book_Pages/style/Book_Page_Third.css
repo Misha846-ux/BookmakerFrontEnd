@@ -183,3 +183,133 @@
     color: #581ADB;
 
 }
+.Third_Page_saved_cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.Third_Page_saved_card{
+    border: 1px solid #DDDDDD;
+    border-radius: 64px;
+    padding: 8px 16px;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    color: #717171;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.Third_Page_saved_card.active{
+    border-color: #581ADB;
+    color: #581ADB;
+    background: rgba(88, 26, 219, 0.05);
+}
+.Third_Page_saved_card input{
+    accent-color: #581ADB;
+}
+.Third_Page_total{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 8px auto 0;
+    padding: 10px 20px;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 16px;
+    color: #717171;
+    box-sizing: border-box;
+}
+.Third_Page_total_value{
+    color: #581ADB;
+}
+.Third_Page_error_text{
+    width: 60%;
+    margin: 8px auto 0;
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    font-size: 15px;
+    color: #c02424;
+    text-align: center;
+}
+.Third_Page_submitting{
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #581ADB;
+}
+.Third_Page_modal_overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Third_Page_modal{
+    width: 480px;
+    max-width: 90%;
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+.Third_Page_modal_title{
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    font-size: 20px;
+    color: #222222;
+    margin-bottom: 16px;
+}
+.Third_Page_modal_row{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #EEEEEE;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    color: #717171;
+}
+.Third_Page_modal_row span:last-child{
+    text-align: right;
+    color: #222222;
+    font-weight: 600;
+}
+.Third_Page_modal_btns{
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+.Third_Page_modal_cancel{
+    border: 1px solid #DDDDDD;
+    background: #FFFFFF;
+    color: #717171;
+    border-radius: 60px;
+    padding: 10px 22px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    cursor: pointer;
+}
+.Third_Page_modal_confirm{
+    border: none;
+    background: #581ADB;
+    color: #FFFFFF;
+    border-radius: 60px;
+    padding: 10px 22px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    cursor: pointer;
+}

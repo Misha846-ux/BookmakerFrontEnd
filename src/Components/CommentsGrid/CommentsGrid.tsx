@@ -1,25 +1,17 @@
 import { useState } from "react";
 import "./CommentsGrid.css";
-import type { User } from "../../Models/User_Model";
-import type { Hotel } from "../../Models/Hotel_Model";
-import type { Review } from "../../Models/Reviews_Model";
+import type { HotelDTO, ReviewDTO } from "../../Models/dto";
 import Review_Card from "../Reviews/Review_Card";
 
 type CommentsGridProps = {
-  reviews: Review[];
-  users: User[];
-  hotels: Hotel[];
-  hotelId?: number;
+  reviews: ReviewDTO[];
+  hotel: HotelDTO;
 };
 
-const CommentsGrid = ({ reviews, users, hotels, hotelId }:CommentsGridProps)=> {
+const CommentsGrid = ({ reviews, hotel }: CommentsGridProps) => {
   const [visibleCount, setVisibleCount] = useState<number>(9);
 
-  const filteredReviews = hotelId
-    ? reviews.filter((review) => review.hotel === hotelId)
-    : reviews;
-
-  const visibleReviews = filteredReviews.slice(0, visibleCount);
+  const visibleReviews = reviews.slice(0, visibleCount);
 
   const handleLoadMore = () => setVisibleCount((prev) => prev + 9);
 
@@ -29,23 +21,19 @@ const CommentsGrid = ({ reviews, users, hotels, hotelId }:CommentsGridProps)=> {
 
       <div className="Reviews_content Comments_content_grid">
         {visibleReviews.map((review) => {
-          const user = users.find((u) => u.id === review.user);
-          const hotel = hotels.find((h) => h.id === review.hotel);
-
           return (
             <div className="Review_card_container" key={review.id}>
               <Review_Card
                 review={review}
-                userPhoto={user?.photo}
-                userName={user?.name}
-                hotelName={hotel?.name}
+                userName={`Guest #${review.user}`}
+                hotelName={hotel.name}
               />
             </div>
           );
         })}
       </div>
 
-      {visibleCount < filteredReviews.length && (
+      {visibleCount < reviews.length && (
         <div className="Comments_more_container">
           <button className="Comments_more_btn" onClick={handleLoadMore}>
             more

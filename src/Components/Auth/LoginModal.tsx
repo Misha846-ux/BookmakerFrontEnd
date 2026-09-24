@@ -1,28 +1,60 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { useGoogleLogin } from '@react-oauth/google'
+import { useAuth } from '../../Context/AuthContext'
 import './Auth.css'
 
 interface LoginModalProps {
   isOpen: boolean
   onClose: () => void
   onSwitchToRegister: () => void
-  onContinue: () => void
+  onLoginSuccess: (hasInfo: boolean) => void
+  onGoogleSuccess: () => void
 }
 
-function LoginModal({ isOpen, onClose, onSwitchToRegister, onContinue,}: LoginModalProps) {
+function LoginModal({ isOpen, onClose, onSwitchToRegister, onLoginSuccess, onGoogleSuccess }: LoginModalProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { login, loginWithGoogle } = useAuth()
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        setError('')
+        await loginWithGoogle(tokenResponse.access_token)
+        onGoogleSuccess()
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Google login failed')
+      }
+    },
+    onError: () => {
+      setError('Google login was cancelled or failed')
+    },
+  })
 
   if (!isOpen) {
     return null
   }
 
   const isFormComplete = Boolean(email.trim() && password.trim())
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (isFormComplete) {
-      onContinue()
+    if (!isFormComplete) return
+
+    setError('')
+    setIsSubmitting(true)
+    try {
+      await login(email, password)
+      const { getProfileStatus } = await import('../../Endpoints/UserEndpoints')
+      const status = await getProfileStatus()
+      onLoginSuccess(status.has_info)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Login failed')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -35,16 +67,18 @@ function LoginModal({ isOpen, onClose, onSwitchToRegister, onContinue,}: LoginMo
 
         <h1 className="auth-title" id="login-modal-title"> Sign In </h1>
 
+        {error && <p className="auth-description" style={{ color: '#e53e3e', textAlign: 'center' }}>{error}</p>}
+
         <form className="auth-form" onSubmit={handleSubmit}>
           <div className="auth-field">
-            <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" placeholder="Email"/>
+            <label htmlFor="login-email">Email</label>
+            <input id="login-email" name="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" placeholder="Email"/>
           </div>
 
           <div className="auth-field">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="login-password">Password</label>
             <div className="auth-password-input-wrapper">
-              <input className="auth-password-input" id="password" name="password" type={showPassword ? 'text' : 'password'} value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" placeholder="Password"/>
+              <input className="auth-password-input" id="login-password" name="password" type={showPassword ? 'text' : 'password'} value={password} onChange={(event) => setPassword(event.target.value)} autoComplete="current-password" placeholder="Password"/>
               <button className="auth-password-toggle" type="button" onClick={() => setShowPassword((isVisible) => !isVisible)} aria-label={showPassword ? 'Hide password' : 'Show password'} aria-pressed={showPassword}>
                 <svg className="auth-password-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3 12C4.8 8.4 7.8 6.5 12 6.5S19.2 8.4 21 12c-1.8 3.6-4.8 5.5-9 5.5S4.8 15.6 3 12Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -55,7 +89,9 @@ function LoginModal({ isOpen, onClose, onSwitchToRegister, onContinue,}: LoginMo
             </div>
           </div>
 
-          <button className="auth-continue" type="submit" disabled={!isFormComplete}> Continue </button>
+          <button className="auth-continue" type="submit" disabled={!isFormComplete || isSubmitting}>
+            {isSubmitting ? 'Please wait...' : 'Continue'}
+          </button>
         </form>
 
         <p className="auth-switch">
@@ -63,7 +99,7 @@ function LoginModal({ isOpen, onClose, onSwitchToRegister, onContinue,}: LoginMo
           <button type="button" onClick={onSwitchToRegister}> Register </button>
         </p>
 
-        <button className="auth-google" type="button" aria-label="Sign in with Google">
+        <button className="auth-google" type="button" aria-label="Sign in with Google" onClick={() => googleLogin()}>
           <svg className="google-mark" aria-hidden="true" viewBox="0 0 18 18">
             <path fill="#4285F4" d="M17.64 9.205c0-.638-.057-1.252-.164-1.841H9v3.483h4.844a4.14 4.14 0 0 1-1.796 2.716v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.616Z" />
             <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.179l-2.908-2.258c-.806.54-1.834.86-3.048.86-2.347 0-4.337-1.586-5.047-3.72H.947v2.332A9 9 0 0 0 9 18Z" />

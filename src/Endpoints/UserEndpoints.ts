@@ -26,6 +26,28 @@ export async function verifyAccount(account: AuthAccountDTO): Promise<string> {
     });
 }
 
+export async function login(account: AuthAccountDTO): Promise<{ access: string; refresh: string }> {
+    return apiRequest<{ access: string; refresh: string }>("/user/login", {
+        method: "POST",
+        ...jsonBody(account),
+    });
+}
+
+export async function googleLogin(accessToken: string): Promise<{ access: string; refresh: string }> {
+    return apiRequest<{ access: string; refresh: string }>("/user/google/login/", {
+        method: "POST",
+        ...jsonBody({ access_token: accessToken }),
+    });
+}
+
+export async function getCurrentUser(): Promise<UserProfileResponse> {
+    return apiRequest<UserProfileResponse>("/user/me/");
+}
+
+export async function getProfileStatus(): Promise<{ has_info: boolean }> {
+    return apiRequest<{ has_info: boolean }>("/user/profile-status/");
+}
+
 export async function updateUserProfile(
     userId: number,
     profile: UserProfileUpdateDTO,
