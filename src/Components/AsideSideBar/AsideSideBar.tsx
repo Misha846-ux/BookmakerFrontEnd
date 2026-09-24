@@ -45,6 +45,23 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
         { stars: 1 },
     ];
 
+    const handleSingleChoiceToggle = <T extends string | number>(
+        field: keyof AdvancedSearchDTO,
+        value: T,
+        currentValue: T | null | undefined,
+    ) => {
+        const nextFilters = { ...filters };
+
+        if (currentValue === value) {
+            delete nextFilters[field];
+            onFilterChange(nextFilters);
+            return;
+        }
+
+        (nextFilters as Record<string, unknown>)[field as string] = value;
+        onFilterChange(nextFilters);
+    };
+
     return(
         <aside className="sidebar">
             <div className="sidebar_section">
@@ -71,7 +88,8 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
                         name="rating"
                         value={item.value}
                         checked={rating === item.value}
-                        onChange={() => onFilterChange({ ...filters, rate: item.value })}
+                        onClick={() => handleSingleChoiceToggle("rate", item.value, rating)}
+                        onChange={() => undefined}
                     />
                     <span>{item.label}</span>
                     </div>
@@ -89,7 +107,8 @@ const AsideSideBar = ({ filters, onFilterChange }: AsideSideBarProps) =>{
                         name="stars"
                         value={item.stars}
                         checked={stars === item.stars}
-                        onChange={() => onFilterChange({ ...filters, stars: item.stars })}
+                        onClick={() => handleSingleChoiceToggle("stars", item.stars, stars)}
+                        onChange={() => undefined}
                     />
                     <span className="stars">{Array.from({ length: item.stars }).map((_, index) => (
                   <StarIcon key={index} />

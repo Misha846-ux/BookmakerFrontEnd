@@ -1,4 +1,6 @@
 import "./Header.css"
+import { useNavigate } from "react-router-dom";
+import { deleteCookie } from "../../utils/cookies";
 
 type User = {
     id: number;
@@ -13,11 +15,22 @@ interface HeaderProps {
     onLogout: () => void
 }
 
+const FILTER_COOKIE = "hotel_search_filters";
+
 const Header = ({ onRegister, onSignIn, user, onLogout }: HeaderProps) =>{
+    const navigate = useNavigate();
+
+    const handleHomeClick = () => {
+        deleteCookie(FILTER_COOKIE);
+        navigate("/", { replace: true });
+    };
+
     return(
         <header className="header">
             <div className="header_container">
-                <p className="text_hotel">Hotel for <span className="text_purple">you.</span></p>
+                <button type="button" className="text_hotel_button" onClick={handleHomeClick}>
+                    <span className="text_hotel">Hotel for <span className="text_purple">you.</span></span>
+                </button>
                 <div className="header_actions">
                     <div className="language_select"></div>
                     {user ? (
