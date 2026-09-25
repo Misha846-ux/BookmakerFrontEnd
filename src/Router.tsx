@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import HotelsGeneralBackGround from "./RouterComponents/HotelsRouts/HotelsGeneralBackGround";
 import HotelsMainPage from "./RouterComponents/HotelsRouts/HotelsMainPage";
 import HotelsSecondPage from "./RouterComponents/HotelsRouts/HotelsSecondPage";
-import HotelsThirdPage from "./Components/HotelsThirdPage/HotelsThirdPage";
+import RoomsPage from "./RouterComponents/RoomsPage/RoomsPage";
 import Book_Pages from "./Components/Book_Pages/Book_Pages";
 import Book_Page_First from "./Components/Book_Pages/Book_Page_First";
 import Book_Page_Second from "./Components/Book_Pages/Book_Page_Second";
@@ -15,7 +15,7 @@ const Router = () => {
 			<Route element={<HotelsGeneralBackGround />}>
 				<Route path="/" element={<HotelsMainPage />} />
 				<Route path="/hotels" element={<HotelsSecondPage />} />
-				<Route path="/hotel/:hotel_id" element={<HotelsThirdPage/>}></Route>
+				<Route path="/hotel/:hotel_id" element={<RoomsPage/>}></Route>
 				<Route path="/hotel/:hotel_id/room/:room_id" element={<Book_Pages/>}>
 					<Route index element={<Navigate to="first" replace />}></Route>
 					<Route path="first" element={<Book_Page_First/>}></Route>
