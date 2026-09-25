@@ -1,5 +1,5 @@
 import "../Reviews/style/Reviews.css";
-import type { MainPageReviewDTO } from "../../Models/dto";
+import type { MainPageReviewDTO, ReviewDTO } from "../../Models/dto";
 import Review_Card from "./Review_Card";
 
 type ReviewProps = {
@@ -17,7 +17,16 @@ const Reviews = ({ reviews }: ReviewProps) => {
                         className="Review_card_container"
                         key={review.id}
                     >
-                        <Review_Card review={review} />
+                        <Review_Card
+                            review={{
+                                id: review.id,
+                                review: review.review,
+                                createdAt: review.createdAt,
+                                rating: review.rating,
+                                user: review.user.id,
+                                hotel: review.hotel.id,
+                            } satisfies ReviewDTO}
+                        />
                     </div>
                 ))}
             </div>

@@ -25,8 +25,6 @@ const CommentsGrid = ({ reviews, hotel }: CommentsGridProps) => {
             <div className="Review_card_container" key={review.id}>
               <Review_Card
                 review={review}
-                userName={`Guest #${review.user}`}
-                hotelName={hotel.name}
               />
             </div>
           );
