@@ -85,7 +85,7 @@ const Book_Page_Third = () => {
             ]);
             setDebitCards(cardsResponse);
             setSavedCards(savedResponse);
-            setDebitCardNames(Object.fromEntries(cardsResponse.map((c) => [c.id, c.name])));
+            setDebitCardNames(Object.fromEntries(cardsResponse.map((c) => [c.id, c.name ?? c.type ?? "Card"])));
             if (!user?.payMethod) return;
             const defaultCard = savedResponse.find((card) => card.id === user.payMethod);
             if (defaultCard) setSelectedCardId(defaultCard.id);
@@ -106,34 +106,14 @@ const Book_Page_Third = () => {
     const cardDigits = digitsOnly(cardNumber);
     const cardDigitsValid = cardDigits.length >= 13 && cardDigits.length <= 19;
     const cardDateValid = /^\d{2}\/\d{2}$/.test(cardDate);
-    const cardDateMonthValid = cardDateValid
-        ? Number(cardDate.split("/")[0]) >= 1 && Number(cardDate.split("/")[0]) <= 12
-        : false;
 
+    const getCardTypeName = (card: DebitCardDTO) => card.name ?? card.type ?? "";
+    const normalizedCardType = typeOfDebitCard.trim().toLowerCase();
     const cardTypeId = debitCards.find(
-        (card) => card.name.toLowerCase() === typeOfDebitCard.trim().toLowerCase(),
+        (card) => getCardTypeName(card).trim().toLowerCase() === normalizedCardType,
     )?.id;
 
-    const manualCardValid =
-        typeOfDebitCard.trim() !== "" &&
-        cardTypeId !== undefined &&
-        cardDigits.trim() !== "" &&
-        cardDigitsValid &&
-        cardDateValid &&
-        cardDateMonthValid;
-
     const hasSelectedSavedCard = selectedCardId !== null;
-
-    const isFiiled = (manualCardValid || hasSelectedSavedCard) && agreement;
-
-    const handleDateChange = (value: string) => {
-        const digits = digitsOnly(value).slice(0, 4);
-        if (digits.length <= 2) {
-            setCardDate(digits);
-        } else {
-            setCardDate(`${digits.slice(0, 2)}/${digits.slice(2)}`);
-        }
-    };
 
     const cardDateValue = cardDate.length === 5
         ? `20${cardDate.slice(3)}-${cardDate.slice(0, 2)}-01`
@@ -161,9 +141,41 @@ const Book_Page_Third = () => {
     };
 
     const handleOnClick = async () => {
-        if (!isFiiled || submitting) return;
-        if (!room || !checkIn || !checkOut) {
-            setSubmitError("Booking data is incomplete. Please start over.");
+        if (submitting) return;
+        if (!room) {
+            setSubmitError("Room data is missing. Please start the booking again.");
+            return;
+        }
+        if (!checkIn || !checkOut) {
+            setSubmitError("Please select check-in and check-out dates.");
+            return;
+        }
+        if (!guest.name.trim() || !guest.surname.trim() || !guest.email.trim()) {
+            setSubmitError("Please complete your personal information first.");
+            return;
+        }
+        if (!contact.countryId || !contact.phoneNumber.trim()) {
+            setSubmitError("Please complete your contact information first.");
+            return;
+        }
+        if (!hasSelectedSavedCard && !typeOfDebitCard.trim()) {
+            setSubmitError("Please choose a card type.");
+            return;
+        }
+        if (!hasSelectedSavedCard && cardTypeId === undefined) {
+            setSubmitError("Please choose a card type from the list.");
+            return;
+        }
+        if (!hasSelectedSavedCard && !cardDigitsValid) {
+            setSubmitError("Card number must contain 13 to 19 digits.");
+            return;
+        }
+        if (!hasSelectedSavedCard && !cardDateValid) {
+            setSubmitError("Please choose the card expiry date from the calendar.");
+            return;
+        }
+        if (!agreement) {
+            setSubmitError("Please accept the booking conditions.");
             return;
         }
         setSubmitting(true);
@@ -272,8 +284,8 @@ const Book_Page_Third = () => {
                             required
                         />
                         <datalist id="debitCards">
-                            {debitCards.map((card) => (
-                                <option key={card.id} value={card.name} />
+                                            {debitCards.map((card) => (
+                                                <option key={card.id} value={getCardTypeName(card)} />
                             ))}
                         </datalist>
                         <div className="Third_Page_no_card_box">
@@ -336,7 +348,7 @@ const Book_Page_Third = () => {
             </div>
             <div className="Third_Page_btn_box">
                 <button className="Third_Page_continue_btn" type="submit" onClick={handleOnClick}
-                    disabled={!isFiiled || submitting || !room || !checkIn || !checkOut}>COMPLETE THE BOOKING</button>
+                    disabled={submitting}>COMPLETE THE BOOKING</button>
             </div>
             <div className="Third_Page_btn_box">
                 <button className="Third_Page_check_btn" onClick={() => setShowCheckModal(true)}>

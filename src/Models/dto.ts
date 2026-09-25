@@ -10,7 +10,8 @@ export type CurrencyDTO = {
 
 export type DebitCardDTO = {
     id: number;
-    name: string;
+    name?: string;
+    type?: string;
 };
 
 export type CityDTO = {
