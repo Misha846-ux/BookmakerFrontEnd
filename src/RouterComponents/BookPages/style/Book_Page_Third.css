@@ -76,6 +76,51 @@
     color: #717171;
     padding-left: 3%;
 }
+.Third_Page_card_date_picker{
+    position: relative;
+    width: 20%;
+    height: 70%;
+}
+.Third_Page_card_date_picker .Third_Page_input_date{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.Third_Page_card_date_popover{
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 190px;
+    padding: 14px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    background: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(34, 34, 34, 0.12);
+}
+.Third_Page_search_dates_popover{
+    display: flex;
+    gap: 16px;
+}
+.Third_Page_search_popover_field{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.Third_Page_search_popover_field label{
+    font-family: "Nunito Sans";
+    font-size: 12px;
+    color: #717171;
+}
+.Third_Page_search_popover_field input[type="date"]{
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #222222;
+}
 .Third_Page_input_text{
     height: 70%;
     width: 40%;

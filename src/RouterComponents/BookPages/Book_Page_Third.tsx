@@ -1,6 +1,6 @@
 ﻿import "./style/Book_Page_Third.css";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useBooking } from "../../Context/BookingContext";
 import { useAuth } from "../../Context/AuthContext";
 import { createPaymentMethod, getDebitCards, getMyPaymentMethods } from "../../Endpoints/PaymentMethodsEndpoints";
@@ -46,6 +46,19 @@ const Book_Page_Third = () => {
     const [submitting, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState("");
     const [showCheckModal, setShowCheckModal] = useState(false);
+    const [isCardDateOpen, setIsCardDateOpen] = useState(false);
+    const cardDateRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (cardDateRef.current && !cardDateRef.current.contains(event.target as Node)) {
+                setIsCardDateOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     const stepsCompleted =
         guest.name.trim() !== "" &&
@@ -120,6 +133,22 @@ const Book_Page_Third = () => {
         } else {
             setCardDate(`${digits.slice(0, 2)}/${digits.slice(2)}`);
         }
+    };
+
+    const cardDateValue = cardDate.length === 5
+        ? `20${cardDate.slice(3)}-${cardDate.slice(0, 2)}-01`
+        : "";
+
+    const handleCardDatePickerChange = (value: string) => {
+        if (!value) {
+            setCardDate("");
+            return;
+        }
+
+        const [year, month] = value.split("-");
+        setCardDate(`${month}/${year.slice(-2)}`);
+        setSelectedCardId(null);
+        setIsCardDateOpen(false);
     };
 
     const toIsoDate = (mmYY: string) => {
@@ -261,11 +290,26 @@ const Book_Page_Third = () => {
                         <div className="Third_Page_input_text">Required to confirm your booking</div>
                     </div>
                     <div className="Third_Page_inputs_line">
-                        <input className="Third_Page_input_date" placeholder="MM/YY" type="text"
-                            name="cardDate" value={cardDate} onChange={(event) => {
-                                setSelectedCardId(null);
-                                handleDateChange(event.target.value);
-                            }} required />
+                        <div className="Third_Page_card_date_picker" ref={cardDateRef}>
+                            <input className="Third_Page_input_date" placeholder="MM/YY" type="text"
+                                name="cardDate" value={cardDate}
+                                readOnly
+                                onClick={() => setIsCardDateOpen(true)} required />
+                            {isCardDateOpen && (
+                                <div className="Third_Page_card_date_popover Third_Page_search_dates_popover">
+                                    <div className="Third_Page_search_popover_field">
+                                        <label htmlFor="card-expiry-date">Card expiry date</label>
+                                    <input
+                                        id="card-expiry-date"
+                                        type="date"
+                                        value={cardDateValue}
+                                        min={new Date().toISOString().split("T")[0]}
+                                        onChange={(event) => handleCardDatePickerChange(event.target.value)}
+                                    />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
