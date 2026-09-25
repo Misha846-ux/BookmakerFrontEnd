@@ -1,4 +1,5 @@
 import type { HotelCardDataDTO } from "../../../Models/dto";
+import { useNavigate } from "react-router-dom";
 import "./HotelCard.css";
 
 type HotelCardProps = {
@@ -6,6 +7,8 @@ type HotelCardProps = {
 };
 
 const HotelCard = ({ data }: HotelCardProps) => {
+	const navigate = useNavigate();
+
 	if (!data) {
 		return <article className="hotel-card hotel-card--loading"><p>Loading...</p></article>;
 	}
@@ -24,8 +27,21 @@ const HotelCard = ({ data }: HotelCardProps) => {
 	if (cheapest_room_wifi) amenities.push("Wi-Fi");
 	if (cheapest_room_beds && cheapest_room_beds >= 2) amenities.push("comfortable");
 
+	const openHotelRooms = () => navigate(`/hotel/${hotel.id}`);
+
 	return (
-		<article className="hotel-card">
+		<article
+			className="hotel-card"
+			onClick={openHotelRooms}
+			onKeyDown={(event) => {
+				if (event.key === "Enter" || event.key === " ") {
+					event.preventDefault();
+					openHotelRooms();
+				}
+			}}
+			role="link"
+			tabIndex={0}
+		>
 			<div className="hotel-card__image-wrapper">
 				{imageUrl && (
 					<img
