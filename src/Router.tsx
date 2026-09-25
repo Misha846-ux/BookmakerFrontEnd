@@ -3,11 +3,11 @@ import HotelsGeneralBackGround from "./RouterComponents/HotelsRouts/HotelsGenera
 import HotelsMainPage from "./RouterComponents/HotelsRouts/HotelsMainPage";
 import HotelsSecondPage from "./RouterComponents/HotelsRouts/HotelsSecondPage";
 import RoomsPage from "./RouterComponents/RoomsPage/RoomsPage";
-import Book_Pages from "./Components/Book_Pages/Book_Pages";
-import Book_Page_First from "./Components/Book_Pages/Book_Page_First";
-import Book_Page_Second from "./Components/Book_Pages/Book_Page_Second";
-import Book_Page_Third from "./Components/Book_Pages/Book_Page_Third";
-import Book_Page_Finale from "./Components/Book_Pages/Book_Page_Finale";
+import Book_Pages from "./RouterComponents/BookPages/Book_Pages";
+import Book_Page_First from "./RouterComponents/BookPages/Book_Page_First";
+import Book_Page_Second from "./RouterComponents/BookPages/Book_Page_Second";
+import Book_Page_Third from "./RouterComponents/BookPages/Book_Page_Third";
+import Book_Page_Finale from "./RouterComponents/BookPages/Book_Page_Finale";
 
 const Router = () => {
 	return (

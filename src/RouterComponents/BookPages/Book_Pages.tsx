@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "../Book_Pages/style/Book_Pages.css";
-import "../Room_Scroll_Box/style/Room_Scroll_Box.css";
+import "./style/Book_Pages.css";
+import "../../Components/Room_Scroll_Box/style/Room_Scroll_Box.css";
 import { Outlet, useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { getCity } from "../../Endpoints/CityEndpoints";
 import { getHotelCardData } from "../../Endpoints/HotelEndpoints";

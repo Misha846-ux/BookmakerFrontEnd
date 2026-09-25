@@ -1,16 +1,16 @@
 import "./MainPage.css";
 import { useEffect, useState } from "react";
 
-import Places from "../Places/Places";
-import Reviews from "../Reviews/Reviews";
-import SafeWithUs from "../ExtraMainText/SafeWithUs/SafeWithUs";
-import BeOurRegular from "../ExtraMainText/BeOurRegular/BeOurRegular";
-import RegisterAccountButton from "../RegisterAccountButton/RegisterAccountButton";
-import type { CityDTO, CountryDTO, HotelCardDataDTO, HotelDTO, MainPageReviewDTO } from "../../Models/dto";
-import { getHotelCardDataBatch, getHotels } from "../../Endpoints/HotelEndpoints";
-import { getCities } from "../../Endpoints/CityEndpoints";
-import { getCountries } from "../../Endpoints/CountryEndpoints";
-import { getLatestReviews } from "../../Endpoints/ReviewEndpoints";
+import Places from "../../../Components/Places/Places";
+import Reviews from "../../../Components/Reviews/Reviews";
+import SafeWithUs from "../../../Components/ExtraMainText/SafeWithUs/SafeWithUs";
+import BeOurRegular from "../../../Components/ExtraMainText/BeOurRegular/BeOurRegular";
+import RegisterAccountButton from "../../../Components/RegisterAccountButton/RegisterAccountButton";
+import type { CityDTO, CountryDTO, HotelCardDataDTO, HotelDTO, MainPageReviewDTO } from "../../../Models/dto";
+import { getHotelCardDataBatch, getHotels } from "../../../Endpoints/HotelEndpoints";
+import { getCities } from "../../../Endpoints/CityEndpoints";
+import { getCountries } from "../../../Endpoints/CountryEndpoints";
+import { getLatestReviews } from "../../../Endpoints/ReviewEndpoints";
 
 const MainPage = () => {
     const [hotels, setHotels] = useState<HotelDTO[]>([]);
