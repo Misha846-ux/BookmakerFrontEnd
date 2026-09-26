@@ -29,7 +29,7 @@ const Header = ({ onRegister, onSignIn, user, onLogout }: HeaderProps) =>{
         <header className="header">
             <div className="header_container">
                 <button type="button" className="text_hotel_button" onClick={handleHomeClick}>
-                    <span className="text_hotel">Hotel for <span className="text_purple">you.</span></span>
+                    <span className="text_hotel">Hotel for <span className="text_purple">you</span></span>
                 </button>
                 <div className="header_actions">
                     <div className="language_select"></div>
