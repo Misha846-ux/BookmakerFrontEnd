@@ -15,7 +15,7 @@ const Router = () => {
 			<Route element={<HotelsGeneralBackGround />}>
 				<Route path="/" element={<HotelsMainPage />} />
 				<Route path="/hotels" element={<HotelsSecondPage />} />
-				<Route path="/hotel/:hotel_id" element={<RoomsPage/>}></Route>
+				<Route path="/hotel/:hotel_id/:room_id?" element={<RoomsPage/>}></Route>
 				<Route path="/hotel/:hotel_id/room/:room_id" element={<Book_Pages/>}>
 					<Route index element={<Navigate to="first" replace />}></Route>
 					<Route path="first" element={<Book_Page_First/>}></Route>

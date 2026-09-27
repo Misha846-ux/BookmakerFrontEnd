@@ -27,7 +27,7 @@ const Room_Scroll_Box_Card = ({room,roomPhoto,roomDescription,bedPhoto,roomBeds,
         const dates = searchParams.get("checkIn") && searchParams.get("checkOut")
             ? `?checkIn=${searchParams.get("checkIn")}&checkOut=${searchParams.get("checkOut")}`
             : "";
-        navigate(`/hotel/${room.hotel}/room/${room.id}${dates}`);
+        navigate(`/hotel/${room.hotel}/${room.id}${dates}`);
     };
     
     return(
