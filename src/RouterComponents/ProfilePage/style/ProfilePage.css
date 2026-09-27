@@ -1,0 +1,92 @@
+.ProfilePage_body{
+    min-width: 1630px;
+    min-height: 800px;
+    width: 100%;
+    border: 2px solid red;
+}
+.ProfilePage_top{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    border: 2px solid green;
+}
+.ProfilePage_btn{
+    width: 6%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #DDDDDD;
+    border-radius: 60px;
+    margin-left: 5%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+}
+.ProfilePage_btn:hover, 
+.ProfilePage_account_btn:hover, 
+.ProfilePage_payment_btn:hover{
+    background-color: #DDDDDD;
+    cursor: pointer;
+}
+.ProfilePage_btn_box{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+}
+.ProfilePage_account_btn{
+    width: 8%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #DDDDDD;
+    border-radius: 60px;
+    margin-left: 1%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+}
+.ProfilePage_account_btn img{
+    background-color: #717171;
+    width: 30%;
+    border-radius: 60px;
+}
+.ProfilePage_account_btn.active,
+.ProfilePage_payment_btn.active
+{
+    color: #581ADB;
+}
+.ProfilePage_account_btn.active img,
+.ProfilePage_payment_btn.active img{
+    background-color: #581ADB;
+}
+.ProfilePage_payment_btn{
+    width: 13%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #DDDDDD;
+    border-radius: 60px;
+    margin-left: 3%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+}
+.ProfilePage_payment_btn img{
+    background-color: #717171;
+    width: 18%;
+    border-radius: 60px;
+}
+.ProfilePage_content{
+    width: 100%;
+    height: 120vh;
+    border: 2px solid gray;
+}
