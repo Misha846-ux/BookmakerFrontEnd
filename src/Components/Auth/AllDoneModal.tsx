@@ -1,13 +1,25 @@
 import './Auth.css'
-
+import { useNavigate } from 'react-router-dom';
+import { getCurrentUser } from '../../Endpoints/UserEndpoints';
 interface AllDoneModalProps {
   isOpen: boolean
   onClose: () => void
   onCheckProfile: () => void
   onContinueBooking: () => void
 }
-
 function AllDoneModal({ isOpen, onClose, onCheckProfile, onContinueBooking }: AllDoneModalProps) {
+  const navigate = useNavigate();
+
+  const handleCheckProfile = async () => {
+    try{
+      const user = await getCurrentUser();
+      onClose();
+      navigate(`/profile/${user.id}`);
+    }
+    catch(error){
+      console.error('Failed to get current user:', error);
+    }
+  }
   if (!isOpen) {
     return null
   }
@@ -29,7 +41,7 @@ function AllDoneModal({ isOpen, onClose, onCheckProfile, onContinueBooking }: Al
         </div>
 
         <div className="auth-actions auth-actions--all-done">
-          <button className="auth-continue" type="button" onClick={onCheckProfile}>Check your profile!</button>
+          <button className="auth-continue" type="button" onClick={handleCheckProfile}>Check your profile!</button>
           <button className="auth-secondary" type="button" onClick={onContinueBooking}>Continue booking</button>
         </div>
       </section>

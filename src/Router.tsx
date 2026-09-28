@@ -8,7 +8,9 @@ import Book_Page_First from "./RouterComponents/BookPages/Book_Page_First";
 import Book_Page_Second from "./RouterComponents/BookPages/Book_Page_Second";
 import Book_Page_Third from "./RouterComponents/BookPages/Book_Page_Third";
 import Book_Page_Finale from "./RouterComponents/BookPages/Book_Page_Finale";
-
+import ProfilePage from "./RouterComponents/ProfilePage/ProfilePage";
+import Profile_Account from "./Components/Profile_Pages/Profile_Account/Profile_Account";
+import Profile_Payment from "./Components/Profile_Pages/Profile_Payment/Profile_Payment";
 const Router = () => {
 	return (
 		<Routes>
@@ -23,6 +25,11 @@ const Router = () => {
 					<Route path="third" element={<Book_Page_Third/>}></Route>
 				</Route>
 				<Route path="/hotel/:hotel_id/room/:room_id/finale" element={<Book_Page_Finale/>}></Route>
+				<Route path="/profile/:user_id" element={<ProfilePage/>}>
+				<Route index element={<Navigate to="account" replace />}></Route>
+					<Route path="account" element={<Profile_Account/>}></Route>
+					<Route path="payment" element={<Profile_Payment/>}></Route>
+				</Route>
 			</Route>
 		</Routes>
 	);
