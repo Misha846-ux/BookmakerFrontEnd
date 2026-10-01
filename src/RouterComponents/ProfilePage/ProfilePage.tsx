@@ -4,25 +4,24 @@ import { useNavigate } from "react-router-dom";
 import back_photo from "./photos/back_photo.png";
 import account_photo from "./photos/account_photo.png";
 import payment_photo from "./photos/payment_photo.png";
-import { getCurrentUser } from "../../Endpoints/UserEndpoints";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 const ProfilePage = () =>{
     const navigate = useNavigate();
+    const {user_id} = useParams();
     const [isActive, setIsActive] = useState<"account" | "payment">("account");
     const handleBack = () =>{
         navigate("/");
     }
 
     const handleAccount = async() =>{
-        const user = await getCurrentUser();
         setIsActive("account");
-        navigate(`/profile/${user.id}/account`);
+        navigate(`/profile/${user_id}/account`);
     }
     
     const handlePayment = async() =>{
-        const user = await getCurrentUser();
         setIsActive("payment");
-        navigate(`/profile/${user.id}/payment`);
+        navigate(`/profile/${user_id}/payment`);
     }
     return(
         <div className="ProfilePage_body">

@@ -111,6 +111,7 @@
     height: 79%;
     display: flex;
     justify-content: space-between;
+    margin-left: 2%;
 }
 .Profile_Account_input_box{
     height: 100%;
@@ -149,11 +150,28 @@
     color: #717171;
 }
 .Profile_Account_bottom_text{
-    height: 20%;
-    width: 30%;
+    height: 18%;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 16px;
     font-family: "Nunito Sans";
     font-weight: 400;
     color: #717171;
-    margin-left: 1%;
+    margin-left: 2%;
+}
+.Profile_Account_save_button{
+    height: 70%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #581ADB;
+    color: white;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 60px;
+    cursor: pointer;
 }

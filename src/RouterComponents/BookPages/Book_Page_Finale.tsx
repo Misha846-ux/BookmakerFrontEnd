@@ -138,7 +138,7 @@ const Book_Page_Finale = () => {
                 </div>
                 <div className="Finale_Page_info">
                     <div className="Finale_Page_central_part">
-                        <div className="Finale_Page_central_part_stars">{"Ôÿà".repeat(hotel.stars ?? 0)}</div>
+                        <div className="Finale_Page_central_part_stars">{"★".repeat(hotel.stars ?? 0)}</div>
                         <div className="Finale_Page_central_part_name">{hotel.name}</div>
                         <div className="Finale_Page_central_part_phone">{hotel.phone}</div>
                     </div>
