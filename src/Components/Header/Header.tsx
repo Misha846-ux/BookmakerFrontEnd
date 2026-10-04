@@ -38,7 +38,7 @@ const Header = ({ onRegister, onSignIn, user, onLogout }: HeaderProps) =>{
                             <span style={{ color: '#222222', fontSize: '14px', marginRight: '8px' }}>
                                 {user.name || user.email}
                             </span>
-                            <button className="btn btn_signin" type="button" onClick={onLogout}>Logout</button>
+                            <button className="btn btn_logout" type="button" onClick={onLogout}>Log out</button>
                         </>
                     ) : (
                         <>
