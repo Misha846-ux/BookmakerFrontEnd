@@ -54,6 +54,9 @@ async function tryRefreshToken(): Promise<boolean> {
         });
         if (res.ok) {
             const data = await res.json();
+
+            console.log('Token refreshed successfully:', data);
+            console.log("status:", res.status);
             localStorage.setItem('accessToken', data.access);
             if (data.refresh) {
                 localStorage.setItem('refreshToken', data.refresh);

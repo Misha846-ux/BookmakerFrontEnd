@@ -25,7 +25,7 @@ const Router = () => {
 					<Route path="third" element={<Book_Page_Third/>}></Route>
 				</Route>
 				<Route path="/hotel/:hotel_id/room/:room_id/finale" element={<Book_Page_Finale/>}></Route>
-				<Route path="/profile/:user_id" element={<ProfilePage/>}>
+				<Route path="user/:user_id/profile" element={<ProfilePage/>}>
 				<Route index element={<Navigate to="account" replace />}></Route>
 					<Route path="account" element={<Profile_Account/>}></Route>
 					<Route path="payment" element={<Profile_Payment/>}></Route>

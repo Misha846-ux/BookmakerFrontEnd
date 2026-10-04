@@ -1,0 +1,238 @@
+.Profile_Booking_body{
+    min-width: 900px;
+    min-height: 250px;
+    height: 15%;
+    width: 57%;
+}
+.Profile_Booking_top{
+    height: 10%;
+    width: 100%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+}
+.Profile_Booking_content{
+    height: 89%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.Profile_Booking_room{
+    height: 100%;
+    width: 65%;
+}
+.Profile_Booking_functions{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+.Profile_Booking_functions_top{
+    height: 35%;
+    width: 100%;
+}
+.Profile_Booking_info{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.Profile_Booking_info_box{
+    height: 100%;
+    width: 30%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.Profile_Booking_info_box_top{
+    margin-top: 5%;
+    height: 30%;
+    width: 50%;
+    object-fit: contain;
+}
+.Profile_Booking_info_box_center{
+    height: 70%;
+    width: 100%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #581ADB;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Profile_Booking_info_box_center_calendar{
+    height: 70%;
+    width: 100%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #581ADB;
+    overflow: hidden;
+    margin-left: 30%;
+}
+.Profile_Booking_functions_center{
+    height: 35%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.Profile_Booking_functions_center_btn{
+    height: 100%;
+    width: 48%;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 16px;
+    color: #581ADB;
+    background-color: #FFFFFF;
+    border: 1px solid #581ADB;
+    cursor: pointer;
+}
+.Profile_Booking_functions_bottom{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.Profile_Booking_functions_bottom_btn{
+    height: 100%;
+    width: 40%;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 13px;
+    color: #581ADB;
+    border: none;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.Profile_Booking_functions_bottom_text{
+    height: 100%;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 14px;
+    color: #717171;
+}
+.Profile_Booking_Box_Card{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    margin-top: 1%;
+    cursor: pointer;
+}
+.Profile_Booking_Box_Card:hover{
+    border-color: #581ADB;
+    box-shadow: 0 2px 10px rgba(88, 26, 219, 0.14);
+}
+.Profile_Booking_Box_img{
+    height: 100%;
+    width: 35%;
+    border-radius: 13px;
+}
+.Profile_Booking_Box_info{
+    height: 100%;
+    width: 60%;
+    margin-left: 1%;
+}
+.Profile_Booking_Box_description{
+    height: 25%;
+    width: 100%;
+    overflow: hidden;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 1%;
+}
+.Profile_Booking_Box_bed{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #717171;
+    margin-top: 1%;
+}
+.Profile_Booking_Box_bed_text{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 20px;
+    color: #717171;
+    margin-left: 10%;
+}
+.Profile_Booking_Box_bool_info{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 4%;
+}
+.Profile_Booking_Box_bool_wifi{
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #717171;
+}
+.Profile_Booking_Box_bool_wifi img{
+    margin-right: 10%;
+}
+.Profile_Booking_Box_bool_bath{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #717171;
+}
+.Profile_Booking_Box_bool_bath img{
+    margin-right: 10%;
+}
+.Profile_Booking_Box_bool_pool{
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #717171;
+}
+.Profile_Booking_Box_bool_pool img{
+    margin-right: 10%;
+}
+.Profile_Booking_Box_cancellation{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 18px;
+    color: #581ADB;
+    margin-top: 5%;
+}

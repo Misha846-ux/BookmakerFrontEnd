@@ -1,7 +1,6 @@
 import "./Header.css"
 import { useNavigate } from "react-router-dom";
 import { deleteCookie } from "../../utils/cookies";
-
 type User = {
     id: number;
     name: string;
@@ -24,7 +23,9 @@ const Header = ({ onRegister, onSignIn, user, onLogout }: HeaderProps) =>{
         deleteCookie(FILTER_COOKIE);
         navigate("/", { replace: true });
     };
-
+    const handleOnClick = () => {
+         navigate(`user/${user?.id}/profile/account`, { replace: true });
+    };
     return(
         <header className="header">
             <div className="header_container">
@@ -35,10 +36,11 @@ const Header = ({ onRegister, onSignIn, user, onLogout }: HeaderProps) =>{
                     <div className="language_select"></div>
                     {user ? (
                         <>
-                            <span style={{ color: '#222222', fontSize: '14px', marginRight: '8px' }}>
+                            <span style={{ color: '#717171', fontSize: '16px', marginRight: '8px' , fontFamily: "Nunito Sans", fontWeight: 400 }}>
                                 {user.name || user.email}
                             </span>
                             <button className="btn btn_signin" type="button" onClick={onLogout}>Logout</button>
+                            <button className="btn btn_signin" type="button" onClick={handleOnClick}>Profile</button>
                         </>
                     ) : (
                         <>

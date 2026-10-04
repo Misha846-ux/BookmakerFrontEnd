@@ -1,5 +1,15 @@
+.Profile_Account_body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
 .Profile_Account_box{
-    height: 50%;
+    min-width: 900px;
+    min-height: 500px;
+    height: 45%;
     width: 57%;
     margin-top: 1%;
 }
@@ -174,4 +184,21 @@
     font-size: 16px;
     border-radius: 60px;
     cursor: pointer;
+}
+.Profile_Account_input_text{
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 16px;
+    color: #717171;
+}
+.Profile_Account_text{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 36px;
+    color: #717171;
 }

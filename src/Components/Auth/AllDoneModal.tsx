@@ -14,7 +14,7 @@ function AllDoneModal({ isOpen, onClose, onCheckProfile, onContinueBooking }: Al
     try{
       const user = await getCurrentUser();
       onClose();
-      navigate(`/profile/${user.id}`);
+      navigate(`user/${user.id}/profile/account`);
     }
     catch(error){
       console.error('Failed to get current user:', error);

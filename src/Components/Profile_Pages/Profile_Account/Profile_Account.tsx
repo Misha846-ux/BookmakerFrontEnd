@@ -5,6 +5,8 @@ import camera_photo from "./photos/camera_photo.png";
 import { useBooking } from "../../../Context/BookingContext";
 import { useAuth } from "../../../Context/AuthContext";
 import { useEffect, useRef, useState} from "react";
+import Profile_Booking from "./Profile_Booking";
+import Profile_Review from "./Profile_Reviews";
 const formatDate = (date: string | null) => {
     if (!date) return "";
     const parsed = new Date(`${date}T00:00:00`);
@@ -12,11 +14,12 @@ const formatDate = (date: string | null) => {
     return new Intl.DateTimeFormat("en-EN", {
         day: "numeric",
         month: "long",
+        year: "numeric",
     }).format(parsed);
 };
 
 const Profile_Account = () => {
-    const { user, isAuthenticated, updateUserProfile } = useAuth();
+    const { user, isAuthenticated, isLoading, updateUserProfile } = useAuth();
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     const [name, setName] = useState("");
@@ -28,6 +31,7 @@ const Profile_Account = () => {
     const [ampthill, setAmpthill] = useState("");
     const [photo,setPhoto] = useState("");
     const [isEditName, setIsEditName] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -43,21 +47,26 @@ const Profile_Account = () => {
         setAmpthill(user.ampthill ?? "");
         setPhoto(user.photo ?? "");
 
-    }, [isAuthenticated, user]);
+    }, [isAuthenticated]);
 
     const handleSaveProfile = async () => {
         if (!user) return;
         try{
             setIsSaving(true);
             setError(null);
+              const profile = {
+            name,
+            photo,
+            phone,
+            email,
+            birthday: birthday || null,
+            currency: preferedCurrency || null,
+            ampthill,
+        };
 
-            await updateUserProfile({
-                name,
-                phone,
-                birthday: birthday || null,
-                currency: preferedCurrency || null,
-                ampthill,
-            });
+        console.log("PROFILE TO SEND:", profile);
+
+        await updateUserProfile(profile);
         }catch(err){
             setError( err instanceof Error ? err.message : "Failed to update profile" );
         }finally{
@@ -80,9 +89,6 @@ const Profile_Account = () => {
 
         if(!file || !user) return;
 
-        const previewUrl = URL.createObjectURL(file);
-        setPhoto(previewUrl);
-
         try{
             setIsSaving(true);
             setError(null);
@@ -91,11 +97,16 @@ const Profile_Account = () => {
             reader.onloadend = async() => {
                 const base64 = reader.result;
 
-                if( typeof base64 !== "string") return;
+                if( typeof base64 !== "string"){ 
+                    setIsSaving(false); 
+                    return; 
+                }
+                setPhoto(base64);
 
                 await updateUserProfile({ photo: base64 });
 
                 setIsSaving(false);
+                
             };
             reader.readAsDataURL(file);
         }catch(err){
@@ -108,23 +119,28 @@ const Profile_Account = () => {
         }
         event.target.value = "";
     };
+    if (isLoading) {
+    return <div className="Profile_Account_text">Loading...</div>;
+    }
 
-    if(!isAuthenticated || !user){
-        alert("Please log in to edit your profile.");
+    if (!isAuthenticated || !user) {
+        return <div className="Profile_Account_text">Please log in to edit your profile.</div>;
     }
     return(  
+        <div className="Profile_Account_body">
             <div className="Profile_Account_box">
                 <div className="Profile_Account_top">Your Account</div>
                 <div className="Profile_Account_content">
                     <div className="Profile_Account_profile">
                         <div className="Profile_Account_user">
-                        <img className="Profile_Account_user_img" src={profile_photo}/>
+                        <img className="Profile_Account_user_img" src={photo || profile_photo}/>
                         <div className="Profile_Account_user_data">
                             <div className="Profile_Account_user_name_box">
                                 {isEditName ? (
-                                     <input className="Profile_Account_input" value={name} 
-                                     onChange={(e) => setName(e.target.value) } autoFocus /> 
-                                     ) : ( <div className="Profile_Account_user_name"> 
+                                     <input className="Profile_Account_input" type="text" value={name} 
+                                     onChange={(e) => setName(e.target.value) } /> 
+                                     ) : ( 
+                                     <div className="Profile_Account_user_name"> 
                                      {name || "Your Name"} 
                                      </div> 
                                     )}
@@ -152,18 +168,42 @@ const Profile_Account = () => {
                         <div className="Profile_Account_inputs_content">
                         <div className="Profile_Account_input_box">
                             <div className="Profile_Account_input_line">
-                                <input className="Profile_Account_input" placeholder="Your phone number" type="text"
-                                name="phone_number" value={phone} onChange={(e) => setPhone(e.target.value) } required/>
+                                {isEditing ? (
+                                    <input
+                                    className="Profile_Account_input"
+                                    placeholder="Your phone number"
+                                    type="text"
+                                    name="phone_number"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    />
+                                ) : (
+                                <div className="Profile_Account_input_text">
+                                    {phone || "Your phone number"}
+                                </div>
+                                )}
                                 <label>*Has to be confirmed</label>
                             </div>
                             <div className="Profile_Account_input_line">
+                                { isEditing ? (
                                 <input className="Profile_Account_input" placeholder="Email" type="email"
                                 name="email" value={email} onChange={(e) => setEmail(e.target.value) } required/>
+                                ) : (
+                                <div className="Profile_Account_input_text">
+                                    {email || "Your email"}
+                                </div>
+                                )}   
                                 <label>*Has to be confirmed</label>
                             </div>
                             <div className="Profile_Account_input_line">
-                                <input className="Profile_Account_input" placeholder="Month | Date | Year" type="text"
+                                {isEditing ? (
+                                <input className="Profile_Account_input" placeholder="Month | Date | Year" type="date"
                                 name="birthday" value={birthday} onChange={(e) => setBirthday(e.target.value) } required/>
+)                                : (
+                                <div className="Profile_Account_input_text">
+                                    {formatDate(birthday) || "Month | Date | Year"}
+                                </div>
+                                )}
                                 <label>Enter your date of birth</label>
                             </div>
                         </div>
@@ -178,19 +218,32 @@ const Profile_Account = () => {
                             </datalist>
                             </div>
                             <div className="Profile_Account_input_line">
-                                <input
-                                className="Profile_Account_input"
-                                list="ampthills"
-                                placeholder="Ampthill" value={ampthill} onChange={(e) => setAmpthill(e.target.value) }/>
+                                {isEditing ? (
+                                    <input
+                                        className="Profile_Account_input"
+                                        list="ampthills"
+                                        placeholder="Ampthill" value={ampthill} onChange={(e) => setAmpthill(e.target.value) }/>
+                                ) : (
+                                    <div className="Profile_Account_input_text">
+                                        {ampthill || "Ampthill"}
+                                    </div>
+                                )}
                                 <datalist id="ampthills">
                             
                                 </datalist>                              
                             </div>
                             <div className="Profile_Account_input_line">
-                                <input
-                                className="Profile_Account_input"
-                                list="preferedCurrency"
-                                placeholder="Prefered Currency" value={preferedCurrency} onChange={(e) => setPreferedCurrency(Number(e.target.value)) }/>
+                                {isEditing ? (
+                                    <input
+                                        className="Profile_Account_input"
+                                        list="preferedCurrency"
+                                        type="number"
+                                        placeholder="Prefered Currency" value={preferedCurrency} onChange={(e) => setPreferedCurrency(Number(e.target.value)) }/>
+                                ) : (
+                                    <div className="Profile_Account_input_text">
+                                        {preferedCurrency || "Prefered Currency"}
+                                    </div>
+                                )}
                                 <datalist id="preferedCurrency">
                             
                                 </datalist> 
@@ -206,14 +259,26 @@ const Profile_Account = () => {
                                 {error} 
                                 </div> 
                             )} 
-                            <button className="Profile_Account_save_button" type="button" onClick={handleSaveProfile} 
+                            <button className="Profile_Account_save_button"
+                                type="button"
+                                onClick={() => setIsEditing(true)}
+                                disabled={isEditing}>
+                                Edit
+                            </button>
+                            <button className="Profile_Account_save_button" type="button" onClick={async () => {
+                                    await handleSaveProfile();
+                                    setIsEditing(false);
+                                    setIsEditName(false);
+                                }}
                             disabled={isSaving} > {isSaving ? "Saving..." : "Save changes"}
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
+            <Profile_Booking/>
+            <Profile_Review/>
+        </div>
     );
 };
 export default Profile_Account;

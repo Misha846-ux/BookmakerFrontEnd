@@ -16,12 +16,12 @@ const ProfilePage = () =>{
 
     const handleAccount = async() =>{
         setIsActive("account");
-        navigate(`/profile/${user_id}/account`);
+        navigate(`user/${user_id}/profile/account`);
     }
     
     const handlePayment = async() =>{
         setIsActive("payment");
-        navigate(`/profile/${user_id}/payment`);
+        navigate(`user/${user_id}/profile/payment`);
     }
     return(
         <div className="ProfilePage_body">
