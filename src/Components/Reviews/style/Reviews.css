@@ -1,94 +1,111 @@
 .Reviews_body{
-    min-height: 350px;
-    height: 20vh;
-    width: 99.7%;
-    margin-bottom: 2%;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto 32px auto;
+    padding: 0 5%;
+    box-sizing: border-box;
 }
 .Reviews_top{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50px;
-    height: 15%;
     width: 100%;
+    padding: 24px 0;
     font-family: 'Nunito Sans';
-    font-style:normal;
+    font-style: normal;
     font-weight: 400;
     font-size: 21px;
     color: #717171;
-    margin: 0; 
+    margin: 0;
 }
 .Reviews_content{
-    min-height: 200px;
-    height: 85%;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 3.7%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+.Review_card_container{
+    min-width: 0;
 }
 .Review_card{
     border-radius: 13px;
     border: 1px solid #94D0B4;
     height: 100%;
-    width: 100%;
-}
-.Review_card_container{
-    height: 100%;
-    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 .Review_card_top{
-    height: 30%;
     width: 100%;
     display: flex;
     align-items: center;
+    margin-bottom: 14px;
 }
 .Review_img{
-    height: 70%;
-    width: 15%;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     border-radius: 50%;
-    margin-left: 5%;
+    object-fit: cover;
+    background-color: #EEEEEE;
 }
 .Review_user_and_hotel_names{
-    height: 70%;
-    width: 40%;
-    margin-left: 5%;
+    flex: 1;
+    min-width: 0;
+    margin-left: 12px;
 }
 .Review_user_name{
     font-family: 'Nunito Sans';
-    font-style:normal;
+    font-style: normal;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     color: #222222;
     margin: 0;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .Review_hotel_name{
     font-family: 'Nunito Sans';
-    font-style:normal;
-    font-weight: 700;
-    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
     color: #717171;
-    margin-top: 8%;
+    margin-top: 4px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .Review_time{
-    height: 70%;
-    width: 35%;
-    margin-left: 15%;
+    flex-shrink: 0;
+    margin-left: 12px;
     font-family: 'Nunito Sans';
-    font-style:normal;
+    font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 13px;
     color: #717171;
+    white-space: nowrap;
 }
 .Review_text{
-    height: 70%;
-    width: 95%;
-    margin-left: 5%;
+    width: 100%;
     font-family: 'Nunito Sans';
-    font-style:normal;
+    font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 1.5;
     color: #222222;
-    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 800px) {
+    .Reviews_content{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .Reviews_content{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

@@ -1,4 +1,4 @@
-import "./Hero.css";
+﻿import "./Hero.css";
 import heroBg from "../../assets/image.png";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -113,8 +113,15 @@ const Hero = () => {
     };
 
     const clampPeople = (value: number) => Math.max(1, Math.min(20, value));
+    const formatShortDate = (iso: string) => {
+        const d = new Date(iso);
+        return d.toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit" });
+    };
 
-    const dateLabel = checkIn && checkOut ? `${checkIn} - ${checkOut}` : "Check-in - Check-out";
+    const dateLabel =
+    checkIn && checkOut
+        ? `${formatShortDate(checkIn)} - ${formatShortDate(checkOut)}`
+        : "Check-in - Check-out";
     const guestsLabel = `${people} guest${people > 1 ? "s" : ""}`;
 
     const handleSearch = () => {
@@ -133,6 +140,7 @@ const Hero = () => {
 
         navigate("/hotels");
     };
+    
 
     return (
         <section className="hero">
