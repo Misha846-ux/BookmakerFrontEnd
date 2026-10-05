@@ -6,6 +6,7 @@
 .ProfilePage_top{
     width: 100%;
     height: 8vh;
+    min-height: 70px;
     display: flex;
     align-items: center;
 }
@@ -85,7 +86,7 @@
 }
 .ProfilePage_content{
     width: 100%;
-    height: 140vh;
+   
     display: flex;
     flex-direction: column;
     align-items: center;

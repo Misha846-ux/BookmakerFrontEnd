@@ -1,11 +1,10 @@
-.Profile_Review_body{
-    margin-top: 3%;
-    height: 35vh;
+.Profile_Payment_Saved_body{
+    height: 30%;
     width: 57%;
     min-width: 920px;
     min-height: 380px;
 }
-.Profile_Review_top{
+.Profile_Payment_Saved_top{
     height: 8%;
     width: 100%;
     font-family: "Nunito Sans";
@@ -13,7 +12,7 @@
     font-size: 16px;
     color: #717171;
 }
-.Profile_Review_context{
+.Profile_Payment_Saved_context{
     height: 92%;
     width: 100%;
     display: flex;
@@ -23,13 +22,13 @@
     border: 1px solid #DDDDDD;
     border-radius: 13px;
 }
-.Profile_Review_img{
-    height: 10%;
+.Profile_Payment_Saved_img{
+    height: 15%;
     width: 5%;
 }
-.Profile_Review_text{
+.Profile_Payment_Saved_text{
     height: 10%;
-    width: 20%;
+    width: 30%;
     font-family: "Nunito Sans";
     font-weight: 400;
     font-size: 16px;
