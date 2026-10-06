@@ -201,25 +201,25 @@ const Book_Pages = () => {
             </div>
             <div className="Book_Page_content">
                 <div className="Book_Page_room">
-                    <div className="Room_Scroll_Box_Card">
-                        <img src={photos[0] ?? "/room-placeholder.svg"} className="Room_Scroll_Box_img" alt="room" />
-                        <div className="Room_Scroll_Box_info">
-                            <div className="Room_Scroll_Box_description">{room.description}</div>
-                            <div className="Room_Scroll_Box_bed"><img src={bed_photo} alt="" />Beds:
-                                <div className="Room_Scroll_Box_bed_text">{room.beds}</div>
+                    <div className="Book_Page_Box_Card">
+                        <img src={photos[0] ?? "/room-placeholder.svg"} className="Book_Page_Box_img" alt="room" />
+                        <div className="Book_Page_Box_info">
+                            <div className="Book_Page_Box_description">{room.description}</div>
+                            <div className="Book_Page_Box_bed"><img src={bed_photo} alt="" />Beds:
+                                <div className="Book_Page_Box_bed_text">{room.beds}</div>
                             </div>
-                            <div className="Room_Scroll_Box_bool_info">
+                            <div className="Book_Page_Box_bool_info">
                                 {room.wifi && (
-                                    <div className="Room_Scroll_Box_bool_wifi"><img src={wifi_photo} alt="" />free wi-fi</div>
+                                    <div className="Book_Page_Box_bool_wifi"><img src={wifi_photo} alt="" />free wi-fi</div>
                                 )}
                                 {room.Bath && (
-                                    <div className="Room_Scroll_Box_bool_bath"><img src={bath_photo} alt="" />bath</div>
+                                    <div className="Book_Page_Box_bool_bath"><img src={bath_photo} alt="" />bath</div>
                                 )}
                                 {room.privatePool && (
-                                    <div className="Room_Scroll_Box_bool_pool"><img src={pool_photo} alt="" />private pool</div>
+                                    <div className="Book_Page_Box_bool_pool"><img src={pool_photo} alt="" />private pool</div>
                                 )}
                             </div>
-                            <div className="Room_Scroll_Box_cancellation">✓ FREE cancellation</div>
+                            <div className="Book_Page_Box_cancellation">✓ FREE cancellation</div>
                         </div>
                     </div>
                 </div>

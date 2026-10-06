@@ -49,7 +49,7 @@ const Room_Scroll_Box_Card = ({room,roomPhoto,roomDescription,bedPhoto,roomBeds,
                             <div className="Room_Scroll_Box_bool_pool"><img src={roomPrivatePoolPhoto}/>private pool</div>
                         )}
                     </div>
-                    <div className="Room_Scroll_Box_cancellation">Ô£ô FREE cancellation</div>
+                    <div className="Room_Scroll_Box_cancellation">FREE cancellation</div>
                 </div>
                 <div className="Room_Scroll_Box_price_and_btns">
                     <div className="Room_Scroll_Box_price">{roomPrice}$</div>

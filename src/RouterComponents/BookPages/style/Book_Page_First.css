@@ -1,13 +1,14 @@
 .First_Page_body{
-    height: 80%;
     width: 100%;
+    min-height: 720px;
 }
 .First_Page_content{
-    height: 70%;
+    height: 40vh;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 13px;
     margin-top: 1%;
+    min-height: 400px;
 }
 .First_Page_top{
     height: 10%;
@@ -79,11 +80,12 @@
     margin-left: 10%;
 }
 .First_Page_booleans{
-    height: 10%;
+    height: 8vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 80px;
 }
 .First_Page_checkbox_text{
     height: 70%;
@@ -132,7 +134,7 @@
     justify-content: center;
 }
 .First_Page_continue_btn{
-    height: 50%;
+    height: 5vh;
     width: 50%;
     font-size: 16px;
     font-family: "Nunito Sans";
@@ -140,6 +142,7 @@
     color: #FFFFFF;
     background-color: #581ADB;
     border-radius: 60px;
+    min-height: 50px;
 }
 .First_Page_checkbox_label{
     font-family: "Nunito Sans";
