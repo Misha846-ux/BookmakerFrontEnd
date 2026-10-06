@@ -39,7 +39,7 @@ const Header = ({ onRegister, onSignIn, user, onLogout }: HeaderProps) =>{
                             <span style={{ color: '#717171', fontSize: '16px', marginRight: '8px' , fontFamily: "Nunito Sans", fontWeight: 400 }}>
                                 {user.name || user.email}
                             </span>
-                            <button className="btn btn_signin" type="button" onClick={onLogout}>Logout</button>
+                            <button className="btn btn_logout" type="button" onClick={onLogout}>Log out</button>
                             <button className="btn btn_signin" type="button" onClick={handleOnClick}>Profile</button>
                         </>
                     ) : (

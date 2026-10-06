@@ -7,27 +7,41 @@
 .footer_container
 {
     display: flex;
-    gap: 40px;
+    flex-wrap: wrap;
+    gap: 32px clamp(20px, 4vw, 40px);
     justify-content: center;
-    padding: 0 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 32px clamp(16px, 5vw, 40px);
+    box-sizing: border-box;
 }
 .content_container
 {
     display: flex;
     gap: 8px;
     flex-direction: column;
+    flex: 1 1 160px;
+    min-width: 140px;
+    max-width: 220px;
 }
 .content_container a
 {
     font-family: 'Nunito Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 22px;
     color: #717171;
     text-decoration: none;
     transition: color 200ms ease;
+    white-space: nowrap;
 }
 .content_container a:hover {
-  color: #222222;           
+    color: #222222;
+}
+
+@media (max-width: 600px) {
+    .content_container a {
+        white-space: normal;
+    }
 }

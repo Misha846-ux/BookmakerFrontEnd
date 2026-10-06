@@ -1,18 +1,19 @@
 .SafeWithUs_body{
     min-height: 250px;
-    height: 15vh;
-    width: 99.7%;
-    margin-bottom: 3%;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto 3% auto;
+    padding: 0 5%;
+    box-sizing: border-box;
 }
 .SafeWithUs_top{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 50px;
-    height: 15%;
     width: 100%;
     font-family: 'Nunito Sans';
-    font-style:normal;
+    font-style: normal;
     font-weight: 400;
     font-size: 21px;
     color: #717171;
@@ -20,18 +21,23 @@
 }
 .SafeWithUs_content{
     min-height: 200px;
-    height: 85%;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
 }
 .SafeWithUs_box{
     min-height: 200px;
-    height: 100%;
-    width: 19%;
+    flex: 1 1 0%;
+    min-width: 180px;
+    max-width: 280px;
     border: 1px solid #DDDDDD;
-    border-radius: 13%;
-    display: flex;  
+    border-radius: 13px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1%;
+    padding: 16px;
+    box-sizing: border-box;
+    text-align: center;
 }
