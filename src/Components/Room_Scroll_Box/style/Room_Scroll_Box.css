@@ -184,3 +184,7 @@
       margin-top: 5%;
      margin-left: 25%;
 }
+.Room_Scroll_Box_sentinel{
+    width: 100%;
+    min-height: 1px;
+}

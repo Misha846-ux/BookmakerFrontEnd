@@ -6,17 +6,12 @@
 }
 
 .Comments_content_grid {
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: auto;
-  gap: 24px 3.7%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .Comments_content_grid .Review_card_container {
-  width: 30.8%;
-  height: auto;
-  min-height: 220px;
+    width: 100%;
 }
 .Comments_content_grid .Review_card {
   height: auto;
@@ -93,4 +88,15 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
+}
+@media (max-width: 800px) {
+    .Comments_content_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .Comments_content_grid {
+        grid-template-columns: 1fr;
+    }
 }

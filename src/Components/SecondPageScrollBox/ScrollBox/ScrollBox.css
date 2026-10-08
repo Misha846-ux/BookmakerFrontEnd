@@ -43,3 +43,13 @@
 		min-height: 135px;
 	}
 }
+
+.hotel-scroll-box__sentinel {
+	width: 100%;
+	flex: 0 0 auto;
+	min-height: 1px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 0;
+}
