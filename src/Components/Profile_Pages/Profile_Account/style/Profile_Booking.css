@@ -1,8 +1,9 @@
 .Profile_Booking_body{
+    margin-top: 3%;
     min-width: 900px;
-    min-height: 250px;
-    height: 15%;
+    height: 25vh;
     width: 57%;
+    min-height: 200px;
 }
 .Profile_Booking_top{
     height: 10%;

@@ -1,19 +1,19 @@
-.Profile_Account_body{
+.Profile_Payment_body{
+    height: 50vh;
     width: 100%;
+    min-height: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1%;
 }
-.Profile_Account_box{
-    min-width: 900px;
-    min-height: 580px;
-    height: 65vh;
+.Profile_Payment_box{
+    min-width: 100px;
+    min-height: 410px;
+    height: 35%;
     width: 57%;
     margin-top: 1%;
 }
-.Profile_Account_top{
+.Profile_Payment_top{
     height: 10%;
     width: 100%;
     font-family: "Nunito Sans";
@@ -21,20 +21,21 @@
     font-size: 36px;
     color: #581ADB;
 }
-.Profile_Account_content{
+.Profile_Payment_content{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 90%;
+    height: 75%;
     width: 100%;
+    margin-top: 1%;
 }
-.Profile_Account_profile{
+.Profile_Payment_profile{
     display: flex;
     justify-content: space-between;
-    height: 40%;
+    height: 100%;
     width: 100%;
 }
-.Profile_Account_user{
+.Profile_Payment_user{
     display: flex;
     justify-content: space-between;
     height: 100%;
@@ -42,61 +43,11 @@
     border: 1px solid #DDDDDD;
     border-radius: 13px;
 }
-.Profile_Account_user_img{
-    height: 100%;
-    width: 40%;
-}
-.Profile_Account_user_data{
-    height: 100%;
-    width: 55%;
-}
-.Profile_Account_user_name_box{
-    display: flex;
-    align-items: center;
-    height: 20%;
+.Profile_Payment_user_data{
+    height: 99%;
     width: 100%;
 }
-.Profile_Account_user_name{
-    height: 60%;
-    font-family: "Nunito Sans";
-    font-weight: 700;
-    font-size: 20px;
-    max-width: 300px;
-    overflow: hidden;
-}
-.Profile_Account_edit_btn{
-    height: 100%;
-    width: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: white;
-    border: none;
-}
-.Profile_Account_user_change_img{
-    margin-top: 3%;
-    height: 20%;
-    width: 55%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #DDDDDD;
-    color: #717171;
-    border-radius: 60px;
-}
-.Profile_Account_camera_btn{
-    height: 100%;
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: white;
-    border: none;
-    border-radius: 60px;
-}
-.Profile_Account_text_for_user{
+.Profile_Payment_text_for_user{
     display: flex;
     align-items: center;
     padding-left: 1%;
@@ -109,38 +60,36 @@
     color: #717171;
     border-radius: 13px;
 }
-.Profile_Account_inputs{
+.Profile_Payment_inputs{
     height: 55%;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 13px;
 }
-.Profile_Account_inputs_content{
+.Profile_Payment_inputs_content{
     margin-top: 1%;
-    width: 100%;
-    height: 79%;
+    width: 98%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-left: 2%;
 }
-.Profile_Account_input_box{
-    height: 100%;
-    width: 45%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+.Profile_Payment_input_box{
+    height: 20%;
+    width: 100%;
 }
-.Profile_Account_input_line{
-    height: 25%;
+.Profile_Payment_input_line{
+    height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2%;
 }
-.Profile_Account_input{
+.Profile_Payment_input{
     height: 100%;
-    width: 50%;
+    width: 70%;
     border: 1px solid #DDDDDD;
     border-radius: 64px;
     font-size: 16px;
@@ -149,17 +98,18 @@
     color: #717171;
     padding-left: 5%;
 }
-.Profile_Account_input_line label{
+.Profile_Payment_date{
     height: 100%;
-    width: 45%;
-    display: flex;
-    align-items: center;
+    width: 30%;
+    border: 1px solid #DDDDDD;
+    border-radius: 64px;
     font-size: 16px;
     font-family: "Nunito Sans";
     font-weight: 400;
     color: #717171;
+    padding-left: 5%;
 }
-.Profile_Account_bottom_text{
+.Profile_Payment_bottom_text{
     height: 18%;
     width: 95%;
     display: flex;
@@ -171,9 +121,9 @@
     color: #717171;
     margin-left: 2%;
 }
-.Profile_Account_save_button{
+.Profile_Payment_save_button{
     height: 70%;
-    width: 20%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,13 +135,13 @@
     border-radius: 60px;
     cursor: pointer;
 }
-.Profile_Account_input_text{
+.Profile_Payment_input_text{
     font-family: "Nunito Sans";
     font-weight: 700;
     font-size: 16px;
     color: #717171;
 }
-.Profile_Account_text{
+.Profile_Payment_text{
     height: 100%;
     width: 100%;
     display: flex;

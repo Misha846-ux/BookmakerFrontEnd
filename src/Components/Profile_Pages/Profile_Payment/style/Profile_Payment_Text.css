@@ -1,0 +1,42 @@
+.Profile_Payment_Text_body{
+    height: 40%;
+    width: 57%;
+    min-width: 920px;
+    min-height: 280px;
+}
+.Profile_Payment_Text_context{
+    height: 92%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Profile_Payment_Text_img{
+    height: 15%;
+    width: 5%;
+}
+.Profile_Payment_Text_text{
+    height: 60%;
+    width: 50%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+.Profile_Payment_Text_btn{
+    height: 8%;
+    width: 18%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background-color: #FFFFFF;
+    color: #582ADB;
+}

@@ -47,6 +47,7 @@
     width: 30%;
     display:flex;
     align-items: center;
+    justify-content: right;
     gap: clamp(8px, 2vw, 20px);
     flex-wrap: nowrap;
 }
@@ -62,6 +63,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin: 2%;
 }
 .btn
 {
@@ -82,12 +84,15 @@
     line-height: 22px;
     color: #222222;
     cursor: pointer;
+    margin: 2%;
     white-space: nowrap;
     flex-shrink: 0;
 }
 .btn_signin
 {
-   padding-right: 4px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 .btn:hover {
     transition-delay: 50ms;
@@ -96,14 +101,14 @@
 }
 .icon_user
 {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    background: #717171;
-    border-radius: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+width: 24px;
+height: 24px;
+background: #717171;
+border-radius: 60px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 3%;
 }
 .btn_logout
 {
