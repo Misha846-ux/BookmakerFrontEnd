@@ -1,5 +1,7 @@
-﻿import "../Room_Scroll_Box/style/Room_Scroll_Box.css";
+﻿import { useRef } from "react";
+import "../Room_Scroll_Box/style/Room_Scroll_Box.css";
 import type { RoomDTO } from "../../Models/dto";
+import { useInfiniteScroll } from "../../utils/useInfiniteScroll";
 import bed_photo from "./photo/bed_photo.png";
 import bath_photo from "./photo/bath_photo.png";
 import wifi_photo from "./photo/wifi_photo.png";
@@ -10,9 +12,20 @@ type RoomScrollBoxProps = {
     rooms: RoomDTO[];
     roomPhotos: Record<number, string[]>;
     primaryRoomId: number;
+    hasMore: boolean;
+    isLoadingMore: boolean;
+    onLoadMore: () => void;
 };
 
-const Room_Scroll_Box = ({rooms, roomPhotos, primaryRoomId}: RoomScrollBoxProps) => {
+const Room_Scroll_Box = ({rooms, roomPhotos, primaryRoomId, hasMore, isLoadingMore, onLoadMore}: RoomScrollBoxProps) => {
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const sentinelRef = useInfiniteScroll({
+        onLoadMore,
+        hasMore,
+        isLoading: isLoadingMore,
+        rootRef: containerRef,
+    });
+
     const otherRooms = rooms.filter((room) => room.id !== primaryRoomId);
 
     if (otherRooms.length === 0) return null;
@@ -20,11 +33,10 @@ const Room_Scroll_Box = ({rooms, roomPhotos, primaryRoomId}: RoomScrollBoxProps)
     return (
         <div className="Room_Scroll_Box_body">
             <div className="Room_Scroll_Box_top">Book</div>
-            <div className="Room_Scroll_Box_context">
+            <div className="Room_Scroll_Box_context" ref={containerRef}>
                 {otherRooms.map((room) => (
-                        <div className="Room_Scroll_Box_context_card">
+                        <div className="Room_Scroll_Box_context_card" key={room.id}>
             <Room_Scroll_Box_Card
-                        key={room.id}
                         room={room}
                         roomPhoto={roomPhotos[room.id]?.[0] ?? "/room-placeholder.svg"}
                         roomDescription={room.description ?? ""}
@@ -40,10 +52,10 @@ const Room_Scroll_Box = ({rooms, roomPhotos, primaryRoomId}: RoomScrollBoxProps)
                     />
         </div>
             ))}
+                {hasMore && <div ref={sentinelRef} className="Room_Scroll_Box_sentinel" />}
             </div>
         </div>
     );
 };
 
 export default Room_Scroll_Box;
-
