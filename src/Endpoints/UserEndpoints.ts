@@ -1,5 +1,6 @@
 import type {
     AuthAccountDTO,
+    PhotoUploadResponse,
     UserProfileResponse,
     UserProfileUpdateDTO,
 } from "../Models/dto";
@@ -55,5 +56,23 @@ export async function updateUserProfile(
     return apiRequest<UserProfileResponse>(`/user/${userId}/profile`, {
         method: "PATCH",
         ...jsonBody(profile),
+    });
+}
+
+export async function uploadUserPhoto(
+    userId: number,
+    file: File,
+): Promise<PhotoUploadResponse> {
+    const formData = new FormData();
+    formData.append("file", file);
+    return apiRequest<PhotoUploadResponse>(`/user/${userId}/photo/`, {
+        method: "POST",
+        body: formData,
+    });
+}
+
+export async function deleteUserPhoto(userId: number): Promise<{ message: string }> {
+    return apiRequest<{ message: string }>(`/user/${userId}/photo/delete/`, {
+        method: "DELETE",
     });
 }

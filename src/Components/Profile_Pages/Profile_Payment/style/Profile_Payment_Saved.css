@@ -1,19 +1,42 @@
 .Profile_Payment_Saved_body{
-    height: 30%;
+    height: auto;
     width: 57%;
     min-width: 920px;
     min-height: 380px;
+    margin-top: 1%;
+}
+.Profile_Payment_Saved_top_row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 .Profile_Payment_Saved_top{
-    height: 8%;
-    width: 100%;
+    height: auto;
+    flex: 1;
     font-family: "Nunito Sans";
     font-weight: 400;
     font-size: 16px;
     color: #717171;
 }
+.Profile_Payment_Saved_add_btn{
+    border: 1px solid #581ADB;
+    background-color: #FFFFFF;
+    color: #581ADB;
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 60px;
+    padding: 6px 16px;
+    cursor: pointer;
+}
+.Profile_Payment_Saved_add_btn:disabled{
+    opacity: 0.5;
+    cursor: default;
+}
 .Profile_Payment_Saved_context{
     height: 92%;
+    min-height: 300px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -21,6 +44,7 @@
     justify-content: center;
     border: 1px solid #DDDDDD;
     border-radius: 13px;
+    margin-top: 1%;
 }
 .Profile_Payment_Saved_img{
     height: 15%;
@@ -36,4 +60,91 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.Profile_Payment_Saved_list{
+    width: 100%;
+    min-height: 300px;
+    box-sizing: border-box;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    margin-top: 1%;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.Profile_Payment_Saved_Item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-sizing: border-box;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    padding: 12px 16px;
+}
+.Profile_Payment_Saved_Item.active{
+    border-color: #581ADB;
+}
+.Profile_Payment_Saved_Item_info{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+.Profile_Payment_Saved_Item_type{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    font-size: 20px;
+    color: #444444;
+}
+.Profile_Payment_Saved_Item_badge{
+    background-color: #581ADB;
+    color: #FFFFFF;
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 60px;
+    padding: 2px 10px;
+}
+.Profile_Payment_Saved_Item_number{
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    font-size: 16px;
+    color: #222222;
+    letter-spacing: 0.4px;
+}
+.Profile_Payment_Saved_Item_date{
+    font-family: "Nunito Sans";
+    font-weight: 500;
+    font-size: 14px;
+    color: #666666;
+}
+.Profile_Payment_Saved_Item_actions{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+.Profile_Payment_Saved_Item_action{
+    border: none;
+    background-color: transparent;
+    color: #581ADB;
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    font-size: 14px;
+    padding: 4px 6px;
+    cursor: pointer;
+}
+.Profile_Payment_Saved_Item_action:hover{
+    color: #4A14C0;
+    text-decoration: underline;
+}
+.Profile_Payment_Saved_Item_action:disabled{
+    opacity: 0.5;
+    cursor: default;
+    text-decoration: none;
 }

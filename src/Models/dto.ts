@@ -115,9 +115,10 @@ export type UserDTO = {
     email: string;
     phone: string;
     birthday: string | null;
-    photo: string;
+    photo: string | null;
     ampthill: string;
     city: number | null;
+    country: number | null;
     currency: number | null;
     payMethod: number | null;
 };
@@ -209,13 +210,16 @@ export type MainPageReviewsResponse = {
 
 export type UserProfileResponse = {
     id: number;
+    name: string;
     email: string;
-    phone: string;
+    phone: string | null;
     birthday: string | null;
+    photo: string | null;
     ampthill: string;
     city: number | null;
     country: number | null;
     currency: number | null;
+    payMethod: number | null;
 };
 
 export type AuthAccountDTO = {
@@ -262,11 +266,75 @@ export type HotelSearchDTO = {
 };
 
 export type UserProfileUpdateDTO = {
+    name?: string;
     email?: string;
-    phone?: string;
+    phone?: string | null;
     birthday?: string | null;
     ampthill?: string;
     city?: number | null;
     country?: number | null;
     currency?: number | null;
+};
+
+export type MyReservationRoomDTO = {
+    id: number;
+    roomNumber: string;
+    description: string | null;
+    wifi: boolean;
+    privatePool: boolean;
+    Bath: boolean;
+    price: string;
+    beds: number;
+    photos: string[];
+};
+
+export type MyReservationHotelDTO = {
+    id: number;
+    name: string;
+    stars: number;
+    photos: string[];
+};
+
+export type MyReservationCityDTO = {
+    id: number;
+    name: string;
+    country: {
+        id: number;
+        name: string | null;
+    };
+};
+
+export type MyReservationDTO = {
+    id: number;
+    checkIn: string;
+    checkOut: string;
+    totalPrice: string | null;
+    viewToken: string;
+    room: MyReservationRoomDTO;
+    hotel: MyReservationHotelDTO;
+    city: MyReservationCityDTO;
+};
+
+export type MyReservationsResponse = {
+    count: number;
+    results: MyReservationDTO[];
+};
+
+export type MyReviewDTO = {
+    id: number;
+    review: string;
+    createdAt: string;
+    rating: number;
+    hotel: {
+        id: number;
+        name: string;
+        stars: number;
+        city: string | null;
+        country: string | null;
+    };
+};
+
+export type MyReviewsResponse = {
+    count: number;
+    results: MyReviewDTO[];
 };

@@ -5,11 +5,12 @@ type User = {
     id: number;
     name: string;
     email: string;
-    phone: string;
+    phone: string | null;
     birthday: string | null;
-    photo: string;
+    photo: string | null;
     ampthill: string;
     city: number | null;
+    country: number | null;
     currency: number | null;
     payMethod: number | null;
 };
@@ -25,9 +26,29 @@ type AuthContextType = {
     loginWithGoogle: (googleAccessToken: string) => Promise<void>;
     logout: () => void;
     updateUserProfile: (profile: Record<string, unknown>) => Promise<void>;
+    refreshUser: () => Promise<User | null>;
     previousPath: string | null;
     setPreviousPath: (path: string) => void;
 };
+
+function parseErrorMessage(data: unknown, fallback: string): string {
+    if (typeof data === "string" && data) return data;
+    if (typeof data !== "object" || data === null) return fallback;
+
+    const record = data as Record<string, unknown>;
+    if (typeof record.error === "string") return record.error;
+    if (typeof record.detail === "string") return record.detail;
+
+    const errorGroups: unknown[] = [record.errors, record];
+    for (const group of errorGroups) {
+        if (typeof group !== "object" || group === null) continue;
+        for (const value of Object.values(group as Record<string, unknown>)) {
+            if (Array.isArray(value) && typeof value[0] === "string") return value[0];
+            if (typeof value === "string" && value) return value;
+        }
+    }
+    return fallback;
+}
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -55,8 +76,6 @@ async function tryRefreshToken(): Promise<boolean> {
         if (res.ok) {
             const data = await res.json();
 
-            console.log('Token refreshed successfully:', data);
-            console.log("status:", res.status);
             localStorage.setItem('accessToken', data.access);
             if (data.refresh) {
                 localStorage.setItem('refreshToken', data.refresh);
@@ -199,10 +218,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 });
             }
         }
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Failed to update profile');
+        const data = await res.json().catch(() => null);
+        if (!res.ok) throw new Error(parseErrorMessage(data, 'Failed to update profile'));
         const u = await fetchCurrentUser();
         setUser(u);
+    };
+
+    const refreshUser = async (): Promise<User | null> => {
+        const u = await fetchCurrentUser();
+        setUser(u);
+        return u;
     };
 
     return (
@@ -217,6 +242,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             loginWithGoogle,
             logout,
             updateUserProfile,
+            refreshUser,
             previousPath,
             setPreviousPath,
         }}>

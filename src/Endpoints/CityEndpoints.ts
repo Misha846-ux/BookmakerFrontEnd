@@ -1,8 +1,12 @@
-import type { CityDTO, CreateCityDTO, CountryDTO } from "../Models/dto";
+import type { CityDTO, CreateCityDTO, CountryDTO, CurrencyDTO } from "../Models/dto";
 import { apiRequest, jsonBody } from "./apiRequest";
 
 export async function getCountries(): Promise<CountryDTO[]> {
     return apiRequest<CountryDTO[]>("/countries/");
+}
+
+export async function getCurrencies(): Promise<CurrencyDTO[]> {
+    return apiRequest<CurrencyDTO[]>("/currencies/");
 }
 
 export async function getCities(): Promise<CityDTO[]> {

@@ -1,7 +1,7 @@
 .Profile_Booking_body{
     margin-top: 3%;
     min-width: 900px;
-    height: 25vh;
+    height: auto;
     width: 57%;
     min-height: 200px;
 }
@@ -14,10 +14,37 @@
     color: #717171;
 }
 .Profile_Booking_content{
-    height: 89%;
+    height: 22vh;
+    min-height: 190px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 1%;
+}
+.Profile_Booking_content + .Profile_Booking_content{
+    margin-top: 2%;
+}
+.Profile_Booking_empty{
+    height: 22vh;
+    min-height: 190px;
+    width: 100%;
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #717171;
+}
+.Profile_Booking_error{
+    margin-top: 1%;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 14px;
+    color: #e53e3e;
 }
 .Profile_Booking_room{
     height: 100%;
@@ -142,6 +169,9 @@
     height: 100%;
     width: 35%;
     border-radius: 13px;
+}
+.Profile_Booking_Box_img_empty{
+    background-color: #F1F1F1;
 }
 .Profile_Booking_Box_info{
     height: 100%;

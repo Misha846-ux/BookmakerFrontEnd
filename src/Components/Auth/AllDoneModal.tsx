@@ -7,7 +7,7 @@ interface AllDoneModalProps {
   onCheckProfile: () => void
   onContinueBooking: () => void
 }
-function AllDoneModal({ isOpen, onClose, onCheckProfile, onContinueBooking }: AllDoneModalProps) {
+function AllDoneModal({ isOpen, onClose, onContinueBooking }: AllDoneModalProps) {
   const navigate = useNavigate();
 
   const handleCheckProfile = async () => {
