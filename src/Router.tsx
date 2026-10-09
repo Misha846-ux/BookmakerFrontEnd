@@ -29,7 +29,6 @@ const Router = () => {
 				<Route index element={<Navigate to="account" replace />}></Route>
 					<Route path="account" element={<Profile_Account/>}></Route>
 					<Route path="payment" element={<Profile_Payment/>}></Route>
-					{/* <Route path="payment" element={<Profile_Payment/>}></Route> */}
 				</Route>
 			</Route>
 		</Routes>

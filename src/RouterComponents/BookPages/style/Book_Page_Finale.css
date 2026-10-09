@@ -124,11 +124,11 @@
     margin-left: 10%;
 }
 .Finale_Page_btn{
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    width: 80%;
     border-radius: 60px;
 }
-.Finale_Page_btn:hover{
+.Finale_Page_btn_box:hover{
    background-color: #DDDDDD;
 }
 .Finale_Page_route{

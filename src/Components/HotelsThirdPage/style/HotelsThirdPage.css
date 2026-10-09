@@ -10,6 +10,7 @@
     display: flex;
     margin-left: 0;
     min-height: 600px;
+    margin-bottom: 5%;
 }
 .Room_photos{
     height: 100%;
@@ -99,6 +100,8 @@ padding: 0.5%;
     align-items: baseline;
     flex-wrap: wrap;
     gap: 6px;
+    min-width: 300px;
+    margin-left:5%;
 }
 .Room_price_value{
     min-width: 0;
@@ -128,7 +131,7 @@ padding: 0.5%;
 }
 .Room_address_img{
     height: 60%;
-    width: 8%;
+    width: 12%;
     margin-left: 5%;
 }
 .Room_address_text{
@@ -169,6 +172,7 @@ padding: 0.5%;
     font-weight: 700;
     color: #FFFFFF;
     background: #581ADB;
+    min-width: 70px;
 }
 .Room_book_btn:hover{
     background: #3A0CA3;

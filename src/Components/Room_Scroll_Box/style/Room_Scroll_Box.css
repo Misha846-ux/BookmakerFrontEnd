@@ -57,7 +57,7 @@
     font-family: "Nunito Sans";
     font-weight: 700;
     font-size: 20px;
-     margin-top: 1%;
+    margin-top: 1%;
 }
 .Room_Scroll_Box_bed{
     height: 15%;
@@ -96,6 +96,8 @@
     font-weight: 400;
     font-size: 18px;
     color: #717171;
+    margin-right: 5%;
+    min-width: 90px;
 }
 .Room_Scroll_Box_bool_wifi img{
     margin-right: 10%;
@@ -109,6 +111,8 @@
     font-weight: 400;
     font-size: 18px;
     color: #717171;
+    margin-right: 5%;
+    min-width: 90px;
 }
 .Room_Scroll_Box_bool_bath img{
     margin-right: 10%;
@@ -122,6 +126,7 @@
     font-weight: 400;
     font-size: 18px;
     color: #717171;
+    min-width: 90px;
 }
 .Room_Scroll_Box_bool_pool img{
     margin-right: 10%;
@@ -135,7 +140,7 @@
     font-weight: 400;
     font-size: 18px;
     color: #581ADB;
-    margin-top: 1%;
+    margin-top: 3%;
 }
 .Room_Scroll_Box_price_and_btns{
     height: 100%;
@@ -167,6 +172,7 @@
     border-radius: 100px;
      margin-top: 5%;
      margin-left: 25%;
+     min-width: 100px;
 }
 .Room_Scroll_Box_info_btn{
     height: 20%;
@@ -183,6 +189,7 @@
     border-radius: 100px;
       margin-top: 5%;
      margin-left: 25%;
+      min-width: 100px;
 }
 .Room_Scroll_Box_sentinel{
     width: 100%;

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getHotelCardData } from "../../Endpoints/HotelEndpoints";
 import { apiRequest } from "../../Endpoints/apiRequest";
 import type { ReviewDTO, UserDTO } from "../../Models/dto";
+import no_photo from "./photo/no_photo.png";
 
 type ReviewCardProps = {
     review: ReviewDTO;
@@ -34,7 +35,7 @@ const Review_Card = ({ review }: ReviewCardProps) => {
     }, [review.hotel, review.user]);
 
     const userName = user?.name ?? `Guest #${review.user}`;
-    const userPhoto = user?.photo ?? "";
+    const userPhoto = user?.photo ?? no_photo;
     const displayedHotelName = hotelName || `Hotel #${review.hotel}`;
 
     return (
@@ -43,7 +44,6 @@ const Review_Card = ({ review }: ReviewCardProps) => {
                 <img
                     className="Review_img"
                     src={userPhoto ?? ""}
-                    alt={userName}
                 />
 
                 <div className="Review_user_and_hotel_names">
