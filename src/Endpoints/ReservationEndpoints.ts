@@ -1,4 +1,8 @@
-import type { CreateReservationDTO, ReservationDTO } from "../Models/dto";
+import type {
+    CreateReservationDTO,
+    MyReservationsResponse,
+    ReservationDTO,
+} from "../Models/dto";
 import { apiRequest, jsonBody } from "./apiRequest";
 
 export async function createReservation(
@@ -18,5 +22,20 @@ export async function getReservation(
     return apiRequest<ReservationDTO>(
         `/reservation/${reservationId}/${query}`,
         { method: "GET" },
+    );
+}
+
+export async function getMyReservations(): Promise<MyReservationsResponse> {
+    return apiRequest<MyReservationsResponse>("/user/reservations/", {
+        method: "GET",
+    });
+}
+
+export async function cancelReservation(
+    reservationId: number,
+): Promise<{ message: string }> {
+    return apiRequest<{ message: string }>(
+        `/reservation/${reservationId}/cancel/`,
+        { method: "POST" },
     );
 }

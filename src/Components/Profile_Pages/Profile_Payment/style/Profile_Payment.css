@@ -135,6 +135,16 @@
     border-radius: 60px;
     cursor: pointer;
 }
+.Profile_Payment_save_button:disabled{
+    opacity: 0.5;
+    cursor: default;
+}
+.Profile_Payment_error{
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 14px;
+    color: #e53e3e;
+}
 .Profile_Payment_input_text{
     font-family: "Nunito Sans";
     font-weight: 700;

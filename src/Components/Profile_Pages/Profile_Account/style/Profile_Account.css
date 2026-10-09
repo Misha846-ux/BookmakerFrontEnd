@@ -96,6 +96,25 @@
     border: none;
     border-radius: 60px;
 }
+.Profile_Account_remove_photo_btn{
+    margin-right: 4%;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 13px;
+    color: #717171;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.Profile_Account_remove_photo_btn:hover{
+    color: #581ADB;
+}
+.Profile_Account_remove_photo_btn:disabled{
+    cursor: default;
+    opacity: 0.6;
+}
 .Profile_Account_text_for_user{
     display: flex;
     align-items: center;
@@ -184,6 +203,10 @@
     font-size: 16px;
     border-radius: 60px;
     cursor: pointer;
+}
+.Profile_Account_save_button:disabled{
+    opacity: 0.5;
+    cursor: default;
 }
 .Profile_Account_input_text{
     font-family: "Nunito Sans";

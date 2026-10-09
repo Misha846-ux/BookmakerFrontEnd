@@ -34,6 +34,34 @@ export async function getMyPaymentMethods(): Promise<PaymentMethodDTO[]> {
     });
 }
 
+export async function updatePaymentMethod(
+    paymentMethodId: number,
+    paymentMethod: Partial<CreatePaymentMethodDTO>,
+): Promise<PaymentMethodDTO> {
+    return apiRequest<PaymentMethodDTO>(
+        `/payment-methods/${paymentMethodId}/update/`,
+        { method: "PUT", ...jsonBody(paymentMethod) },
+    );
+}
+
+export async function deletePaymentMethod(
+    paymentMethodId: number,
+): Promise<{ message: string }> {
+    return apiRequest<{ message: string }>(
+        `/payment-methods/${paymentMethodId}/delete/`,
+        { method: "DELETE" },
+    );
+}
+
+export async function setDefaultPaymentMethod(
+    paymentMethodId: number,
+): Promise<{ payMethod: number }> {
+    return apiRequest<{ payMethod: number }>(
+        `/payment-methods/${paymentMethodId}/default/`,
+        { method: "POST" },
+    );
+}
+
 export async function getDebitCards(): Promise<DebitCardDTO[]> {
     return apiRequest<DebitCardDTO[]>("/debit-cards/");
 }

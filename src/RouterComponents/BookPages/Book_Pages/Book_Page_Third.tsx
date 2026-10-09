@@ -72,7 +72,11 @@ const Book_Page_Third = () => {
             ]);
             setDebitCards(cardsResponse);
             setSavedCards(savedResponse);
-            setDebitCardNames(Object.fromEntries(cardsResponse.map((c) => [c.id, c.name])));
+            const names: Record<number, string> = {};
+            for (const item of cardsResponse) {
+                names[item.id] = item.name ?? item.type ?? "Card";
+            }
+            setDebitCardNames(names);
             if (!user?.payMethod) return;
             const defaultCard = savedResponse.find((card) => card.id === user.payMethod);
             if (defaultCard) setSelectedCardId(defaultCard.id);
@@ -98,7 +102,7 @@ const Book_Page_Third = () => {
         : false;
 
     const cardTypeId = debitCards.find(
-        (card) => card.name.toLowerCase() === typeOfDebitCard.trim().toLowerCase(),
+        (card) => (card.name ?? card.type ?? "").toLowerCase() === typeOfDebitCard.trim().toLowerCase(),
     )?.id;
 
     const manualCardValid =

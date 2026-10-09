@@ -8,7 +8,7 @@ type CommentsGridProps = {
   hotel: HotelDTO;
 };
 
-const CommentsGrid = ({ reviews, hotel }: CommentsGridProps) => {
+const CommentsGrid = ({ reviews }: CommentsGridProps) => {
   const [visibleCount, setVisibleCount] = useState<number>(9);
 
   const visibleReviews = reviews.slice(0, visibleCount);

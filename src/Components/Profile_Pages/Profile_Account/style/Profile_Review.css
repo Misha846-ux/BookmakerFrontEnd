@@ -1,6 +1,6 @@
 .Profile_Review_body{
     margin-top: 3%;
-    height: 35vh;
+    height: auto;
     width: 57%;
     min-width: 920px;
     min-height: 380px;
@@ -14,7 +14,8 @@
     color: #717171;
 }
 .Profile_Review_context{
-    height: 92%;
+    height: 32vh;
+    min-height: 300px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -37,4 +38,73 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.Profile_Review_error{
+    width: 100%;
+    text-align: center;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 14px;
+    color: #e53e3e;
+}
+.Profile_Review_list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #DDDDDD;
+    border-radius: 13px;
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+.Profile_Review_card{
+    padding: 14px 0;
+    border-bottom: 1px solid #EEEEEE;
+}
+.Profile_Review_card:last-child{
+    border-bottom: none;
+}
+.Profile_Review_card_top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.Profile_Review_card_hotel{
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 16px;
+    color: #222222;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.Profile_Review_card_stars{
+    color: #581ADB;
+    font-size: 14px;
+}
+.Profile_Review_card_rating{
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    font-size: 14px;
+    color: #581ADB;
+}
+.Profile_Review_card_date{
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 14px;
+    color: #717171;
+}
+.Profile_Review_card_text{
+    margin-top: 6px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    color: #444444;
+}
+.Profile_Review_card_place{
+    margin-top: 4px;
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 14px;
+    color: #717171;
 }

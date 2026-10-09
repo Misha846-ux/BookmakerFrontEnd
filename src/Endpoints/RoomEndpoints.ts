@@ -1,13 +1,11 @@
 import type {
     CreateRoomDTO,
-    PaginatedRoomsResponse,
-    PaginationDTO,
     PhotoUploadResponse,
     PhotosResponse,
     RoomAvailabilityDTO,
     RoomDTO,
 } from "../Models/dto";
-import { apiRequest, jsonBody, paginationQuery } from "./apiRequest";
+import { apiRequest, jsonBody } from "./apiRequest";
 
 export async function createRoom(room: CreateRoomDTO): Promise<RoomDTO> {
     return apiRequest<RoomDTO>("/rooms/create/", {
