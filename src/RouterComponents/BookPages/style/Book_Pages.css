@@ -1,10 +1,11 @@
 .Book_Page_body{
     height: 100vh;
     width: 100%;
-    min-height: 600px;
-    min-width: 1650px;
+    min-height: clamp(360px, 36.36vw, 600px);
+    min-width: 0;
     display: flex;
 }
+
 .Book_Page_info{
     height: 40%;
     width: 8%;
@@ -35,7 +36,7 @@
     width: 100%;
     font-family: "Nunito Sans";
     font-weight: 400;
-    font-size: 16px;
+    font-size: clamp(8px, .97vw, 16px);
     color: #581ADB;
     overflow: hidden;
     display: flex;
@@ -79,17 +80,25 @@
 .Book_Page_dates_body{
     height: 100vh;
     width: 100%;
-    min-height: 600px;
-    min-width: 1650px;
+    min-height: clamp(360px, 36.36vw, 600px);
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Book_Page_dates_body * {
+    font-size: clamp(13px, .97vw, 16px) !important;
+}
+
+.Book_Page_dates_body .Book_Page_dates_title {
+    font-size: clamp(18px, 1.45vw, 24px) !important;
 }
 .Book_Page_dates_box{
     width: 40%;
     border: 1px solid #DDDDDD;
     border-radius: 13px;
-    padding: 24px;
+    padding: clamp(12px, 1.45vw, 24px); 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -98,26 +107,28 @@
 .Book_Page_dates_title{
     font-family: "Nunito Sans";
     font-weight: 800;
-    font-size: 24px;
+    font-size: clamp(16px, 1.45vw, 24px);
     color: #581ADB;
 }
 .Book_Page_dates_inputs{
     display: flex;
     gap: 12px;
     justify-content: center;
+    width: 50%;
 }
 .Book_Page_dates_inputs input{
     border: 1px solid #DDDDDD;
     border-radius: 64px;
     font-family: "Nunito Sans";
-    font-size: 14px;
+    font-size: clamp(10px, .85vw, 14px);
     color: #222222;
     padding: 8px 14px;
+    width: 48%;
 }
 .Book_Page_dates_btn{
     width: 50%;
     height: 42px;
-    font-size: 16px;
+    font-size: clamp(10px, .97vw, 16px);
     font-family: "Nunito Sans";
     font-weight: 700;
     color: #FFFFFF;
@@ -128,20 +139,20 @@
 }
 .Book_Page_dates_error{
     font-family: "Nunito Sans";
-    font-size: 14px;
+    font-size: clamp(7px, .85vw, 14px);
     color: #c02424;
 }
 .Book_Page_error_text{
     font-family: "Nunito Sans";
     font-weight: 600;
-    font-size: 20px;
+    font-size: clamp(10px, 1.21vw, 20px);
     color: #717171;
     margin-bottom: 20px;
 }
 .Book_Page_error_btn{
     height: 46px;
     width: 40%;
-    font-size: 16px;
+    font-size: clamp(8px, .97vw, 16px);
     font-family: "Nunito Sans";
     font-weight: 700;
     color: #FFFFFF;

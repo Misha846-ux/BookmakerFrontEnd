@@ -96,8 +96,8 @@ const Book_Page_First = () => {
                     <div className="First_Page_inputs_second_line">
                         <input className="First_Page_input" placeholder="Email" type="email"
                             name="email" value={email} onChange={(event) => setGuest({ email: event.target.value })} required />
-                        <div className="First_Page_input_text">To this address, we will send a confirmation
-                            and a guide to the city!</div>
+                        <div className="First_Page_input_text">To this address, we will send a confirmation and a guide to the city!</div>
+                            
                     </div>
                     <div className="First_Page_inputs_third_line">
                         <input className="First_Page_input" placeholder="Confirm email" type="email"

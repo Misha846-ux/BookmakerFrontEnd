@@ -2,6 +2,16 @@
     height: 80%;
     width: 100%;
 }
+
+.Third_Page_body * {
+    font-size: clamp(13px, .97vw, 16px) !important;
+}
+
+.Third_Page_body .Third_Page_top_text,
+.Third_Page_body .Third_Page_submitting,
+.Third_Page_body .Third_Page_modal_title {
+    font-size: clamp(18px, 1.45vw, 24px) !important;
+}
 .Third_Page_prev_btn{
     height: 5%;
     width: 3%;
@@ -21,7 +31,7 @@
     background-color: #DDDDDD;
 }
 .Third_Page_content{
-    height: 60%;
+    height: 50%;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 13px;
@@ -172,15 +182,15 @@
 .Third_Page_checkbox {
     appearance: none;
     -webkit-appearance: none;
-    height: 50%;
-    width: 3%;
-    margin-right: 30%;
+    width: 21px;   
+    height: 21px;       
+    border-radius: 50%; 
     border: 2px solid #581ADB;
-    border-radius: 64px;
     background: white;
     cursor: pointer;
     position: relative;
-    flex-shrink: 0;
+    flex-shrink: 0; 
+    margin-right: 30px; 
 }
 .Third_Page_checkbox:checked::after {
     content: "";
@@ -357,4 +367,159 @@
     font-family: "Nunito Sans";
     font-weight: 700;
     cursor: pointer;
+}
+
+.Third_Page_body,
+.Third_Page_body * {
+    box-sizing: border-box;
+}
+
+.Third_Page_body,
+.Third_Page_content,
+.Third_Page_inputs,
+.Third_Page_inputs_line,
+.Third_Page_input,
+.Third_Page_input_text,
+.Third_Page_no_card_box,
+.Third_Page_card_date_picker,
+.Third_Page_booleans,
+.Third_Page_checkbox_text,
+.Third_Page_btn_box {
+    min-width: 0;
+}
+
+.Third_Page_input,
+.Third_Page_input_date {
+    max-width: 100%;
+    padding-left: clamp(10px, 3%, 28px);
+}
+
+.Third_Page_input_text,
+.Third_Page_checkbox_text,
+.Third_Page_total,
+.Third_Page_error_text,
+.Third_Page_modal_row {
+    overflow-wrap: anywhere;
+}
+
+.Third_Page_card_date_popover {
+    max-width: calc(100vw - 32px);
+}
+
+.Third_Page_modal {
+    width: min(480px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+    .Third_Page_body {
+        height: auto;
+        min-height: 80%;
+    }
+
+    .Third_Page_content {
+        height: auto;
+        min-height: clamp(390px, 48vw, 580px);
+    }
+
+    .Third_Page_top {
+        min-height: 48px;
+    }
+
+    .Third_Page_inputs {
+        height: auto;
+    }
+
+    .Third_Page_inputs_line {
+        height: auto;
+        min-height: clamp(64px, 8vw, 88px);
+    }
+
+    .Third_Page_input,
+    .Third_Page_card_date_picker,
+    .Third_Page_input_text,
+    .Third_Page_no_card_box {
+        min-height: 44px;
+    }
+
+    .Third_Page_booleans {
+        height: auto;
+        min-height: 70px;
+    }
+
+    .Third_Page_checkbox_text {
+        height: auto;
+        min-height: 56px;
+    }
+
+    .Third_Page_btn_box {
+        height: auto;
+        min-height: 64px;
+    }
+
+    .Third_Page_continue_btn,
+    .Third_Page_check_btn {
+        min-height: 44px;
+    }
+
+    .Third_Page_total,
+    .Third_Page_error_text {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .Third_Page_content {
+        min-height: 430px;
+    }
+
+    .Third_Page_top_text {
+        margin-right: clamp(12px, 10%, 40%);
+    }
+
+    .Third_Page_inputs_line {
+        gap: clamp(8px, 2vw, 14px);
+    }
+
+    .Third_Page_checkbox {
+        width: clamp(20px, 3%, 28px);
+        height: clamp(20px, 3vw, 28px);
+        margin-right: clamp(14px, 15%, 30%);
+    }
+
+    .Third_Page_card_date_popover {
+        left: 0;
+        min-width: min(190px, calc(100vw - 32px));
+    }
+
+    .Third_Page_modal_btns {
+        flex-wrap: wrap;
+    }
+}
+
+/* Text remains fluid, but never becomes smaller than 13px. */
+.Third_Page_top_text {
+    font-size: clamp(13px, 1.45vw, 24px);
+}
+
+.Third_Page_input,
+.Third_Page_input_date,
+.Third_Page_search_popover_field label,
+.Third_Page_search_popover_field input[type="date"],
+.Third_Page_input_text,
+.No_card,
+.Third_Page_checkbox_text,
+.Third_Page_continue_btn,
+.Third_Page_check_btn,
+.Third_Page_saved_card,
+.Third_Page_total,
+.Third_Page_error_text,
+.Third_Page_modal_row {
+    font-size: clamp(13px, .97vw, 16px);
+}
+
+.Third_Page_submitting,
+.Third_Page_modal_title {
+    font-size: clamp(13px, 1.21vw, 20px);
 }

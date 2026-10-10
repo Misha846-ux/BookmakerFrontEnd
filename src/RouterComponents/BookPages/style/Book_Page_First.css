@@ -2,6 +2,14 @@
     height: 80%;
     width: 100%;
 }
+
+.First_Page_body * {
+    font-size: clamp(13px, .97vw, 16px) !important;
+}
+
+.First_Page_body .First_Page_top_text {
+    font-size: clamp(18px, 1.45vw, 24px) !important;
+}
 .First_Page_content{
     height: 70%;
     width: 100%;
@@ -19,7 +27,7 @@
 .First_Page_top_text{
     font-family: "Nunito Sans";
     font-weight: 800;
-    font-size: 24px;
+    font-size: clamp(12px, 1.45vw, 24px);
     color: #581ADB;
     margin-right: 40%;
 }
@@ -61,7 +69,7 @@
     width: 45%;
     border: 1px solid #DDDDDD;
     border-radius: 64px;
-    font-size: 16px;
+    font-size: clamp(13px, 1vw, 16px);
     font-family: "Nunito Sans";
     font-weight: 400;
     color: #717171;
@@ -72,34 +80,45 @@
     width: 30%;
     font-family: "Nunito Sans";
     font-weight: 800;
-    font-size: 16px;
+   font-size: clamp(13px, .97vw, 16px);
     color: #717171;
     display: flex;
     align-items: center;
     margin-left: 10%;
 }
-.First_Page_booleans{
-    height: 10%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.First_Page_checkbox_text{
-    height: 70%;
+
+
+.First_Page_checkbox_text {
+    height: auto; 
     width: 45%;
     border: 1px solid #DDDDDD;
     border-radius: 13px;
-    font-size: 16px;
+    font-size: clamp(8px, .97vw, 16px);
     font-family: "Nunito Sans";
     font-weight: 400;
     color: #717171;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: clamp(6px, 0.8vw, 12px) clamp(8px, 1.21vw, 20px); 
     box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word; 
+    margin-top: 10px; 
 }
-.First_Page_checkbox {
+
+
+.First_Page_booleans {
+    height: auto; 
+    min-height: 10%; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+/* .First_Page_checkbox {
     appearance: none;
     -webkit-appearance: none;
     height: 50%;
@@ -111,7 +130,24 @@
     cursor: pointer;
     position: relative;
     flex-shrink: 0;
+} */
+
+.First_Page_checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 21px;   
+    height: 21px;       
+    border-radius: 50%; 
+    border: 2px solid #581ADB;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0; 
+    margin-right: 30px; 
+    /* overflow-wrap: break-word; */
 }
+
+
 .First_Page_checkbox:checked::after {
     content: "";
     position: absolute;
@@ -134,7 +170,7 @@
 .First_Page_continue_btn{
     height: 50%;
     width: 50%;
-    font-size: 16px;
+    font-size: clamp(8px, .97vw, 16px);
     font-family: "Nunito Sans";
     font-weight: 700;
     color: #FFFFFF;
@@ -152,8 +188,5 @@
     width: 60%;
     font-family: "Nunito Sans";
     font-weight: 400;
-    font-size: 16px;
-    color: #717171;
-    display: flex;
-    align-items: center;
+    font-size: clamp(7px, 1.45vw, 15px);
 }
